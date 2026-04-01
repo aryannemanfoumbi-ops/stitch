@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-fixed-variant": "#70343e",
+              "on-secondary": "#ffffff",
+              "on-surface-variant": "#53433f",
+              "surface-container": "#efeeeb",
+              "on-tertiary-fixed": "#2a1704",
+              "on-tertiary-fixed-variant": "#5a422a",
+              "inverse-surface": "#2f312f",
+              "surface-bright": "#faf9f6",
+              "primary": "#8d4d3b",
+              "on-tertiary": "#ffffff",
+              "tertiary": "#74593f",
+              "tertiary-fixed-dim": "#e3c0a0",
+              "outline": "#86736e",
+              "on-primary-container": "#713726",
+              "inverse-on-surface": "#f2f1ee",
+              "tertiary-container": "#d2b091",
+              "on-primary": "#ffffff",
+              "surface-dim": "#dbdad7",
+              "on-error-container": "#93000a",
+              "error-container": "#ffdad6",
+              "error": "#ba1a1a",
+              "secondary-container": "#feaab6",
+              "on-secondary-container": "#7a3c46",
+              "on-tertiary-container": "#5b422a",
+              "secondary": "#8c4b55",
+              "primary-fixed": "#ffdbd1",
+              "surface-variant": "#e3e2e0",
+              "on-error": "#ffffff",
+              "secondary-fixed-dim": "#ffb2bc",
+              "primary-container": "#f4a28c",
+              "on-surface": "#1a1c1a",
+              "outline-variant": "#d8c2bc",
+              "on-background": "#1a1c1a",
+              "on-secondary-fixed": "#3a0915",
+              "background": "#faf9f6",
+              "inverse-primary": "#ffb5a1",
+              "surface-container-low": "#f4f3f1",
+              "on-primary-fixed-variant": "#703626",
+              "on-primary-fixed": "#390c02",
+              "surface-container-lowest": "#ffffff",
+              "secondary-fixed": "#ffd9dd",
+              "surface-container-high": "#e9e8e5",
+              "surface": "#faf9f6",
+              "surface-tint": "#8d4d3b",
+              "primary-fixed-dim": "#ffb5a1",
+              "tertiary-fixed": "#ffdcbe",
+              "surface-container-highest": "#e3e2e0"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Be Vietnam Pro"],
+              "label": ["Be Vietnam Pro"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .hide-scrollbar::-webkit-scrollbar { display: none; }
+      .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body antialiased">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#faf9f6]/70 dark:bg-[#1a1c1a]/70 backdrop-blur-xl shadow-[0_4px_24px_rgba(26,28,26,0.04)] flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#8d4d3b] dark:text-[#f4a28c] active:scale-95 transition-transform duration-200 cursor-pointer" data-icon="menu">menu</span>
+<h1 class="font-['Manrope'] font-bold text-lg tracking-tight text-[#8d4d3b] dark:text-[#f4a28c]">AI Stylist</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#8d4d3b] dark:text-[#f4a28c] active:scale-95 transition-transform duration-200 cursor-pointer" data-icon="auto_awesome">auto_awesome</span>
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden border border-outline-variant/15">
+<img alt="User Profile" data-alt="Close-up portrait of a stylish woman with radiant skin and natural makeup looking at the camera in a soft studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABuP0JL58TOq9t_isUYw7HGGgPvH1KC1Ie6WXJsLQUYeZt5t4dHqSayRF7XwxaBkoLKP-v0C-OQ-xjfdBvHB09oam1QYs09sJT2izCRccEpUHyRr73Lshg2q2jFtQ1goP48r_V3LF32QxhSBtluYH99j530UXMUmWGvKnTKhRc5lp5kqKfvh4el65ROowAxkrIJaTpK2bX8Qy-sk_nXtlXM28EnIeHK7YMrCDKgCyiNzh2eabj1y7kxe6MKzDSCn1IOfwoHRnYpP2j"/>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-md mx-auto">
+<!-- AI Greeting Section -->
+<section class="mb-10">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-primary-container flex items-center justify-center flex-shrink-0 shadow-lg shadow-primary/10">
+<span class="material-symbols-outlined text-white" data-icon="face_retouching_natural">face_retouching_natural</span>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-tr-xl rounded-b-xl shadow-sm border border-outline-variant/10">
+<p class="text-on-surface leading-relaxed text-lg font-medium italic">
+                        "Upload a photo or describe your vibe, and I will find the perfect African braids or hairstyle for you!"
+                    </p>
+</div>
+</div>
+</section>
+<!-- Upload & Action Area -->
+<section class="mb-10 animate-in fade-in slide-in-from-bottom-4 duration-500">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-primary-container flex items-center justify-center flex-shrink-0 shadow-lg shadow-primary/10">
+<span class="material-symbols-outlined text-white" data-icon="face_retouching_natural">face_retouching_natural</span>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-tr-xl rounded-b-xl shadow-sm border border-outline-variant/10 flex-1">
+<p class="text-on-surface leading-relaxed text-lg font-medium mb-4">
+        "To get started, what style are you looking for today?"
+      </p>
+<div class="flex gap-3">
+<button class="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-full border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all active:scale-95">
+<span class="material-symbols-outlined text-xl">woman</span>
+          Female
+        </button>
+<button class="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-full border-2 border-outline-variant/30 text-on-surface-variant font-bold hover:border-primary hover:text-primary transition-all active:scale-95">
+<span class="material-symbols-outlined text-xl">man</span>
+          Male
+        </button>
+</div>
+</div>
+</div>
+</section><section class="mb-12">
+<div class="relative group cursor-pointer">
+<div class="absolute -inset-1 bg-gradient-to-r from-primary/20 to-primary-container/20 rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+<div class="relative bg-surface-container-low border-2 border-dashed border-outline-variant/30 rounded-xl p-10 flex flex-col items-center justify-center text-center hover:bg-surface-container transition-colors">
+<div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-4 shadow-sm">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="photo_camera">photo_camera</span>
+</div>
+<h3 class="font-headline font-bold text-on-surface mb-1">Upload Your Photo</h3>
+<p class="text-label-md text-on-surface-variant/70 mb-6">Let AI analyze your face shape &amp; features</p>
+<button class="bg-gradient-to-br from-primary to-primary-container text-white px-8 py-3 rounded-xl font-bold tracking-wide active:scale-95 transition-all shadow-md shadow-primary/20">
+                        Start Transformation
+                    </button>
+</div>
+</div>
+</section>
+<!-- AI Generated Recommendations Carousel -->
+<section class="mb-12 overflow-hidden">
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-headline font-bold text-xl tracking-tight text-on-surface">Curated For You</h2>
+<span class="text-primary font-bold text-sm tracking-widest uppercase">3 Matches</span>
+</div>
+<div class="flex overflow-x-auto gap-6 pb-6 hide-scrollbar snap-x -mx-6 px-6">
+<!-- Card 1 -->
+<div class="snap-center flex-shrink-0 w-72 bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm border border-outline-variant/10">
+<div class="h-80 relative">
+<img class="w-full h-full object-cover" data-alt="Close-up of beautiful knotless box braids with golden highlights on a woman with warm skin tones against a soft peach background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOoFVAuRu1aDPR5mUVFGeKGddKV4Ia-Vprcfsvd8Gsk0u_QUVI7j4usI29egJ2o6E4o2hLFDa5DZENgocOpKisPaAvDPfvJN4_qxVutDhexqW8PbB68qQBdKBhOeZV_XLUrNNw2MgjjSCiOZAVUyN1lwMbIgPvg8ulTsLwcP-jHoAeRtAqjFatvmZdfJu_TSTBKWZ7cZod37eb6hq3Ek-yBcSPIeCVx3ALlaCrwheqM3OUwyyfDPxPhnFTBKCDnH25tLIxBnqNHqb7"/>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-amber-500 text-xs" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[10px] font-bold text-on-surface">98% Match</span>
+</div>
+</div>
+<div class="p-5">
+<h4 class="font-headline font-bold text-on-surface text-lg mb-1">Knotless Braids</h4>
+<p class="text-body-lg text-on-surface-variant/80 text-sm mb-4">Soft, lightweight tension-free style.</p>
+<button class="w-full py-3 bg-surface-container-highest text-on-primary-container rounded-lg font-bold text-sm hover:bg-primary-container/20 transition-colors">
+                            Match with a Stylist
+                        </button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="snap-center flex-shrink-0 w-72 bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm border border-outline-variant/10">
+<div class="h-80 relative">
+<img class="w-full h-full object-cover" data-alt="Artistic side profile showing intricate Fulani braids with wooden beads and gold rings on a young woman with elegant makeup" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXfd3Lq-6EZyxiG2vnt57wo-A5sxcbW3MRsj0N4uoIgcrejRN2C6mOlV7NO8fgkQW6kRHGm74dd-IytmcABatdp69JhkpK11_PtczQMKYoqjCRn4v5dCJEUZ_W8oy6ZCCo9OE8TiRQu3BtwVL-60lU2cqoUdr8TfNJcSaSbeCHvluCqCSTHvBEbNRqZQDstyt61gzol7GmkpgZY6jza04HA4sn-iqdn-88JXQEEPMbGbufDU7oQtu93Ad2ePJkqKVNZ7t_c1hB1k4b"/>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-amber-500 text-xs" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[10px] font-bold text-on-surface">92% Match</span>
+</div>
+</div>
+<div class="p-5">
+<h4 class="font-headline font-bold text-on-surface text-lg mb-1">Fulani Braids</h4>
+<p class="text-body-lg text-on-surface-variant/80 text-sm mb-4">Intricate tribal patterns with beads.</p>
+<button class="w-full py-3 bg-surface-container-highest text-on-primary-container rounded-lg font-bold text-sm hover:bg-primary-container/20 transition-colors">
+                            Match with a Stylist
+                        </button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="snap-center flex-shrink-0 w-72 bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm border border-outline-variant/10">
+<div class="h-80 relative">
+<img class="w-full h-full object-cover" data-alt="High-fashion photo of long jumbo butterfly locs with soft textured finish on a model in a high-end editorial lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHd47EJgbk_JfqGr3strIJmd3rqdPc_DE44e-vfSA4Ts8YQZ4d-fdGNIRM49xaAolhGqlAP5frwTF8gvpnDPwCbDaUb_THIoztsvqD7YKrQpfEv7tGh0XKwJIf3MXI7sbNOy-2dxcSbJNKeHPJ05DA1ntuzMJDRGnvVdJ38eNSeeqQuAY9O_zOSUTU6IrWMW8kOBabwYnjb_aiANUnTsyZo6E_jJHdzoMthFBDGB_-n8c854jOycVZq1nspiUD81KMbnVZ_5wSbE9T"/>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-amber-500 text-xs" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[10px] font-bold text-on-surface">85% Match</span>
+</div>
+</div>
+<div class="p-5">
+<h4 class="font-headline font-bold text-on-surface text-lg mb-1">Butterfly Locs</h4>
+<p class="text-body-lg text-on-surface-variant/80 text-sm mb-4">Bohemian-chic distressed texture.</p>
+<button class="w-full py-3 bg-surface-container-highest text-on-primary-container rounded-lg font-bold text-sm hover:bg-primary-container/20 transition-colors">
+                            Match with a Stylist
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Conversational Input -->
+<div class="fixed bottom-24 left-0 w-full px-6 py-4 pointer-events-none">
+<div class="max-w-md mx-auto pointer-events-auto">
+<div class="bg-surface-container-lowest rounded-full p-2 flex items-center shadow-xl shadow-on-surface/5 border border-outline-variant/10">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:bg-surface-variant transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-xl" data-icon="mic">mic</span>
+</div>
+<input class="flex-1 bg-transparent border-none focus:ring-0 px-4 text-on-surface placeholder:text-on-surface-variant/40" placeholder="Describe your vibe..." type="text"/>
+<button class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-xl" data-icon="send">send</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-end px-4 pb-6 h-24 bg-[#faf9f6]/70 dark:bg-[#1a1c1a]/70 backdrop-blur-xl rounded-t-[3rem] shadow-[0_-4px_24px_rgba(26,28,26,0.04)] z-50">
+<div class="flex flex-col items-center justify-center text-[#1a1c1a]/40 dark:text-[#faf9f6]/40 p-2 hover:text-[#8d4d3b] dark:hover:text-[#f4a28c] transition-colors active:scale-90 transition-all duration-300 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-['Be_Vietnam_Pro'] font-semibold text-[10px] uppercase tracking-widest mt-1">Studio</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-gradient-to-br from-[#8d4d3b] to-[#f4a28c] text-white rounded-full p-3 mb-1 active:scale-90 transition-all duration-300 cursor-pointer shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined" data-icon="face_retouching_natural">face_retouching_natural</span>
+<span class="font-['Be_Vietnam_Pro'] font-semibold text-[10px] uppercase tracking-widest mt-1">Style AI</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#1a1c1a]/40 dark:text-[#faf9f6]/40 p-2 hover:text-[#8d4d3b] dark:hover:text-[#f4a28c] transition-colors active:scale-90 transition-all duration-300 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="event_note">event_note</span>
+<span class="font-['Be_Vietnam_Pro'] font-semibold text-[10px] uppercase tracking-widest mt-1">Bookings</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#1a1c1a]/40 dark:text-[#faf9f6]/40 p-2 hover:text-[#8d4d3b] dark:hover:text-[#f4a28c] transition-colors active:scale-90 transition-all duration-300 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Be_Vietnam_Pro'] font-semibold text-[10px] uppercase tracking-widest mt-1">Profile</span>
+</div>
+</nav>
+</body></html>

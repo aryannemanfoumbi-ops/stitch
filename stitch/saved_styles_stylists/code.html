@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Be+Vietnam+Pro:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-fixed-variant": "#5a422a",
+              "surface-container-lowest": "#ffffff",
+              "on-primary": "#ffffff",
+              "tertiary": "#74593f",
+              "secondary-fixed-dim": "#ffb2bc",
+              "on-surface": "#1a1c1a",
+              "on-secondary-fixed": "#3a0915",
+              "on-primary-fixed-variant": "#703626",
+              "outline-variant": "#d8c2bc",
+              "primary-fixed": "#ffdbd1",
+              "surface-tint": "#8d4d3b",
+              "on-error": "#ffffff",
+              "surface-container-highest": "#e3e2e0",
+              "surface-container-high": "#e9e8e5",
+              "primary-container": "#f4a28c",
+              "on-primary-container": "#713726",
+              "error": "#ba1a1a",
+              "on-secondary": "#ffffff",
+              "inverse-on-surface": "#f2f1ee",
+              "secondary": "#8c4b55",
+              "tertiary-fixed": "#ffdcbe",
+              "inverse-surface": "#2f312f",
+              "on-surface-variant": "#53433f",
+              "primary": "#8d4d3b",
+              "surface-container-low": "#f4f3f1",
+              "on-secondary-fixed-variant": "#70343e",
+              "primary-fixed-dim": "#ffb5a1",
+              "on-tertiary-fixed": "#2a1704",
+              "on-tertiary": "#ffffff",
+              "secondary-container": "#feaab6",
+              "surface-bright": "#faf9f6",
+              "surface-variant": "#e3e2e0",
+              "surface-dim": "#dbdad7",
+              "tertiary-fixed-dim": "#e3c0a0",
+              "inverse-primary": "#ffb5a1",
+              "tertiary-container": "#d2b091",
+              "secondary-fixed": "#ffd9dd",
+              "on-primary-fixed": "#390c02",
+              "background": "#faf9f6",
+              "outline": "#86736e",
+              "on-secondary-container": "#7a3c46",
+              "on-error-container": "#93000a",
+              "on-background": "#1a1c1a",
+              "on-tertiary-container": "#5b422a",
+              "surface": "#faf9f6",
+              "surface-container": "#efeeeb",
+              "error-container": "#ffdad6"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Be Vietnam Pro"],
+              "label": ["Be Vietnam Pro"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-silk-gradient {
+            background: linear-gradient(135deg, #8d4d3b 0%, #f4a28c 100%);
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface selection:bg-primary-fixed antialiased">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#faf9f6]/70 dark:bg-stone-900/70 backdrop-blur-md shadow-sm shadow-[#1a1c1a]/5 flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#8d4d3b] cursor-pointer hover:opacity-80 transition-opacity">menu</span>
+<h1 class="font-['Manrope'] font-extrabold text-2xl tracking-tighter text-[#8d4d3b] dark:text-[#f4a28c]">GlamAtHome</h1>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-fixed shadow-sm">
+<img alt="User Profile" data-alt="close-up portrait of a smiling young woman with glowing skin and soft waves in her hair against a neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXGV_80sq_OGmSEqtEc_7-pGKe_se6o2zQCb2KGslQiztqujc_xUn65QLaw06mOErAt_O4lkJMWfRsNyDPMlz2ZX08b5enJppyvs_Qj3gC07O9HNpAcEEuE7zGpKz8qiX84p8rONoQqUmyNMZtFTaBhyYh8oCm4P3AElER8o0m0yo506_s9nUcAowDeflW8QJRpzcqMQ9DJy4AQ0k1iJVmCzD-9ZHAZFaHLA1mAQf8iCJxCqfKcmGlkDweQPaTSqEVkEwig6g_qiJ5"/>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-5xl mx-auto">
+<!-- Header Section -->
+<header class="mb-12">
+<p class="font-label text-primary font-semibold tracking-widest uppercase text-xs mb-2">Curated Collection</p>
+<h2 class="font-headline font-extrabold text-4xl tracking-tight text-on-surface">Saved Styles &amp; Stylists</h2>
+<div class="h-1 w-12 bg-silk-gradient mt-4 rounded-full"></div>
+</header>
+<!-- Tabs/Filter Chips -->
+<div class="flex gap-3 mb-10 overflow-x-auto hide-scrollbar">
+<button class="px-8 py-3 bg-silk-gradient text-white rounded-full font-semibold shadow-lg shadow-primary/20 whitespace-nowrap">All Favorites</button>
+<button class="px-8 py-3 bg-surface-container-high text-on-surface-variant rounded-full font-semibold hover:bg-surface-container-highest transition-colors whitespace-nowrap">Styles</button>
+<button class="px-8 py-3 bg-surface-container-high text-on-surface-variant rounded-full font-semibold hover:bg-surface-container-highest transition-colors whitespace-nowrap">Stylists</button>
+</div>
+<!-- Section 1: Favorite Styles (Asymmetric Bento Grid) -->
+<section class="mb-16">
+<div class="flex justify-between items-end mb-8">
+<div>
+<h3 class="font-headline font-bold text-2xl">Inspiration Gallery</h3>
+<p class="text-on-surface-variant text-sm">Your visual mood board for upcoming appointments</p>
+</div>
+<button class="text-primary font-bold text-sm flex items-center gap-1 hover:underline">View All <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px]">
+<!-- Large Featured Style -->
+<div class="col-span-2 row-span-2 relative group overflow-hidden rounded-xl">
+<img alt="Rose Gold Waves" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="vibrant rose gold hair with voluminous soft waves, professionally styled, glowing under studio lighting with a warm peach aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHkTnha6rPvuuM0FK0vdi1rD2zGgQZggiy6hr1NASsofd5ZAG4gVMj2-uCmDhA_9dWx5WZzarNAsBBi0fkz-elL3xgCeKFMloeKBxsopV9xW95x0daJ9O5CA_6oIyyRFa_ywcW9nlpj1-mQWS6zG_zUi99M_0x3zRnjCd5tHzYvuRI4W-IwH5mj9Ha-vuqM8MnZWPQXMgC5iOP7ZG7LUEOCUdo6K7Jz-EFhrGLBpfXXQsk4zd6vgoTxSDwVYerGb3NlsMPHhTTJPoZ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6">
+<span class="text-white font-bold text-xl">Sunset Balayage</span>
+<p class="text-white/80 text-sm">Saved 2 days ago</p>
+</div>
+<button class="absolute top-4 right-4 bg-white/90 backdrop-blur-md p-2 rounded-full text-primary shadow-lg">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<!-- Small Grid Items -->
+<div class="relative group overflow-hidden rounded-xl">
+<img alt="Sleek Bob" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="sleek platinum blonde bob haircut, sharp edges, modern minimalist aesthetic, soft natural daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXCFPZQjFOtxKmlYNf4NjdC1mS5BQpHwo4KAdYNHmix_3Hme5xT6VH8qS6XlyYit1QqPADPsb5voMwjXrH6r9-tTMF9IzLW53YUymCHako-Dm6qfEPmqv5HRSMEFuLiw2okytpD9JKbDMbt13WBWjarXlDL5yBgq1i40SJJq_bTlW4q8OdWqx-dQuDs7tIhYLFcSUm1FyrTZn5hTunMlf1C_XRKDCczBmvSulgj1iMz8zyF4Svnjj0KktVH8lhQfl3ClbHKGpOBxEQ"/>
+<button class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm p-1.5 rounded-full text-primary">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="relative group overflow-hidden rounded-xl">
+<img alt="Braided Crown" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="intricate braided crown hairstyle on dark hair with small flower accents, ethereal and romantic garden setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDScraLMJpuIJoq2NTTJiG1vAbt4TbGcsxIb6R9yFFKFHDYn-ENZrAicxjOEPZj16_JOn2eb5SRxXsTJHHDg-P4lrmIJo0dpgZgEwyJTPcEWqYF7UeAZRAX_IkvOZ6hKfWakJoZ-MNM4IOl23mvXY7fk8QER0O7aPHq0Qgl2lsGr8HteqzD_s5-fNFPLLCHilCbbBub_x_4Xkr9o8RIfPGpIsQlIuQBIUyTRvk3kX3ezXPnYfjabo9hvejYa6fXerm2sBRGUAk6KuoJ"/>
+<button class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm p-1.5 rounded-full text-primary">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="relative group overflow-hidden rounded-xl col-span-2 md:col-span-1">
+<img alt="Soft Curls" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="long dark hair with high-gloss soft curls, luxury hair salon lighting, focusing on texture and shine" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbr-QGzNkca-DduqxF8g6iY_Nv-OFIt05UC01ny8LAc4qcad9ltuLpQDjZn91KRc6cUn87cWFS59sxMowNXc3vbI-d8amL7LJNdFoMRAxcRFTOK15E078moh_C-RIlAJfMDXthWSG7yAEHRxED-NFWhvbi_LDa-iri-MYgpUc-BkV2tBfKKzlFzvmnDWtfOVI_k4GYHY_rUtMXQAulFMkJDHDSNDwyWZNx4Jyw93ovKjBPEQIvsIxDN_rrbDa8E09bH8UGUfZveKGN"/>
+<button class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm p-1.5 rounded-full text-primary">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="relative group overflow-hidden rounded-xl">
+<img alt="Pixie Cut" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="modern textured pixie cut on a model with warm skin tones, chic editorial style, neutral studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8NlSdOKJ1knKt990PDg-zeF_N_uETMOIrxxk0AIuKaxFeW39GzFT7gePQMBk_OxdckxIv2jHegS-aouignZbdZR0JWFnUKZXGbD6H76Wwo6vHYqZyjqVEN10eXIgwEdYp7DYJfd5TXzFK_mMsTVvjoY6D-I0iT049iPPguYVMTl3MGxd6-YC39ntwgHA1ras5JlLokrcwSCt6cxKAMUG6X54KmWz65cBNfB3RmgTV_19wZDRcFyNasvw0Z16HmtTgjvnU-9-weOgK"/>
+<button class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm p-1.5 rounded-full text-primary">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Section 2: Favorite Stylists (Specialist Spotlight) -->
+<section>
+<div class="flex justify-between items-end mb-8">
+<div>
+<h3 class="font-headline font-bold text-2xl text-on-surface">Top-Tier Specialists</h3>
+<p class="text-on-surface-variant text-sm">Experts who understand your unique style</p>
+</div>
+</div>
+<div class="space-y-12">
+<!-- Specialist Spotlight 1 -->
+<div class="relative flex flex-col md:flex-row items-center bg-surface-container-low rounded-xl p-8 md:p-12 transition-all hover:shadow-xl hover:shadow-[#1a1c1a]/5">
+<div class="w-48 h-48 md:w-64 md:h-64 rounded-lg overflow-hidden -mt-20 md:-mt-0 md:-ml-20 shadow-2xl z-10">
+<img alt="Sofia Loren" class="w-full h-full object-cover" data-alt="professional female hair stylist in her late 20s with an artistic vibe, standing in a bright modern salon interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMzs-N4fzXLPtGrG7jDt6Ef5_BeMRx5K0QboUE5aJYXG6SWftsfX3hdtitP28wLN7A5B9Ur82xMaP3KUmLjreHs2ngTCkVLHllRmqL39P7J_F28JetWXxdoMN_f21T8gDbXKvZnK_VGeD7g6h326wQIZfMjb1W1C87ONKdCAIOR_Xk1JJnKKWoZrzFiVuR6vJBRqrLEYU2v4pP8-ytVXlkOSLePL8zBHy2A68qnRYNxgK7B7S3db-yiERWMNSbWAJHcwCeAQXgeWnD"/>
+</div>
+<div class="mt-8 md:mt-0 md:ml-12 flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-headline font-extrabold text-2xl text-primary">Sofia Loren</h4>
+<p class="text-on-tertiary-fixed-variant font-medium tracking-wide uppercase text-xs mb-4">Master Colorist &amp; Bridal Expert</p>
+</div>
+<div class="bg-primary-fixed px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-on-primary-fixed-variant font-bold text-sm">4.9</span>
+</div>
+</div>
+<p class="text-on-surface-variant leading-relaxed mb-6">"Beauty is about being comfortable in your own skin. I specialize in lived-in color that looks as good at 12 weeks as it does on day one."</p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="bg-white px-3 py-1 rounded-full text-xs font-semibold text-on-surface-variant">Balayage</span>
+<span class="bg-white px-3 py-1 rounded-full text-xs font-semibold text-on-surface-variant">Precision Cut</span>
+<span class="bg-white px-3 py-1 rounded-full text-xs font-semibold text-on-surface-variant">Silk Press</span>
+</div>
+<button class="bg-silk-gradient text-white px-10 py-4 rounded-xl font-bold shadow-lg shadow-primary/30 hover:scale-[1.02] transition-transform">Book Next Session</button>
+</div>
+</div>
+<!-- Specialist Spotlight 2 -->
+<div class="relative flex flex-col md:flex-row items-center bg-surface-container-low rounded-xl p-8 md:p-12 transition-all hover:shadow-xl hover:shadow-[#1a1c1a]/5">
+<div class="w-48 h-48 md:w-64 md:h-64 rounded-lg overflow-hidden -mt-20 md:-mt-0 md:-ml-20 shadow-2xl z-10">
+<img alt="Elena V." class="w-full h-full object-cover" data-alt="sophisticated female stylist looking confidently at the camera, wearing professional black attire, blurred upscale boutique background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVejZnIA5WJQChTeKdavuR9Rku2vIvRpPRwz37yu0SV9P104dX8C6QMROXmFID7l54JZixT_Aq6z2cvWJSxdsD8i6TpPC3R9HKivcLaHBgtbV9Ta-BbjsV0rkW7McVqro5N1uj5ggJcf1Ob63sjIJbc3dZ3oL6s76RMukftQaSIFUfVX8HjwyxlY-N14HuipCC2eYffxhIbfb24v2xeDXTrIoFh9hsYskfeiaAasnA2qH5pr8VdM8qKQP_84FdGaiExSEnlXwKftpN"/>
+</div>
+<div class="mt-8 md:mt-0 md:ml-12 flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-headline font-extrabold text-2xl text-primary">Elena V.</h4>
+<p class="text-on-tertiary-fixed-variant font-medium tracking-wide uppercase text-xs mb-4">Editorial &amp; High-Fashion Stylist</p>
+</div>
+<div class="bg-primary-fixed px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-on-primary-fixed-variant font-bold text-sm">5.0</span>
+</div>
+</div>
+<p class="text-on-surface-variant leading-relaxed mb-6">Bringing the runway to your living room. Expertise in avant-garde transformations and hair health restoration treatments.</p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="bg-white px-3 py-1 rounded-full text-xs font-semibold text-on-surface-variant">Editorial Styling</span>
+<span class="bg-white px-3 py-1 rounded-full text-xs font-semibold text-on-surface-variant">Keratin</span>
+<span class="bg-white px-3 py-1 rounded-full text-xs font-semibold text-on-surface-variant">Extensions</span>
+</div>
+<button class="bg-silk-gradient text-white px-10 py-4 rounded-xl font-bold shadow-lg shadow-primary/30 hover:scale-[1.02] transition-transform">Book Next Session</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-end px-4 pb-6 pt-2 bg-[#faf9f6]/70 dark:bg-stone-900/70 backdrop-blur-md z-50 rounded-t-[3rem] shadow-[0_-4px_24px_rgba(26,28,26,0.04)]">
+<a class="flex flex-col items-center justify-center text-stone-400 p-2 hover:text-[#8d4d3b] transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-semibold tracking-wide uppercase">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 p-2 hover:text-[#8d4d3b] transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-semibold tracking-wide uppercase">Discover</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 p-2 hover:text-[#8d4d3b] transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-semibold tracking-wide uppercase">Bookings</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-gradient-to-br from-[#8d4d3b] to-[#f4a28c] text-white rounded-full p-3 mb-2 scale-110 shadow-lg active:scale-90 transition-transform duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-semibold tracking-wide uppercase">Favorites</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 p-2 hover:text-[#8d4d3b] transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-semibold tracking-wide uppercase">Messages</span>
+</a>
+</nav>
+</body></html>

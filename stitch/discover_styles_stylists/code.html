@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-fixed-variant": "#5a422a",
+              "surface-container-lowest": "#ffffff",
+              "on-primary": "#ffffff",
+              "tertiary": "#74593f",
+              "secondary-fixed-dim": "#ffb2bc",
+              "on-surface": "#1a1c1a",
+              "on-secondary-fixed": "#3a0915",
+              "on-primary-fixed-variant": "#703626",
+              "outline-variant": "#d8c2bc",
+              "primary-fixed": "#ffdbd1",
+              "surface-tint": "#8d4d3b",
+              "on-error": "#ffffff",
+              "surface-container-highest": "#e3e2e0",
+              "surface-container-high": "#e9e8e5",
+              "primary-container": "#f4a28c",
+              "on-primary-container": "#713726",
+              "error": "#ba1a1a",
+              "on-secondary": "#ffffff",
+              "inverse-on-surface": "#f2f1ee",
+              "secondary": "#8c4b55",
+              "tertiary-fixed": "#ffdcbe",
+              "inverse-surface": "#2f312f",
+              "on-surface-variant": "#53433f",
+              "primary": "#8d4d3b",
+              "surface-container-low": "#f4f3f1",
+              "on-secondary-fixed-variant": "#70343e",
+              "primary-fixed-dim": "#ffb5a1",
+              "on-tertiary-fixed": "#2a1704",
+              "on-tertiary": "#ffffff",
+              "secondary-container": "#feaab6",
+              "surface-bright": "#faf9f6",
+              "surface-variant": "#e3e2e0",
+              "surface-dim": "#dbdad7",
+              "tertiary-fixed-dim": "#e3c0a0",
+              "inverse-primary": "#ffb5a1",
+              "tertiary-container": "#d2b091",
+              "secondary-fixed": "#ffd9dd",
+              "on-primary-fixed": "#390c02",
+              "background": "#faf9f6",
+              "outline": "#86736e",
+              "on-secondary-container": "#7a3c46",
+              "on-error-container": "#93000a",
+              "on-background": "#1a1c1a",
+              "on-tertiary-container": "#5b422a",
+              "surface": "#faf9f6",
+              "surface-container": "#efeeeb",
+              "error-container": "#ffdad6"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Be Vietnam Pro"],
+              "label": ["Be Vietnam Pro"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed-variant">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#faf9f6]/70 dark:bg-stone-900/70 backdrop-blur-md shadow-sm shadow-[#1a1c1a]/5 flex justify-between items-center px-6 h-16">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#8d4d3b] cursor-pointer hover:opacity-80 transition-opacity active:scale-95 duration-200">menu</span>
+<h1 class="font-headline font-extrabold text-2xl tracking-tighter text-[#8d4d3b] dark:text-[#f4a28c]">GlamAtHome</h1>
+</div>
+<div class="h-10 w-10 rounded-full bg-surface-container-high border-2 border-primary-container overflow-hidden">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="close-up portrait of a young woman with natural makeup and glowing skin looking at camera" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBi09XutlxoDI6LBZzDUAt6tqAQhGwASqexncojJQa6sYO02nSWBCxuuKHDv-37kHxg5DeioFgZ5icc6PiFGay4TyXC5pTuQzHJMTbILDR1ueIXQY5ID-35WpIsm_BgTusj4fc8uFJ1wjudUpSOlVsqaB9JpZCPDBqqJz23KJmKXjxoNP04FU7oUkc9fa7vJlXrgpIygjuTflKuziG8dHwfarYRNVS7dKLjzYpG9jdIaZlBDb6dxPCXP37wgpjUy_5IO89Zp7XtuVol"/>
+</div>
+</header>
+<main class="pt-20 pb-32 px-6 max-w-2xl mx-auto">
+<!-- Search & Filter Bar -->
+<div class="mb-10">
+<div class="flex items-center gap-3">
+<div class="flex-1 bg-surface-container-low rounded-xl px-4 py-3 flex items-center gap-3">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body w-full placeholder:text-outline" placeholder="Search styles, stylists..." type="text"/>
+</div>
+<button class="bg-surface-container-low p-3 rounded-xl text-primary hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined">tune</span>
+</button>
+</div>
+</div>
+<!-- Trending Styles Section -->
+<section class="mb-12">
+<div class="flex justify-between items-end mb-6">
+<h2 class="font-headline font-bold text-2xl text-on-surface tracking-tight">Trending Styles</h2>
+<button class="text-primary font-semibold text-sm hover:underline">View All</button>
+</div>
+<div class="flex overflow-x-auto no-scrollbar gap-6 -mx-6 px-6">
+<!-- Style Card 1 -->
+<div class="flex-none w-64 group cursor-pointer">
+<div class="relative h-80 rounded-lg overflow-hidden mb-3">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="close up of sophisticated honey blonde balayage waves on medium length hair with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWQpYbtpl83hDFVwvmyjz_y2RRXvT3Mhod0gBMg4i7ppPtoIupYowEkMOqoAYA2BAxJiXmGQdpH2G74xhVdDkCNZDmH9SMj8UXVNqc-oxCS0Mj1ZokeYGmOH1z-HdMnduR3JkOJScPMQhYLZ3rh4dVK1Zw-xyNGoEiV9ceJujKPUOHeyj0FghOUaIw9cs8M5mdgt5wzxJJUwjvTjd8JRVvrMNcVfjfFglxXcp_JuFHbZg56ypwjhxpVR_Law1UlsU6jCtl-FrVjrz3"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<span class="bg-primary-container/90 backdrop-blur-sm text-on-primary-container text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest">Natural</span>
+</div>
+</div>
+<h3 class="font-headline font-bold text-lg text-on-surface">Honey Glaze Waves</h3>
+<p class="text-on-surface-variant text-sm">Perfect for subtle dimension</p>
+</div>
+<!-- Style Card 2 -->
+<div class="flex-none w-64 group cursor-pointer">
+<div class="relative h-80 rounded-lg overflow-hidden mb-3">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="elegant high bridal bun with soft face-framing strands and delicate pearl accessories in warm studio light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtsyuoIUaRxLIDIJmItWzB1-BFJOTKwjm-yyLZ1J3qDh94BB88XYMMqn8lxpsq7Gb7kUdWdzVV5YRBBlDtHRR8tzBXlscJviQEJdjOc69SKCVLYkwlM6yUyS8TBbeixDef5w6zDlNjc4Nr-qZ6m5eIfPQyl3mSQYwulrbokCesQSq9_ID4RRADVm9OAMHDzQlb3Kt_NOhv_K2X0GAm3EIY-Yq1dqPRKt3LrMzbYEAwAK6GZPMZ4V0tLUjO18_lsg7nvTlVBqBL_w6n"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<span class="bg-primary-container/90 backdrop-blur-sm text-on-primary-container text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest">Bridal</span>
+</div>
+</div>
+<h3 class="font-headline font-bold text-lg text-on-surface">Silk Chignon</h3>
+<p class="text-on-surface-variant text-sm">Timeless bridal elegance</p>
+</div>
+<!-- Style Card 3 -->
+<div class="flex-none w-64 group cursor-pointer">
+<div class="relative h-80 rounded-lg overflow-hidden mb-3">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="woman with voluminous copper red curly hair looking sideways with soft lighting on a neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_eoLGUBxg-cvZ6uZz0HdIsaj8k_vWZDUrYH2--m2ck9PUbyTwnyuF4MjHOUszYdvNM9Ua6BwDMz1uxlwnbNPj_AFiJ-pTKhho0X5knyJJD759JKvZSWJ6L6WANPOU0_EVcUcSkSSoQ1h8Ra2sxru5Ise3y-FiN7uZsbCDEUzbtDlYiCVfPPW8-w9VgA0ZngsT0DADkzUjVcg_KXmVx4g1oENbyu4G9-Vi2U5e2en-etCq9S2MP3DWQnsqxIl_q4SzRDYuty3Tu_AB"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<span class="bg-primary-container/90 backdrop-blur-sm text-on-primary-container text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest">Volume</span>
+</div>
+</div>
+<h3 class="font-headline font-bold text-lg text-on-surface">Copper Curls</h3>
+<p class="text-on-surface-variant text-sm">Brave and textured</p>
+</div>
+</div>
+</section>
+<!-- Featured Stylists Section -->
+<section>
+<div class="flex justify-between items-end mb-8">
+<h2 class="font-headline font-bold text-2xl text-on-surface tracking-tight">Featured Stylists</h2>
+<button class="text-primary font-semibold text-sm hover:underline">See All</button>
+</div>
+<div class="space-y-10">
+<!-- Specialist Spotlight 1 -->
+<div class="relative bg-surface-container-lowest rounded-xl p-6 pt-10 shadow-sm">
+<div class="absolute -top-6 left-6 w-20 h-20 rounded-lg overflow-hidden shadow-lg border-4 border-surface-container-lowest">
+<img class="w-full h-full object-cover" data-alt="professional hair stylist with warm smile in a high-end salon setting with soft bokeh background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCUvbMl8oA27MzQiyYn_u-jqTCW8BO11yFTbcdpU_pzj75QQp8m4jtfg_3D7NGfYv9q57AZyM-4vT340fHwQhT2Zy0VLi7SiPChIteIqXu276yZJM1SzY4vs5WmAaxKvOqFjFXdX-OyHsP3BImYp5YytamMz6RvnhCuhtj5dNfEZl6lRtFWUB_ozz_bxCKGTVqTqcb_-Obu0R_OUyb1FpbCXlHappa6Glwdt30so8S_z7kdi9TOat0QLw2uGs2QsGOyJaJf3yekVGf"/>
+</div>
+<div class="flex justify-between items-start mb-4 pl-24">
+<div>
+<h3 class="font-headline font-bold text-xl text-on-surface">Elena Rossi</h3>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-sm font-bold">4.9</span>
+<span class="text-outline text-xs ml-1">(128 reviews)</span>
+</div>
+</div>
+<button class="bg-gradient-to-br from-primary to-primary-container text-white px-5 py-2 rounded-full font-semibold text-sm shadow-md hover:opacity-90 transition-opacity">Book</button>
+</div>
+<p class="text-on-surface-variant text-sm italic leading-relaxed">"Specializing in effortless French Balayage and editorial styling for your everyday luxury."</p>
+<div class="mt-4 flex gap-2">
+<span class="px-3 py-1 bg-surface-container-low rounded-full text-[10px] font-bold text-outline tracking-wider uppercase">Color Expert</span>
+<span class="px-3 py-1 bg-surface-container-low rounded-full text-[10px] font-bold text-outline tracking-wider uppercase">Cut &amp; Style</span>
+</div>
+</div>
+<!-- Specialist Spotlight 2 -->
+<div class="relative bg-surface-container-lowest rounded-xl p-6 pt-10 shadow-sm">
+<div class="absolute -top-6 left-6 w-20 h-20 rounded-lg overflow-hidden shadow-lg border-4 border-surface-container-lowest">
+<img class="w-full h-full object-cover" data-alt="portrait of a young female hair stylist looking confident in a sunlit studio space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBkpQjaK81PPiho7NQ7IazJALVtxN2IPsdaZtpfZ_QMMKE4Qb4yzhNaKZ8yVjZb5dLw9Aqa3l6XPVNXNwjpcBCDqUpdckEtHqeISmJO-KBIJfs7RTGveIj35ksDjp5qUxUgKwFC164AytbiA8epLqttpvaphOFDpPbr8HXToi9tetfHI_Ze030wDkstD01Ikm3d5Ta2US1DzNs8qitHjhWyDmX8W3wZXArwDiTbLnMFkx-2rRhmynBaiCmB_CixdBg__XaJTh_XOWB"/>
+</div>
+<div class="flex justify-between items-start mb-4 pl-24">
+<div>
+<h3 class="font-headline font-bold text-xl text-on-surface">Jordan Wei</h3>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-sm font-bold">5.0</span>
+<span class="text-outline text-xs ml-1">(84 reviews)</span>
+</div>
+</div>
+<button class="bg-gradient-to-br from-primary to-primary-container text-white px-5 py-2 rounded-full font-semibold text-sm shadow-md hover:opacity-90 transition-opacity">Book</button>
+</div>
+<p class="text-on-surface-variant text-sm italic leading-relaxed">"Precision cuts and avant-garde styling tailored to your unique facial structure."</p>
+<div class="mt-4 flex gap-2">
+<span class="px-3 py-1 bg-surface-container-low rounded-full text-[10px] font-bold text-outline tracking-wider uppercase">Precision Cut</span>
+<span class="px-3 py-1 bg-surface-container-low rounded-full text-[10px] font-bold text-outline tracking-wider uppercase">Modern</span>
+</div>
+</div>
+<!-- Specialist Spotlight 3 -->
+<div class="relative bg-surface-container-lowest rounded-xl p-6 pt-10 shadow-sm">
+<div class="absolute -top-6 left-6 w-20 h-20 rounded-lg overflow-hidden shadow-lg border-4 border-surface-container-lowest">
+<img class="w-full h-full object-cover" data-alt="friendly aesthetician or hair professional with neatly styled hair and professional attire" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4pAmkYmhgozhbCTh-WiQHkk8EbUMVLIbUsoFXNznpR8Gs8PDbzQUQ5x6-X3ABwfV3O7ngUTanEVh8x1ArjM3VI57vxWtAqRT9wtz7_Aj4ixPF_QMXNV_gSsvjghvXo0sKeWE847TWVQAYhZ5uWjSwJv8TZPMyyAp-LxceQZPpsRGmK5U-nUJFzVZxBrOiuDRwkqpAhI3bx65JvsKtaOsOKrKFC9tyBLWxvrzzDGDGWfjVgpwPnyW6KrY3kCUDF0HSc8G5EF4ZysRs"/>
+</div>
+<div class="flex justify-between items-start mb-4 pl-24">
+<div>
+<h3 class="font-headline font-bold text-xl text-on-surface">Marcus Thorne</h3>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-sm font-bold">4.8</span>
+<span class="text-outline text-xs ml-1">(210 reviews)</span>
+</div>
+</div>
+<button class="bg-gradient-to-br from-primary to-primary-container text-white px-5 py-2 rounded-full font-semibold text-sm shadow-md hover:opacity-90 transition-opacity">Book</button>
+</div>
+<p class="text-on-surface-variant text-sm italic leading-relaxed">"Master of texture and curl revival. Bringing high-fashion runways to your home."</p>
+<div class="mt-4 flex gap-2">
+<span class="px-3 py-1 bg-surface-container-low rounded-full text-[10px] font-bold text-outline tracking-wider uppercase">Texture</span>
+<span class="px-3 py-1 bg-surface-container-low rounded-full text-[10px] font-bold text-outline tracking-wider uppercase">High-End</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-end px-4 pb-6 pt-2 bg-[#faf9f6]/70 dark:bg-stone-900/70 backdrop-blur-md z-50 rounded-t-[3rem] shadow-[0_-4px_24px_rgba(26,28,26,0.04)]">
+<a class="flex flex-col items-center justify-center text-stone-400 p-2 hover:text-[#8d4d3b] dark:hover:text-[#f4a28c] transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-semibold tracking-wide uppercase mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-gradient-to-br from-[#8d4d3b] to-[#f4a28c] text-white rounded-full p-3 mb-2 scale-110 shadow-lg active:scale-90 transition-transform duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">search</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-semibold tracking-wide uppercase mt-1">Discover</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 p-2 hover:text-[#8d4d3b] dark:hover:text-[#f4a28c] transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-semibold tracking-wide uppercase mt-1">Bookings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 p-2 hover:text-[#8d4d3b] dark:hover:text-[#f4a28c] transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined">favorite</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-semibold tracking-wide uppercase mt-1">Favorites</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 p-2 hover:text-[#8d4d3b] dark:hover:text-[#f4a28c] transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-semibold tracking-wide uppercase mt-1">Messages</span>
+</a>
+</nav>
+</body></html>

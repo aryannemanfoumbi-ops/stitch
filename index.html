@@ -1,0 +1,2311 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+    <title>GlamAtHome - Luxury Beauty Services</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="velvet_rose/styles.css">
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-fixed": "#3a0915",
+              "primary-container": "#f4a28c",
+              "on-error-container": "#93000a",
+              "on-secondary-container": "#7a3c46",
+              "error-container": "#ffdad6",
+              "surface-variant": "#e3e2e0",
+              "surface-container-high": "#e9e8e5",
+              "inverse-primary": "#ffb5a1",
+              "on-primary-fixed-variant": "#703626",
+              "on-secondary-fixed-variant": "#70343e",
+              "background": "#faf9f6",
+              "on-error": "#ffffff",
+              "surface-container": "#efeeeb",
+              "secondary-fixed-dim": "#ffb2bc",
+              "surface-container-low": "#f4f3f1",
+              "outline": "#86736e",
+              "on-background": "#1a1c1a",
+              "on-tertiary": "#ffffff",
+              "on-tertiary-container": "#5b422a",
+              "on-secondary": "#ffffff",
+              "on-primary-container": "#713726",
+              "secondary-container": "#feaab6",
+              "primary": "#8d4d3b",
+              "secondary": "#8c4b55",
+              "primary-fixed": "#ffdbd1",
+              "on-primary-fixed": "#390c02",
+              "surface-tint": "#8d4d3b",
+              "error": "#ba1a1a",
+              "tertiary": "#74593f",
+              "on-tertiary-fixed": "#2a1704",
+              "surface-container-highest": "#e3e2e0",
+              "secondary-fixed": "#ffd9dd",
+              "surface-bright": "#faf9f6",
+              "on-surface": "#1a1c1a",
+              "on-surface-variant": "#53433f",
+              "inverse-surface": "#2f312f",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-fixed": "#ffdcbe",
+              "inverse-on-surface": "#f2f1ee",
+              "outline-variant": "#d8c2bc",
+              "surface": "#faf9f6",
+              "primary-fixed-dim": "#ffb5a1",
+              "on-tertiary-fixed-variant": "#5a422a",
+              "tertiary-container": "#d2b091",
+              "tertiary-fixed-dim": "#e3c0a0",
+              "on-primary": "#ffffff",
+              "surface-dim": "#dbdad7"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Be Vietnam Pro"],
+              "label": ["Be Vietnam Pro"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+    <style>
+        .app-screen { display: none; width: 100%; min-height: 100vh; position: absolute; top:0; left:0; right:0; backface-visibility: hidden;}
+        .app-screen.active { display: block; animation: fadeInCustom 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards; position: relative;}
+        @keyframes fadeInCustom { from { opacity: 0; transform: translateY(12px) scale(0.995); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        body { background: #faf9f6; overflow-x: hidden; }
+        .discover-item { transition: opacity 0.3s ease; }
+        .discover-item.hidden-item { display: none !important; }
+        
+        /* Disable scale animations on parent elements when we want to handle the specific ones manually */
+        .app-screen button, .app-screen a { cursor: pointer; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body antialiased">
+<div id="app-container" class="relative w-full min-h-screen">
+<!-- Screen: ai_style_assistant -->
+<div id="screen-ai_style_assistant" class="app-screen hidden w-full min-h-[100dvh]">
+
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#faf9f6]/70 dark:bg-[#1a1c1a]/70 backdrop-blur-xl shadow-[0_4px_24px_rgba(26,28,26,0.04)] flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#8d4d3b] dark:text-[#f4a28c] active:scale-95 transition-transform duration-200 cursor-pointer" data-icon="menu">menu</span>
+<h1 class="font-['Manrope'] font-bold text-lg tracking-tight text-[#8d4d3b] dark:text-[#f4a28c]">AI Stylist</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#8d4d3b] dark:text-[#f4a28c] active:scale-95 transition-transform duration-200 cursor-pointer" data-icon="auto_awesome">auto_awesome</span>
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden border border-outline-variant/15">
+<img alt="User Profile" data-alt="Close-up portrait of a stylish woman with radiant skin and natural makeup looking at the camera in a soft studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABuP0JL58TOq9t_isUYw7HGGgPvH1KC1Ie6WXJsLQUYeZt5t4dHqSayRF7XwxaBkoLKP-v0C-OQ-xjfdBvHB09oam1QYs09sJT2izCRccEpUHyRr73Lshg2q2jFtQ1goP48r_V3LF32QxhSBtluYH99j530UXMUmWGvKnTKhRc5lp5kqKfvh4el65ROowAxkrIJaTpK2bX8Qy-sk_nXtlXM28EnIeHK7YMrCDKgCyiNzh2eabj1y7kxe6MKzDSCn1IOfwoHRnYpP2j"/>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-md mx-auto">
+<!-- AI Greeting Section -->
+<section class="mb-10">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-primary-container flex items-center justify-center flex-shrink-0 shadow-lg shadow-primary/10">
+<span class="material-symbols-outlined text-white" data-icon="face_retouching_natural">face_retouching_natural</span>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-tr-xl rounded-b-xl shadow-sm border border-outline-variant/10">
+<p class="text-on-surface leading-relaxed text-lg font-medium italic">
+                        "Upload a photo or describe your vibe, and I will find the perfect African braids or hairstyle for you!"
+                    </p>
+</div>
+</div>
+</section>
+<!-- Upload & Action Area -->
+<section class="mb-12">
+<div class="relative group cursor-pointer">
+<div class="absolute -inset-1 bg-gradient-to-r from-primary/20 to-primary-container/20 rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+<div class="relative bg-surface-container-low border-2 border-dashed border-outline-variant/30 rounded-xl p-10 flex flex-col items-center justify-center text-center hover:bg-surface-container transition-colors active:scale-[0.98] transition-transform">
+<div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-4 shadow-sm">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="photo_camera">photo_camera</span>
+</div>
+<h3 class="font-headline font-bold text-on-surface mb-1">Upload Your Photo</h3>
+<p class="text-label-md text-on-surface-variant/70 mb-6">Let AI analyze your face shape &amp; features</p>
+<button class="bg-gradient-to-br from-primary to-primary-container text-white px-8 py-3 rounded-xl font-bold tracking-wide active:scale-95 transition-all shadow-md shadow-primary/20 active:scale-95 transition-all duration-200">
+                        Start Transformation
+                    </button>
+</div>
+</div>
+</section>
+<!-- AI Generated Recommendations Carousel -->
+<section class="mb-12 overflow-hidden">
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-headline font-bold text-xl tracking-tight text-on-surface">Curated For You</h2>
+<span class="text-primary font-bold text-sm tracking-widest uppercase">3 Matches</span>
+</div>
+<div class="flex overflow-x-auto gap-6 pb-6 hide-scrollbar snap-x -mx-6 px-6">
+<!-- Card 1 -->
+<div class="snap-center flex-shrink-0 w-72 bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm border border-outline-variant/10">
+<div class="h-80 relative">
+<img class="w-full h-full object-cover" data-alt="Close-up of beautiful knotless box braids with golden highlights on a woman with warm skin tones against a soft peach background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOoFVAuRu1aDPR5mUVFGeKGddKV4Ia-Vprcfsvd8Gsk0u_QUVI7j4usI29egJ2o6E4o2hLFDa5DZENgocOpKisPaAvDPfvJN4_qxVutDhexqW8PbB68qQBdKBhOeZV_XLUrNNw2MgjjSCiOZAVUyN1lwMbIgPvg8ulTsLwcP-jHoAeRtAqjFatvmZdfJu_TSTBKWZ7cZod37eb6hq3Ek-yBcSPIeCVx3ALlaCrwheqM3OUwyyfDPxPhnFTBKCDnH25tLIxBnqNHqb7"/>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-amber-500 text-xs" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[10px] font-bold text-on-surface">98% Match</span>
+</div>
+</div>
+<div class="p-5">
+<h4 class="font-headline font-bold text-on-surface text-lg mb-1">Knotless Braids</h4>
+<p class="text-body-lg text-on-surface-variant/80 text-sm mb-4">Soft, lightweight tension-free style.</p>
+<button class="w-full py-3 bg-surface-container-highest text-on-primary-container rounded-lg font-bold text-sm hover:bg-primary-container/20 transition-colors active:scale-95 transition-all duration-200">
+                            Match with a Stylist
+                        </button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="snap-center flex-shrink-0 w-72 bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm border border-outline-variant/10">
+<div class="h-80 relative">
+<img class="w-full h-full object-cover" data-alt="Artistic side profile showing intricate Fulani braids with wooden beads and gold rings on a young woman with elegant makeup" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXfd3Lq-6EZyxiG2vnt57wo-A5sxcbW3MRsj0N4uoIgcrejRN2C6mOlV7NO8fgkQW6kRHGm74dd-IytmcABatdp69JhkpK11_PtczQMKYoqjCRn4v5dCJEUZ_W8oy6ZCCo9OE8TiRQu3BtwVL-60lU2cqoUdr8TfNJcSaSbeCHvluCqCSTHvBEbNRqZQDstyt61gzol7GmkpgZY6jza04HA4sn-iqdn-88JXQEEPMbGbufDU7oQtu93Ad2ePJkqKVNZ7t_c1hB1k4b"/>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-amber-500 text-xs" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[10px] font-bold text-on-surface">92% Match</span>
+</div>
+</div>
+<div class="p-5">
+<h4 class="font-headline font-bold text-on-surface text-lg mb-1">Fulani Braids</h4>
+<p class="text-body-lg text-on-surface-variant/80 text-sm mb-4">Intricate tribal patterns with beads.</p>
+<button class="w-full py-3 bg-surface-container-highest text-on-primary-container rounded-lg font-bold text-sm hover:bg-primary-container/20 transition-colors active:scale-95 transition-all duration-200">
+                            Match with a Stylist
+                        </button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="snap-center flex-shrink-0 w-72 bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm border border-outline-variant/10">
+<div class="h-80 relative">
+<img class="w-full h-full object-cover" data-alt="High-fashion photo of long jumbo butterfly locs with soft textured finish on a model in a high-end editorial lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHd47EJgbk_JfqGr3strIJmd3rqdPc_DE44e-vfSA4Ts8YQZ4d-fdGNIRM49xaAolhGqlAP5frwTF8gvpnDPwCbDaUb_THIoztsvqD7YKrQpfEv7tGh0XKwJIf3MXI7sbNOy-2dxcSbJNKeHPJ05DA1ntuzMJDRGnvVdJ38eNSeeqQuAY9O_zOSUTU6IrWMW8kOBabwYnjb_aiANUnTsyZo6E_jJHdzoMthFBDGB_-n8c854jOycVZq1nspiUD81KMbnVZ_5wSbE9T"/>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-amber-500 text-xs" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[10px] font-bold text-on-surface">85% Match</span>
+</div>
+</div>
+<div class="p-5">
+<h4 class="font-headline font-bold text-on-surface text-lg mb-1">Butterfly Locs</h4>
+<p class="text-body-lg text-on-surface-variant/80 text-sm mb-4">Bohemian-chic distressed texture.</p>
+<button class="w-full py-3 bg-surface-container-highest text-on-primary-container rounded-lg font-bold text-sm hover:bg-primary-container/20 transition-colors active:scale-95 transition-all duration-200">
+                            Match with a Stylist
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Conversational Input -->
+<div class="fixed bottom-24 left-0 w-full px-6 py-4 pointer-events-none">
+<div class="max-w-md mx-auto pointer-events-auto">
+<div class="bg-surface-container-lowest rounded-full p-2 flex items-center shadow-xl shadow-on-surface/5 border border-outline-variant/10">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:bg-surface-variant transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-xl" data-icon="mic">mic</span>
+</div>
+<input class="flex-1 bg-transparent border-none focus:ring-0 px-4 text-on-surface placeholder:text-on-surface-variant/40" placeholder="Describe your vibe..." type="text"/>
+<button class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center active:scale-90 transition-transform active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined text-xl" data-icon="send">send</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+
+
+</div>
+
+<!-- Screen: ai_style_assistant_unisex_update -->
+<div id="screen-ai_style_assistant_unisex_update" class="app-screen hidden w-full min-h-[100dvh]">
+
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#faf9f6]/70 dark:bg-[#1a1c1a]/70 backdrop-blur-xl shadow-[0_4px_24px_rgba(26,28,26,0.04)] flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#8d4d3b] dark:text-[#f4a28c] active:scale-95 transition-transform duration-200 cursor-pointer" data-icon="menu">menu</span>
+<h1 class="font-['Manrope'] font-bold text-lg tracking-tight text-[#8d4d3b] dark:text-[#f4a28c]">AI Stylist</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#8d4d3b] dark:text-[#f4a28c] active:scale-95 transition-transform duration-200 cursor-pointer" data-icon="auto_awesome">auto_awesome</span>
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden border border-outline-variant/15">
+<img alt="User Profile" data-alt="Close-up portrait of a stylish woman with radiant skin and natural makeup looking at the camera in a soft studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABuP0JL58TOq9t_isUYw7HGGgPvH1KC1Ie6WXJsLQUYeZt5t4dHqSayRF7XwxaBkoLKP-v0C-OQ-xjfdBvHB09oam1QYs09sJT2izCRccEpUHyRr73Lshg2q2jFtQ1goP48r_V3LF32QxhSBtluYH99j530UXMUmWGvKnTKhRc5lp5kqKfvh4el65ROowAxkrIJaTpK2bX8Qy-sk_nXtlXM28EnIeHK7YMrCDKgCyiNzh2eabj1y7kxe6MKzDSCn1IOfwoHRnYpP2j"/>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-md mx-auto">
+<!-- AI Greeting Section -->
+<section class="mb-10">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-primary-container flex items-center justify-center flex-shrink-0 shadow-lg shadow-primary/10">
+<span class="material-symbols-outlined text-white" data-icon="face_retouching_natural">face_retouching_natural</span>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-tr-xl rounded-b-xl shadow-sm border border-outline-variant/10">
+<p class="text-on-surface leading-relaxed text-lg font-medium italic">
+                        "Upload a photo or describe your vibe, and I will find the perfect African braids or hairstyle for you!"
+                    </p>
+</div>
+</div>
+</section>
+<!-- Upload & Action Area -->
+<section class="mb-10 animate-in fade-in slide-in-from-bottom-4 duration-500">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-primary-container flex items-center justify-center flex-shrink-0 shadow-lg shadow-primary/10">
+<span class="material-symbols-outlined text-white" data-icon="face_retouching_natural">face_retouching_natural</span>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-tr-xl rounded-b-xl shadow-sm border border-outline-variant/10 flex-1">
+<p class="text-on-surface leading-relaxed text-lg font-medium mb-4">
+        "To get started, what style are you looking for today?"
+      </p>
+<div class="flex gap-3">
+<button class="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-full border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all active:scale-95 active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined text-xl">woman</span>
+          Female
+        </button>
+<button class="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-full border-2 border-outline-variant/30 text-on-surface-variant font-bold hover:border-primary hover:text-primary transition-all active:scale-95 active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined text-xl">man</span>
+          Male
+        </button>
+</div>
+</div>
+</div>
+</section><section class="mb-12">
+<div class="relative group cursor-pointer">
+<div class="absolute -inset-1 bg-gradient-to-r from-primary/20 to-primary-container/20 rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+<div class="relative bg-surface-container-low border-2 border-dashed border-outline-variant/30 rounded-xl p-10 flex flex-col items-center justify-center text-center hover:bg-surface-container transition-colors active:scale-[0.98] transition-transform">
+<div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-4 shadow-sm">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="photo_camera">photo_camera</span>
+</div>
+<h3 class="font-headline font-bold text-on-surface mb-1">Upload Your Photo</h3>
+<p class="text-label-md text-on-surface-variant/70 mb-6">Let AI analyze your face shape &amp; features</p>
+<button class="bg-gradient-to-br from-primary to-primary-container text-white px-8 py-3 rounded-xl font-bold tracking-wide active:scale-95 transition-all shadow-md shadow-primary/20 active:scale-95 transition-all duration-200">
+                        Start Transformation
+                    </button>
+</div>
+</div>
+</section>
+<!-- AI Generated Recommendations Carousel -->
+<section class="mb-12 overflow-hidden">
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-headline font-bold text-xl tracking-tight text-on-surface">Curated For You</h2>
+<span class="text-primary font-bold text-sm tracking-widest uppercase">3 Matches</span>
+</div>
+<div class="flex overflow-x-auto gap-6 pb-6 hide-scrollbar snap-x -mx-6 px-6">
+<!-- Card 1 -->
+<div class="snap-center flex-shrink-0 w-72 bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm border border-outline-variant/10">
+<div class="h-80 relative">
+<img class="w-full h-full object-cover" data-alt="Close-up of beautiful knotless box braids with golden highlights on a woman with warm skin tones against a soft peach background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOoFVAuRu1aDPR5mUVFGeKGddKV4Ia-Vprcfsvd8Gsk0u_QUVI7j4usI29egJ2o6E4o2hLFDa5DZENgocOpKisPaAvDPfvJN4_qxVutDhexqW8PbB68qQBdKBhOeZV_XLUrNNw2MgjjSCiOZAVUyN1lwMbIgPvg8ulTsLwcP-jHoAeRtAqjFatvmZdfJu_TSTBKWZ7cZod37eb6hq3Ek-yBcSPIeCVx3ALlaCrwheqM3OUwyyfDPxPhnFTBKCDnH25tLIxBnqNHqb7"/>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-amber-500 text-xs" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[10px] font-bold text-on-surface">98% Match</span>
+</div>
+</div>
+<div class="p-5">
+<h4 class="font-headline font-bold text-on-surface text-lg mb-1">Knotless Braids</h4>
+<p class="text-body-lg text-on-surface-variant/80 text-sm mb-4">Soft, lightweight tension-free style.</p>
+<button class="w-full py-3 bg-surface-container-highest text-on-primary-container rounded-lg font-bold text-sm hover:bg-primary-container/20 transition-colors active:scale-95 transition-all duration-200">
+                            Match with a Stylist
+                        </button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="snap-center flex-shrink-0 w-72 bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm border border-outline-variant/10">
+<div class="h-80 relative">
+<img class="w-full h-full object-cover" data-alt="Artistic side profile showing intricate Fulani braids with wooden beads and gold rings on a young woman with elegant makeup" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXfd3Lq-6EZyxiG2vnt57wo-A5sxcbW3MRsj0N4uoIgcrejRN2C6mOlV7NO8fgkQW6kRHGm74dd-IytmcABatdp69JhkpK11_PtczQMKYoqjCRn4v5dCJEUZ_W8oy6ZCCo9OE8TiRQu3BtwVL-60lU2cqoUdr8TfNJcSaSbeCHvluCqCSTHvBEbNRqZQDstyt61gzol7GmkpgZY6jza04HA4sn-iqdn-88JXQEEPMbGbufDU7oQtu93Ad2ePJkqKVNZ7t_c1hB1k4b"/>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-amber-500 text-xs" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[10px] font-bold text-on-surface">92% Match</span>
+</div>
+</div>
+<div class="p-5">
+<h4 class="font-headline font-bold text-on-surface text-lg mb-1">Fulani Braids</h4>
+<p class="text-body-lg text-on-surface-variant/80 text-sm mb-4">Intricate tribal patterns with beads.</p>
+<button class="w-full py-3 bg-surface-container-highest text-on-primary-container rounded-lg font-bold text-sm hover:bg-primary-container/20 transition-colors active:scale-95 transition-all duration-200">
+                            Match with a Stylist
+                        </button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="snap-center flex-shrink-0 w-72 bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm border border-outline-variant/10">
+<div class="h-80 relative">
+<img class="w-full h-full object-cover" data-alt="High-fashion photo of long jumbo butterfly locs with soft textured finish on a model in a high-end editorial lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHd47EJgbk_JfqGr3strIJmd3rqdPc_DE44e-vfSA4Ts8YQZ4d-fdGNIRM49xaAolhGqlAP5frwTF8gvpnDPwCbDaUb_THIoztsvqD7YKrQpfEv7tGh0XKwJIf3MXI7sbNOy-2dxcSbJNKeHPJ05DA1ntuzMJDRGnvVdJ38eNSeeqQuAY9O_zOSUTU6IrWMW8kOBabwYnjb_aiANUnTsyZo6E_jJHdzoMthFBDGB_-n8c854jOycVZq1nspiUD81KMbnVZ_5wSbE9T"/>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-amber-500 text-xs" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[10px] font-bold text-on-surface">85% Match</span>
+</div>
+</div>
+<div class="p-5">
+<h4 class="font-headline font-bold text-on-surface text-lg mb-1">Butterfly Locs</h4>
+<p class="text-body-lg text-on-surface-variant/80 text-sm mb-4">Bohemian-chic distressed texture.</p>
+<button class="w-full py-3 bg-surface-container-highest text-on-primary-container rounded-lg font-bold text-sm hover:bg-primary-container/20 transition-colors active:scale-95 transition-all duration-200">
+                            Match with a Stylist
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Conversational Input -->
+<div class="fixed bottom-24 left-0 w-full px-6 py-4 pointer-events-none">
+<div class="max-w-md mx-auto pointer-events-auto">
+<div class="bg-surface-container-lowest rounded-full p-2 flex items-center shadow-xl shadow-on-surface/5 border border-outline-variant/10">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:bg-surface-variant transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-xl" data-icon="mic">mic</span>
+</div>
+<input class="flex-1 bg-transparent border-none focus:ring-0 px-4 text-on-surface placeholder:text-on-surface-variant/40" placeholder="Describe your vibe..." type="text"/>
+<button class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center active:scale-90 transition-transform active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined text-xl" data-icon="send">send</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+
+
+</div>
+
+<!-- Screen: chats -->
+<div id="screen-chats" class="app-screen hidden w-full min-h-[100dvh]">
+
+<header class="fixed top-0 w-full z-50 bg-[#faf9f6]/70 dark:bg-stone-900/70 backdrop-blur-md shadow-sm shadow-[#1a1c1a]/5 flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-4">
+<button class="hover:opacity-80 transition-opacity active:scale-95 duration-200 text-[#8d4d3b] dark:text-[#f4a28c] active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-['Manrope'] font-extrabold text-2xl tracking-tighter text-[#8d4d3b] dark:text-[#f4a28c]">GlamAtHome</h1>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden border-2 border-primary-fixed">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="close-up portrait of a smiling woman with glowing skin and professional makeup in soft natural studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNQXLScUNqfrrWls1Bhx7HAHfgI4Prw658GYt3mTaHHSIzzVeWeaLmOXQf0tqcjiFFHEUf30VEuvbm1fuDIbwnmYyoFajaXH-EBVvnlkHrEeRIoGaVK0NpVRTQ06vs60tC9Ek90k4Pfhh_rD9y0j2M11Ozfw5nOiCGaLUv7Gt0RtjhdAsqP3Py0deR36tlQKpmVFKhqFWN3GxBGmYJ5_XxvyZAQWHyD-ngSri96ldWVngSkmmwYOhdH89_qZjvu9tdlP1kSzXC9tE4"/>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-2xl mx-auto">
+<div class="mb-10">
+<h2 class="font-headline font-extrabold text-4xl tracking-tight text-on-surface mb-2">Chats</h2>
+<p class="text-on-surface-variant font-medium">Your beauty consultations and bookings</p>
+</div>
+<div class="relative mb-8">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-xl py-4 pl-12 pr-4 focus:ring-2 focus:ring-primary-container text-on-surface placeholder-on-surface-variant/60 font-medium active:scale-[0.98] transition-transform" placeholder="Search stylist or service..." type="text"/>
+</div>
+<div class="space-y-4">
+<div class="group relative bg-surface-container-lowest p-5 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-[#1a1c1a]/5 flex items-center gap-4 active:scale-[0.98] transition-transform">
+<div class="relative">
+<div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Stylist photo" class="w-full h-full object-cover" data-alt="professional portrait of a high-end hair stylist in a minimalist modern salon setting, warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvizgqRu6352ffQPwGnIXBo06Kjk7hjWTgbrcaYCUdehBiO9eUPZOqsYTXc6Xg1mHav4wFwTJPAVOh9Ps8N3Qqtp9IY8s0-8uFzFEOp7UM4HsgAGcVr6IT7_roMnF5AcAzZFBF2sGGf55XzBmTG8nLcZKXDu9JS-joj8YrHF5bK3tqK-E0bPjBhZX_XOa-irhwCyiYx5fS9-tjLES95vKOmaeug3beMdWTR5rA1n8YCmuGXG6tM9daNH2k_BdatZ-jpsb6Gj3QPGvw"/>
+</div>
+<div class="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 border-2 border-surface-container-lowest rounded-full"></div>
+</div>
+<div class="flex-grow min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<h3 class="font-headline font-bold text-on-surface truncate">Elena Vance</h3>
+<span class="text-[10px] font-bold uppercase tracking-wider text-primary">10:42 AM</span>
+</div>
+<div class="flex justify-between items-center">
+<p class="text-on-surface font-semibold text-sm truncate pr-4">Perfect! I'll see you tomorrow at 2:00 PM for the session.</p>
+<span class="flex-shrink-0 bg-gradient-to-br from-[#8d4d3b] to-[#f4a28c] text-white text-[10px] font-bold h-5 w-5 rounded-full flex items-center justify-center shadow-md">2</span>
+</div>
+</div>
+</div>
+<div class="group relative bg-surface-container-low p-5 rounded-xl transition-all duration-300 hover:bg-surface-container-lowest hover:shadow-lg hover:shadow-[#1a1c1a]/5 flex items-center gap-4 active:scale-[0.98] transition-transform">
+<div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 grayscale opacity-80">
+<img alt="Stylist photo" class="w-full h-full object-cover" data-alt="editorial close-up of a professional makeup artist with artistic lighting and soft shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZkfEWZIw6ddnMYfcCHwjrkW0gJrxGOD-DWyOlv8qj6DMFtBH55gZkJ4b9jDI3NtE1xeya7sO-_H5YxbNtTrs0LjKnPpqf7zj_HoXdM3SQFGKBOpzpFvhR-drbcwrjnhxA_GyrRQpQozU6MwqNrl2ICZL0jmgYYupr7FmOe7qW0Hk4bFXkuGyMomK6okdU8QWZ0lukkIEwBeoYqgCddLjcoQuzDb1V8taCeMbEeSv8fXhDHDy8tLPuyaJiO935wLZT5s2mECKmiy2W"/>
+</div>
+<div class="flex-grow min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<h3 class="font-headline font-bold text-on-surface truncate">Marcus Chen</h3>
+<span class="text-[10px] font-semibold uppercase tracking-wider text-stone-400">Yesterday</span>
+</div>
+<div class="flex justify-between items-center">
+<p class="text-on-surface-variant text-sm truncate">The bridal trial photos look amazing. Shall we finalize the palette?</p>
+</div>
+</div>
+</div>
+<div class="group relative bg-surface-container-low p-5 rounded-xl transition-all duration-300 hover:bg-surface-container-lowest hover:shadow-lg hover:shadow-[#1a1c1a]/5 flex items-center gap-4 active:scale-[0.98] transition-transform">
+<div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Stylist photo" class="w-full h-full object-cover" data-alt="portrait of a confident skincare specialist in a bright clean clinic with soft peach tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvPm9KleCauDM8K35N1xsdJKGdPow1h_Cg_zxegprNGDGwAip8y0FiwgmGLPcJaC6rtL6nGGEv5CK6zpfV7Yg7v8hRkaG90Zkb7THQeFyoGvEeJzljJs81If1e0ytzMRSrCkOGhFRGNynUiw9L9drkJiRVfjPQUQ-LNZrDy9fCuD-sFcaVSO99Tq3FfXDf1Hhq9Q4Z5vb_EuvHB5MQQsMBwEMe5TGSBCIZ206BiVJGYKpzd6SkCngVGBGotERKdiKE8H3ttXME4Gjj"/>
+</div>
+<div class="flex-grow min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<h3 class="font-headline font-bold text-on-surface truncate">Sophie Laurent</h3>
+<span class="text-[10px] font-semibold uppercase tracking-wider text-stone-400">Tuesday</span>
+</div>
+<div class="flex justify-between items-center">
+<p class="text-on-surface-variant text-sm truncate">How is your skin reacting to the new serum we used during the facial?</p>
+</div>
+</div>
+</div>
+<div class="group relative bg-surface-container-low p-5 rounded-xl transition-all duration-300 hover:bg-surface-container-lowest hover:shadow-lg hover:shadow-[#1a1c1a]/5 flex items-center gap-4 active:scale-[0.98] transition-transform">
+<div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Stylist photo" class="w-full h-full object-cover" data-alt="professional male grooming specialist in a high-end luxury barber shop with warm mahogany tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPKPDeXp2wgaJqATLfVbzwzBw36sVewtjpk3M9_tyZ1L6n4sMmHKfHeRuSOTYHACxbuHRG8VoccXUb0trtowe_9QEkh0uSapVDJsCHH5kaK3DKTgg0PTMjGGdos4B7gpTFTaSJtB94q7jDTc-AvVdwrU2yMZdM3lVrPclJXUwtlcNdAc4S81JwO6-rbut40oedQxmX_rZfNpOcmmyj4rjNpb9CpNhb5pLJyiORCFR7qRDkFDBDzwRZanyWhWpPrp396ZfKi_Xt6H1P"/>
+</div>
+<div class="flex-grow min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<h3 class="font-headline font-bold text-on-surface truncate">Julian Rossi</h3>
+<span class="text-[10px] font-semibold uppercase tracking-wider text-stone-400">Oct 12</span>
+</div>
+<div class="flex justify-between items-center">
+<p class="text-on-surface-variant text-sm truncate">I've added the notes to your profile for next time. Safe travels!</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-12 p-8 rounded-xl bg-gradient-to-br from-primary-fixed to-primary-container/20 flex flex-col items-center text-center">
+<div class="w-16 h-16 bg-white/40 rounded-full flex items-center justify-center mb-4 backdrop-blur-sm">
+<span class="material-symbols-outlined text-primary text-3xl">add_comment</span>
+</div>
+<h4 class="font-headline font-bold text-on-primary-fixed-variant text-lg mb-2">New Consultation</h4>
+<p class="text-on-primary-fixed-variant/80 text-sm mb-6 max-w-[240px]">Need professional advice? Start a new chat with our verified beauty experts.</p>
+<button class="bg-gradient-to-br from-[#8d4d3b] to-[#f4a28c] text-white font-bold py-3 px-8 rounded-full shadow-lg active:scale-95 transition-transform active:scale-95 transition-all duration-200">
+                Find a Specialist
+            </button>
+</div>
+</main>
+
+
+</div>
+
+<!-- Screen: discover_styles_stylists -->
+<div id="screen-discover_styles_stylists" class="app-screen hidden w-full min-h-[100dvh]">
+
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#faf9f6]/70 dark:bg-stone-900/70 backdrop-blur-md shadow-sm shadow-[#1a1c1a]/5 flex justify-between items-center px-6 h-16">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#8d4d3b] cursor-pointer hover:opacity-80 transition-opacity active:scale-95 duration-200">menu</span>
+<h1 class="font-headline font-extrabold text-2xl tracking-tighter text-[#8d4d3b] dark:text-[#f4a28c]">GlamAtHome</h1>
+</div>
+<div class="h-10 w-10 rounded-full bg-surface-container-high border-2 border-primary-container overflow-hidden">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="close-up portrait of a young woman with natural makeup and glowing skin looking at camera" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBi09XutlxoDI6LBZzDUAt6tqAQhGwASqexncojJQa6sYO02nSWBCxuuKHDv-37kHxg5DeioFgZ5icc6PiFGay4TyXC5pTuQzHJMTbILDR1ueIXQY5ID-35WpIsm_BgTusj4fc8uFJ1wjudUpSOlVsqaB9JpZCPDBqqJz23KJmKXjxoNP04FU7oUkc9fa7vJlXrgpIygjuTflKuziG8dHwfarYRNVS7dKLjzYpG9jdIaZlBDb6dxPCXP37wgpjUy_5IO89Zp7XtuVol"/>
+</div>
+</header>
+<main class="pt-20 pb-32 px-6 max-w-2xl mx-auto">                 <div class="mb-8 mt-2 px-1">
+                    <div id="discover-pill-filter" class="flex gap-3 overflow-x-auto no-scrollbar pb-2 pt-1">
+                        <button class="filter-pill active whitespace-nowrap px-6 py-2.5 rounded-full font-bold text-xs bg-stone-800 text-white shadow-md active:scale-95 transition-all" data-filter="all">All Styles</button>
+                        <button class="filter-pill whitespace-nowrap px-6 py-2.5 rounded-full font-bold text-xs bg-surface-container-high text-stone-500 hover:bg-stone-200 hover:text-stone-700 active:scale-95 transition-all outline-none" data-filter="women">Women's Hair & Beauty</button>
+                        <button class="filter-pill whitespace-nowrap px-6 py-2.5 rounded-full font-bold text-xs bg-surface-container-high text-stone-500 hover:bg-stone-200 hover:text-stone-700 active:scale-95 transition-all outline-none" data-filter="men">Men's Grooming & Barber</button>
+                    </div>
+                </div>
+<!-- Search & Filter Bar -->
+<div class="mb-10">
+<div class="flex items-center gap-3">
+<div class="flex-1 bg-surface-container-low rounded-xl px-4 py-3 flex items-center gap-3 active:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body w-full placeholder:text-outline" placeholder="Search styles, stylists..." type="text"/>
+</div>
+<button class="bg-surface-container-low p-3 rounded-xl text-primary hover:bg-primary-fixed transition-colors active:scale-95 transition-all duration-200 active:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined">tune</span>
+</button>
+</div>
+</div>
+<!-- Trending Styles Section -->
+<section class="mb-12">
+<div class="flex justify-between items-end mb-6">
+<h2 class="font-headline font-bold text-2xl text-on-surface tracking-tight">Trending Styles</h2>
+<button class="text-primary font-semibold text-sm hover:underline active:scale-95 transition-all duration-200">View All</button>
+</div>
+<div class="flex overflow-x-auto no-scrollbar gap-6 -mx-6 px-6">
+<!-- Style Card 1 -->
+<div class="flex-none discover-item w-64 group cursor-pointer">
+<div class="relative h-80 rounded-lg overflow-hidden mb-3">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="close up of sophisticated honey blonde balayage waves on medium length hair with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWQpYbtpl83hDFVwvmyjz_y2RRXvT3Mhod0gBMg4i7ppPtoIupYowEkMOqoAYA2BAxJiXmGQdpH2G74xhVdDkCNZDmH9SMj8UXVNqc-oxCS0Mj1ZokeYGmOH1z-HdMnduR3JkOJScPMQhYLZ3rh4dVK1Zw-xyNGoEiV9ceJujKPUOHeyj0FghOUaIw9cs8M5mdgt5wzxJJUwjvTjd8JRVvrMNcVfjfFglxXcp_JuFHbZg56ypwjhxpVR_Law1UlsU6jCtl-FrVjrz3"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<span class="bg-primary-container/90 backdrop-blur-sm text-on-primary-container text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest">Natural</span>
+</div>
+</div>
+<h3 class="font-headline font-bold text-lg text-on-surface">Honey Glaze Waves</h3>
+<p class="text-on-surface-variant text-sm">Perfect for subtle dimension</p>
+</div>
+<!-- Style Card 2 -->
+<div class="flex-none discover-item w-64 group cursor-pointer">
+<div class="relative h-80 rounded-lg overflow-hidden mb-3">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="elegant high bridal bun with soft face-framing strands and delicate pearl accessories in warm studio light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtsyuoIUaRxLIDIJmItWzB1-BFJOTKwjm-yyLZ1J3qDh94BB88XYMMqn8lxpsq7Gb7kUdWdzVV5YRBBlDtHRR8tzBXlscJviQEJdjOc69SKCVLYkwlM6yUyS8TBbeixDef5w6zDlNjc4Nr-qZ6m5eIfPQyl3mSQYwulrbokCesQSq9_ID4RRADVm9OAMHDzQlb3Kt_NOhv_K2X0GAm3EIY-Yq1dqPRKt3LrMzbYEAwAK6GZPMZ4V0tLUjO18_lsg7nvTlVBqBL_w6n"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<span class="bg-primary-container/90 backdrop-blur-sm text-on-primary-container text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest">Bridal</span>
+</div>
+</div>
+<h3 class="font-headline font-bold text-lg text-on-surface">Silk Chignon</h3>
+<p class="text-on-surface-variant text-sm">Timeless bridal elegance</p>
+</div>
+<!-- Style Card 3 -->
+<div class="flex-none discover-item w-64 group cursor-pointer">
+<div class="relative h-80 rounded-lg overflow-hidden mb-3">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="woman with voluminous copper red curly hair looking sideways with soft lighting on a neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_eoLGUBxg-cvZ6uZz0HdIsaj8k_vWZDUrYH2--m2ck9PUbyTwnyuF4MjHOUszYdvNM9Ua6BwDMz1uxlwnbNPj_AFiJ-pTKhho0X5knyJJD759JKvZSWJ6L6WANPOU0_EVcUcSkSSoQ1h8Ra2sxru5Ise3y-FiN7uZsbCDEUzbtDlYiCVfPPW8-w9VgA0ZngsT0DADkzUjVcg_KXmVx4g1oENbyu4G9-Vi2U5e2en-etCq9S2MP3DWQnsqxIl_q4SzRDYuty3Tu_AB"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<span class="bg-primary-container/90 backdrop-blur-sm text-on-primary-container text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest">Volume</span>
+</div>
+</div>
+<h3 class="font-headline font-bold text-lg text-on-surface">Copper Curls</h3>
+<p class="text-on-surface-variant text-sm">Brave and textured</p>
+</div>
+</div>
+</section>
+<!-- Featured Stylists Section -->
+<section>
+<div class="flex justify-between items-end mb-8">
+<h2 class="font-headline font-bold text-2xl text-on-surface tracking-tight">Featured Stylists</h2>
+<button class="text-primary font-semibold text-sm hover:underline active:scale-95 transition-all duration-200">See All</button>
+</div>
+<div class="space-y-10">
+<!-- Specialist Spotlight 1 -->
+<div class="relative bg-surface-container-lowest discover-item rounded-xl p-6 pt-10 shadow-sm active:scale-[0.98] transition-transform">
+<div class="absolute -top-6 left-6 w-20 h-20 rounded-lg overflow-hidden shadow-lg border-4 border-surface-container-lowest">
+<img class="w-full h-full object-cover" data-alt="professional hair stylist with warm smile in a high-end salon setting with soft bokeh background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCUvbMl8oA27MzQiyYn_u-jqTCW8BO11yFTbcdpU_pzj75QQp8m4jtfg_3D7NGfYv9q57AZyM-4vT340fHwQhT2Zy0VLi7SiPChIteIqXu276yZJM1SzY4vs5WmAaxKvOqFjFXdX-OyHsP3BImYp5YytamMz6RvnhCuhtj5dNfEZl6lRtFWUB_ozz_bxCKGTVqTqcb_-Obu0R_OUyb1FpbCXlHappa6Glwdt30so8S_z7kdi9TOat0QLw2uGs2QsGOyJaJf3yekVGf"/>
+</div>
+<div class="flex justify-between items-start mb-4 pl-24">
+<div>
+<h3 class="font-headline font-bold text-xl text-on-surface">Elena Rossi</h3>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-sm font-bold">4.9</span>
+<span class="text-outline text-xs ml-1">(128 reviews)</span>
+</div>
+</div>
+<button class="bg-gradient-to-br from-primary to-primary-container text-white px-5 py-2 rounded-full font-semibold text-sm shadow-md hover:opacity-90 transition-opacity active:scale-95 transition-all duration-200">Book</button>
+</div>
+<p class="text-on-surface-variant text-sm italic leading-relaxed">"Specializing in effortless French Balayage and editorial styling for your everyday luxury."</p>
+<div class="mt-4 flex gap-2">
+<span class="px-3 py-1 bg-surface-container-low rounded-full text-[10px] font-bold text-outline tracking-wider uppercase">Color Expert</span>
+<span class="px-3 py-1 bg-surface-container-low rounded-full text-[10px] font-bold text-outline tracking-wider uppercase">Cut &amp; Style</span>
+</div>
+</div>
+<!-- Specialist Spotlight 2 -->
+<div class="relative bg-surface-container-lowest discover-item rounded-xl p-6 pt-10 shadow-sm active:scale-[0.98] transition-transform">
+<div class="absolute -top-6 left-6 w-20 h-20 rounded-lg overflow-hidden shadow-lg border-4 border-surface-container-lowest">
+<img class="w-full h-full object-cover" data-alt="portrait of a young female hair stylist looking confident in a sunlit studio space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBkpQjaK81PPiho7NQ7IazJALVtxN2IPsdaZtpfZ_QMMKE4Qb4yzhNaKZ8yVjZb5dLw9Aqa3l6XPVNXNwjpcBCDqUpdckEtHqeISmJO-KBIJfs7RTGveIj35ksDjp5qUxUgKwFC164AytbiA8epLqttpvaphOFDpPbr8HXToi9tetfHI_Ze030wDkstD01Ikm3d5Ta2US1DzNs8qitHjhWyDmX8W3wZXArwDiTbLnMFkx-2rRhmynBaiCmB_CixdBg__XaJTh_XOWB"/>
+</div>
+<div class="flex justify-between items-start mb-4 pl-24">
+<div>
+<h3 class="font-headline font-bold text-xl text-on-surface">Jordan Wei</h3>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-sm font-bold">5.0</span>
+<span class="text-outline text-xs ml-1">(84 reviews)</span>
+</div>
+</div>
+<button class="bg-gradient-to-br from-primary to-primary-container text-white px-5 py-2 rounded-full font-semibold text-sm shadow-md hover:opacity-90 transition-opacity active:scale-95 transition-all duration-200">Book</button>
+</div>
+<p class="text-on-surface-variant text-sm italic leading-relaxed">"Precision cuts and avant-garde styling tailored to your unique facial structure."</p>
+<div class="mt-4 flex gap-2">
+<span class="px-3 py-1 bg-surface-container-low rounded-full text-[10px] font-bold text-outline tracking-wider uppercase">Precision Cut</span>
+<span class="px-3 py-1 bg-surface-container-low rounded-full text-[10px] font-bold text-outline tracking-wider uppercase">Modern</span>
+</div>
+</div>
+<!-- Specialist Spotlight 3 -->
+<div class="relative bg-surface-container-lowest discover-item rounded-xl p-6 pt-10 shadow-sm active:scale-[0.98] transition-transform">
+<div class="absolute -top-6 left-6 w-20 h-20 rounded-lg overflow-hidden shadow-lg border-4 border-surface-container-lowest">
+<img class="w-full h-full object-cover" data-alt="friendly aesthetician or hair professional with neatly styled hair and professional attire" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4pAmkYmhgozhbCTh-WiQHkk8EbUMVLIbUsoFXNznpR8Gs8PDbzQUQ5x6-X3ABwfV3O7ngUTanEVh8x1ArjM3VI57vxWtAqRT9wtz7_Aj4ixPF_QMXNV_gSsvjghvXo0sKeWE847TWVQAYhZ5uWjSwJv8TZPMyyAp-LxceQZPpsRGmK5U-nUJFzVZxBrOiuDRwkqpAhI3bx65JvsKtaOsOKrKFC9tyBLWxvrzzDGDGWfjVgpwPnyW6KrY3kCUDF0HSc8G5EF4ZysRs"/>
+</div>
+<div class="flex justify-between items-start mb-4 pl-24">
+<div>
+<h3 class="font-headline font-bold text-xl text-on-surface">Marcus Thorne</h3>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-sm font-bold">4.8</span>
+<span class="text-outline text-xs ml-1">(210 reviews)</span>
+</div>
+</div>
+<button class="bg-gradient-to-br from-primary to-primary-container text-white px-5 py-2 rounded-full font-semibold text-sm shadow-md hover:opacity-90 transition-opacity active:scale-95 transition-all duration-200">Book</button>
+</div>
+<p class="text-on-surface-variant text-sm italic leading-relaxed">"Master of texture and curl revival. Bringing high-fashion runways to your home."</p>
+<div class="mt-4 flex gap-2">
+<span class="px-3 py-1 bg-surface-container-low rounded-full text-[10px] font-bold text-outline tracking-wider uppercase">Texture</span>
+<span class="px-3 py-1 bg-surface-container-low rounded-full text-[10px] font-bold text-outline tracking-wider uppercase">High-End</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+
+
+</div>
+
+<!-- Screen: freelancer_dashboard -->
+<div id="screen-freelancer_dashboard" class="app-screen hidden w-full min-h-[100dvh]">
+
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#faf9f6]/70 dark:bg-stone-900/70 backdrop-blur-xl shadow-[0_4px_24px_rgba(26,28,26,0.04)]">
+<div class="flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#8d4d3b] dark:text-[#f4a28c]">menu</span>
+<h1 class="font-manrope font-extrabold italic text-xl tracking-tight text-[#8d4d3b] dark:text-[#f4a28c]">GlamAtHome</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex flex-col items-end mr-1">
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant leading-none">Status</span>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-xs font-semibold text-primary">Online</span>
+<div class="w-10 h-5 bg-primary-container/30 rounded-full relative p-0.5">
+<div class="absolute right-0.5 top-0.5 w-4 h-4 bg-primary rounded-full shadow-sm"></div>
+</div>
+</div>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container/20">
+<img alt="Specialist Profile" class="w-full h-full object-cover" data-alt="close-up portrait of a professional female hair stylist with a warm smile in a brightly lit modern studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb9nkplC_rbNPljGlJgpMVvCLy-slKA7fflKTqxshhn-Bijwub7EZsZAZocFrMh-GCPyCRW73AsrPfpU597ZIYZ1Yoa9wFEih1a3uENGh5iZEyV1Ptqt9VJwCedN5_w0XB-JaXFeoKoy8GENd2IEhfYEuw0SMriJNAKSPPQSy7GfwKh2jWj-71C0BI-mT-f41RrekQCk4Gf7xwDr2FiqVIQP5CToWXKClMjHFWd_ouS0NFJixJRBGxf69KXlmKVZU8VYID3BiIp5R6"/>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-md mx-auto min-h-screen">
+<!-- Welcome Section -->
+<section class="mb-8">
+<p class="font-headline font-bold text-on-surface-variant text-sm tracking-wide mb-1 uppercase">Welcome back,</p>
+<h2 class="font-headline text-3xl font-extrabold tracking-tight text-on-surface">Alexandria</h2>
+</section>
+<!-- Earnings Bento Grid -->
+<section class="grid grid-cols-2 gap-4 mb-10">
+<div class="col-span-2 p-6 rounded-xl bg-gradient-to-br from-primary to-primary-container text-white shadow-lg relative overflow-hidden">
+<div class="relative z-10">
+<span class="text-white/80 font-medium text-sm">Today's Earnings</span>
+<div class="text-4xl font-headline font-extrabold mt-1 tracking-tight">$428.50</div>
+<div class="mt-4 flex items-center gap-2 bg-white/20 w-fit px-3 py-1 rounded-full backdrop-blur-md">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+<span class="text-xs font-bold tracking-wide">+12% from yesterday</span>
+</div>
+</div>
+<!-- Decorative silk sheen texture element -->
+<div class="absolute -right-10 -bottom-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
+</div>
+<div class="p-5 rounded-xl bg-surface-container-low shadow-sm">
+<span class="text-on-surface-variant font-medium text-xs uppercase tracking-wider">This Month</span>
+<div class="text-xl font-headline font-bold mt-1 text-on-surface">$5,820</div>
+</div>
+<div class="p-5 rounded-xl bg-surface-container-low shadow-sm">
+<span class="text-on-surface-variant font-medium text-xs uppercase tracking-wider">Next Payout</span>
+<div class="text-xl font-headline font-bold mt-1 text-on-surface">Oct 14</div>
+</div>
+</section>
+<!-- Quick Actions Scroll -->
+<section class="mb-10 overflow-x-auto -mx-6 px-6 no-scrollbar">
+<div class="flex gap-4">
+<button class="flex flex-col items-center justify-center gap-2 min-w-[100px] h-24 bg-surface-container-lowest rounded-lg shadow-sm hover:opacity-80 transition-opacity active:scale-95 transition-all duration-200">
+<div class="p-3 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded-full">
+<span class="material-symbols-outlined">calendar_month</span>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface text-center">Schedule</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 min-w-[100px] h-24 bg-surface-container-lowest rounded-lg shadow-sm hover:opacity-80 transition-opacity active:scale-95 transition-all duration-200">
+<div class="p-3 bg-secondary-fixed text-on-secondary-fixed-variant rounded-full">
+<span class="material-symbols-outlined">auto_awesome_motion</span>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface text-center">Portfolio</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 min-w-[100px] h-24 bg-surface-container-lowest rounded-lg shadow-sm hover:opacity-80 transition-opacity active:scale-95 transition-all duration-200">
+<div class="p-3 bg-primary-fixed text-on-primary-fixed-variant rounded-full">
+<span class="material-symbols-outlined">chat_bubble</span>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface text-center">Messages</span>
+</button>
+</div>
+</section>
+<!-- Upcoming Appointments -->
+<section>
+<div class="flex justify-between items-end mb-6">
+<h3 class="font-headline text-xl font-extrabold text-on-surface">Today's Clients</h3>
+<span class="text-primary font-bold text-xs uppercase tracking-widest">3 Remaining</span>
+</div>
+<div class="space-y-6">
+<!-- Appointment Card 1 -->
+<div class="group bg-surface-container-lowest p-5 rounded-lg shadow-[0_8px_30px_rgb(0,0,0,0.02)] border-l-4 border-primary relative">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-lg overflow-hidden shrink-0">
+<img alt="Client 1" class="w-full h-full object-cover" data-alt="portrait of a young african american woman with natural hair and minimalist jewelry" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBODwbZMLg1R50IV71G8-RwyBW8dqjY7oF4Sbi0dkTW5BIvY7bv3ZZZek0ZjGCYDSk01gyW4P_8FGFr902_naKBPJ-CXt6G1pn8U7gjbzPXRc8YcNg6t_MmkEdcdV1cCOqc2u3gVgyfU9yU4skLQ1y_hKxmgCfHmkcFvvExWevXLm_JgvugVYvqogv-XVPsdKsiYPF94mfa1yosTV5IDxQJLWwoG6BMCW0QT2IXLapdcjSC9vSKkAnj6Zo0gIwijfdo_jowH_R2vcdq"/>
+</div>
+<div>
+<h4 class="font-headline font-bold text-lg text-on-surface leading-tight">Sarah Jenkins</h4>
+<div class="flex items-center gap-1 mt-0.5 text-primary font-bold text-xs uppercase tracking-tight">
+<span>Box Braids</span>
+<span class="text-outline-variant text-[10px] mx-1">•</span>
+<span>2.5 Hours</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<span class="block font-headline font-extrabold text-lg text-on-surface">11:30</span>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">AM</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-surface-container">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg">location_on</span>
+<span class="text-sm font-medium">82 Maple Ave, Brooklyn</span>
+</div>
+<button class="bg-surface-container-high p-2 rounded-full text-primary hover:bg-primary-container/20 transition-colors active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">near_me</span>
+</button>
+</div>
+</div>
+<!-- Appointment Card 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-lg shadow-[0_8px_30px_rgb(0,0,0,0.02)] border-l-4 border-secondary-container relative opacity-80">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-lg overflow-hidden shrink-0">
+<img alt="Client 2" class="w-full h-full object-cover" data-alt="portrait of a woman with long flowing hair and natural makeup in soft sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBNI2TJj0akoZEADiqwdM_IP1oGoiOPvU1nkBRJQOcBz0_I0Zi1GHs8c8qfrIg7GhOCvWOZSSwMwvJC7OHb07bb6crjq3OhSTut_zj3vgrGeZ-LZ0ARhjZeJYwYU91iPtMxTPCLFfUUm7rqfWZpAcEDCUK-XF0PHwq-0-8WY7rKYrH5jUFcvBC2pdNqYoCDgsNQcnSlP2kRV6ZFx78FRLvLLDQAmTDl9rnyUKFXQ3YB_WqL7sEK8eOtPWFw66D_oJy1PUzwdUMCJsF"/>
+</div>
+<div>
+<h4 class="font-headline font-bold text-lg text-on-surface leading-tight">Maya Rodriguez</h4>
+<div class="flex items-center gap-1 mt-0.5 text-secondary font-bold text-xs uppercase tracking-tight">
+<span>Silk Press</span>
+<span class="text-outline-variant text-[10px] mx-1">•</span>
+<span>1.5 Hours</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<span class="block font-headline font-extrabold text-lg text-on-surface">02:15</span>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">PM</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-surface-container">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg">location_on</span>
+<span class="text-sm font-medium">412 Prospect Park W</span>
+</div>
+<button class="bg-surface-container-high p-2 rounded-full text-secondary hover:bg-secondary-container/20 transition-colors active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">near_me</span>
+</button>
+</div>
+</div>
+<!-- Appointment Card 3 -->
+<div class="bg-surface-container-lowest p-5 rounded-lg shadow-[0_8px_30px_rgb(0,0,0,0.02)] border-l-4 border-tertiary-container relative opacity-80">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-lg overflow-hidden shrink-0">
+<img alt="Client 3" class="w-full h-full object-cover" data-alt="close up of a stylish woman with glasses and freckles against a neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCD_W-MixQyTqPNe25ov_0Kem4zz_zeOiETSzptsG4Cl-sX3_FgHVS3WY1KHq3oXzAnk7dVWTOTCLeCRrp2bm1uoAGv_17RPjBJl-WG1yY3UZPDB5KjjJkVKJ2wn52dd3Zsiic-2dL-GqvZ3sLUDS51oBKEneDpEXILpnny51LhoE6-zC-Esec2cBDIHzkznOJpbkDZQeBIZwRzlFBxXEzQPw7CeJq3_iUKkvY8kwx60Dsw_SBMZV1xPEMJaT_Vp5prss5z2OV1gl8n"/>
+</div>
+<div>
+<h4 class="font-headline font-bold text-lg text-on-surface leading-tight">Chloe Smith</h4>
+<div class="flex items-center gap-1 mt-0.5 text-tertiary font-bold text-xs uppercase tracking-tight">
+<span>Bridal Updo</span>
+<span class="text-outline-variant text-[10px] mx-1">•</span>
+<span>2 Hours</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<span class="block font-headline font-extrabold text-lg text-on-surface">05:00</span>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">PM</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-surface-container">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg">location_on</span>
+<span class="text-sm font-medium">19 Gramercy Park S</span>
+</div>
+<button class="bg-surface-container-high p-2 rounded-full text-tertiary hover:bg-tertiary-container/20 transition-colors active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">near_me</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+
+<!-- Map Logic for data-location (Reference only) -->
+<div class="hidden" data-location="Brooklyn, NY" style=""></div>
+
+</div>
+
+<!-- Screen: glamathome_beauty_services -->
+<div id="screen-glamathome_beauty_services" class="app-screen hidden w-full min-h-[100dvh]">
+
+<!-- Top Navigation Shell -->
+<header class="fixed top-0 w-full z-50 bg-white/70 dark:bg-stone-900/70 backdrop-blur-md shadow-sm shadow-rose-900/5 px-6 py-4 flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-primary-fixed">
+<img alt="User profile photo" class="w-full h-full object-cover" data-alt="close up portrait of a smiling young woman with glowing skin and soft makeup against a warm neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6A_JS07M-ZP7ljSBOGtaZgfCTolnvGsOGvQWnyFfLGmFYA07rMfUjRubvtVECOl7ZP7aeoO9Kt6yB6F_iu4sqHmGbhvzvu0cFgbzkPaYYq33JvoBJuahhuHYFmfiBQDbC9B3WKwmr-BPKsMY4c8kH5tgZ-0HoW7Ls7_TG6WTyRbh94zIXwkwD0K9tjAtqg64h3v9xGc3DhhHJ8yvKCzyh6u1_VrosTKRA7LP0nY4YKuXaXjzGlb1Zy3yvyw6WwIxmM8I8QKELBbWs"/>
+</div>
+<div>
+<p class="text-[10px] font-semibold text-stone-500 uppercase tracking-widest leading-none mb-1">Welcome back</p>
+<h1 class="text-rose-950 dark:text-rose-100 font-headline font-extrabold tracking-tight leading-none text-lg">Hello, Sarah</h1>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex flex-col items-end mr-2">
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<span class="font-bold text-xs">Istanbul</span>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-rose-900 hover:opacity-80 transition-opacity active:opacity-70 active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6">
+<!-- Search & Filter -->
+<section class="mb-8">
+<div class="flex gap-3">
+<div class="flex-grow relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline-variant">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-xl py-4 pl-12 pr-4 text-sm focus:ring-2 focus:ring-primary-container placeholder:text-stone-400 active:scale-[0.98] transition-transform" placeholder="Search services or stylists..." type="text"/>
+</div>
+<button class="aspect-square w-[52px] bg-primary text-on-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20 active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined">tune</span>
+</button>
+</div>
+</section>
+<!-- Categories Section -->
+<section class="mb-10">
+<div class="flex justify-between items-end mb-4">
+<h2 class="font-headline font-bold text-xl text-on-background">Categories</h2>
+<span class="text-xs font-semibold text-primary underline">View All</span>
+</div>
+<div class="flex gap-4 overflow-x-auto hide-scrollbar -mx-6 px-6">
+<!-- African Braids -->
+<div class="flex flex-col items-center gap-2 shrink-0">
+<div class="w-20 h-20 rounded-2xl bg-surface-container-lowest shadow-sm flex items-center justify-center">
+<img class="w-14 h-14 rounded-xl object-cover" data-alt="stylized photography of intricate african hair braids with golden accessories" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCV9xN3tWVO8P_p48GcD010COttW3aSQGxDiOJSb2OcLYbili7WmaABzwryY6ud82PQdJP0-3374CU-3_MDk_BcXn8ejl2R0y7_u0kvcL9xnO6ECn7scf_q5XLMLJHxRhvebG0PV2j6P8iHfWL34vfaZh9Nrayn2_nH0jc7TmomqqOG1zLpkC4qoWFLCU85VsrA2AffzWs7Izr6Qk7zjQjQFgH1DqpjYB7Ks0gN5IPuXyJKuPdxHRy6foi-3igkgXSYoIY2bfI4Q-UO"/>
+</div>
+<span class="text-[11px] font-bold text-stone-600">African Braids</span>
+</div>
+<!-- Haircut -->
+<div class="flex flex-col items-center gap-2 shrink-0">
+<div class="w-20 h-20 rounded-2xl bg-surface-container-lowest shadow-sm flex items-center justify-center">
+<img class="w-14 h-14 rounded-xl object-cover" data-alt="professional hair cutting shears and a comb resting on a clean marble surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdN3XWvnCDP237b2QB67t30Y8lHMqtFjKMl5mbufe-VRZ0rGIVynDyM547kFUxKzFz3Dta98CoVxD_UDJplfhyVJ6evBfgTfvTreGI493_U6LbADvw0pmK1Ap17tZnQ6hl_KWqxuYQMnr9kf9AHSZvYlBbRvZAxCJhFBsyWqKNr1d4ythTpzK8l5BTyUTUxgUHo4aDGllvPTUD0V8s4gI4RCtafjZkIdQ3wq0ugOP4YobgnHunEz9A7e6n24RNczdnQo-RR3EUBgXt"/>
+</div>
+<span class="text-[11px] font-bold text-stone-600">Haircut</span>
+</div>
+<!-- Makeup -->
+<div class="flex flex-col items-center gap-2 shrink-0">
+<div class="w-20 h-20 rounded-2xl bg-surface-container-lowest shadow-sm flex items-center justify-center">
+<img class="w-14 h-14 rounded-xl object-cover" data-alt="luxury makeup brushes and rose gold eyeshadow palette in soft focus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAILPwIceo9-cPvV1yMT5l95IFdhFVWNWlnO4lzR1XuuBkm1U1nnm6vqnI4PG59KMIyul9r5hM72Nc-5UT_1H9Ku4d6UbIwHF7sjmfWj0H0ys3ou8gKiJoGqssyK9wASUym8G-tvVb0NljiWhiREC3FM6FU8_tFxDKeKjOatDeE1MKPM7hPu6XtA6nuZPexiajNAtnZNr8Ol5MgHvZ-l3N6OEQsdggLcPM3_4xSg_zLVenkAgie32_cTcftm_INVTLlReK4HSnY5iy1"/>
+</div>
+<span class="text-[11px] font-bold text-stone-600">Makeup</span>
+</div>
+<!-- Nails -->
+<div class="flex flex-col items-center gap-2 shrink-0">
+<div class="w-20 h-20 rounded-2xl bg-surface-container-lowest shadow-sm flex items-center justify-center">
+<img class="w-14 h-14 rounded-xl object-cover" data-alt="close up of perfectly manicured nails with soft pink polish and gold foil accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6-UkhuTCnMLxAJXi4YtwSn-Gp1qIOJiGJX3HrZ8aWfWSwAMGZ_TKkQUWstCxFKZ6Y-GUUnYHqQxv3scY4u4noGEK9AqV9CjudZ8ByeZJWIs52_6UzGSBVouTC3eR3A1EWeIIObjQu19BlHjnJc9qHzb2dK456nuat0AUYDZK2_cjTPyZUJ5G5O4YLFZjOD5PvdrbL6jSFy9dOK0QUnvCyr1rfYZBkQsZ0Af4KVz2mFverEoq6Ga0qfNlG8eeOZYi3rX-QmL_X7eXt"/>
+</div>
+<span class="text-[11px] font-bold text-stone-600">Nails</span>
+</div>
+</div>
+</section>
+<!-- AI Style Assistant Banner -->
+<section class="mb-10">
+<div class="relative w-full h-44 rounded-xl overflow-hidden editorial-gradient shadow-xl shadow-primary-container/30 group">
+<div class="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-all duration-500"></div>
+<!-- Abstract decorative element -->
+<div class="absolute -right-10 -bottom-10 w-48 h-48 bg-white/20 rounded-full blur-3xl"></div>
+<div class="relative h-full flex items-center px-8 z-10">
+<div class="w-2/3">
+<div class="inline-flex items-center gap-2 bg-white/30 backdrop-blur-md px-3 py-1 rounded-full mb-3">
+<span class="material-symbols-outlined text-white text-[14px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-[10px] font-extrabold text-white uppercase tracking-wider">New Feature</span>
+</div>
+<h3 class="font-headline font-extrabold text-2xl text-white leading-tight mb-2">AI Style Assistant</h3>
+<p class="text-white/90 text-xs leading-relaxed font-medium">Find your perfect look with our intelligent beauty analysis.</p>
+</div>
+<div class="absolute right-0 bottom-0 top-0 w-1/3">
+<img class="w-full h-full object-cover opacity-80 mix-blend-overlay" data-alt="abstract artistic visualization of facial mapping with glowing digital lines on a beautiful woman's face" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtVyUa1d_ntRSHZ1sOqYgyjki1NIOzTWxicyQs1FsXt_EQxlW1Ja3lTbOfevVrzE_xPvNLjxwitSDo1od_75doq5s5rFR-lvKEZR0NY-xBWYFdwkK2FCcP68DegNAF44EIKPfkAfJUPg0hDxJCtP6gdOF9EK59EAmt-y4Nr25w_3bMIY1f_NDB3Jt-iuO5C6-z1qlCILR08csa5ztjc07l6mxGpybyJOEuag1gGvjIwtLrykWlktW9Z3QO_mI3GRLx6jxZnW36tlbN"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Top Rated Stylists (Vertical List) -->
+<section class="mb-8">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-headline font-bold text-xl text-on-background tracking-tight">Top Rated Stylists</h2>
+</div>
+<div class="space-y-6">
+<!-- Specialist Spotlight Pattern -->
+<div class="relative pt-6">
+<div class="bg-surface-container-low rounded-xl p-6 pl-32 relative shadow-sm active:scale-[0.98] transition-transform">
+<!-- Overlapping profile photo -->
+<div class="absolute -top-4 left-6 w-24 h-32 rounded-lg overflow-hidden shadow-xl z-20">
+<img class="w-full h-full object-cover" data-alt="professional portrait of a confident female stylist with stylish hair and minimalist jewelry" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrLdrhFjKuz7KlcTcEYCdvsLIu_M--KTcqqwyWoKTUmbsN3KzIHdW3i5EZ7Y3uBuK6P0PzO5yp_88JOtNw_vaNCVLOx4Xf1aX8V7ikH-FiT4tUFT0PE-XvRyuBndSLZL03tEWplp7pU7JeVxVMSAytCkYHz548t5g3nU0maX3creuJvQTPjE1aLIbNYmSJB4LLxxH_UJnRDaGIOgk2AH2TLyJMb-GHlLnnufSNQOsLUuuBup_Zr90OgHtyGrvrwoM1ajcZ3NEMVAZx"/>
+</div>
+<div class="flex flex-col h-full justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h4 class="font-headline font-bold text-lg text-on-surface">Elena Russo</h4>
+<div class="flex items-center gap-1 bg-white/80 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-amber-500 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[11px] font-bold">4.9</span>
+</div>
+</div>
+<p class="text-xs text-stone-500 mb-4">Master Hair Stylist &amp; Colorist</p>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-primary font-bold text-sm">$85/hr</span>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-full text-xs font-bold shadow-md shadow-primary-container/20 active:scale-95 transition-transform active:scale-95 transition-all duration-200">Book Now</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Stylist Card 2 -->
+<div class="relative pt-6">
+<div class="bg-surface-container-low rounded-xl p-6 pl-32 relative shadow-sm active:scale-[0.98] transition-transform">
+<div class="absolute -top-4 left-6 w-24 h-32 rounded-lg overflow-hidden shadow-xl z-20">
+<img class="w-full h-full object-cover" data-alt="portrait of a male professional makeup artist with a creative and edgy look" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4QOoN57-hTmDltixE2MN8WnlceFnXyroiuC9yKnSiwfsu_56WbuYoqxIqAug_IjxEMmFzTh0LTBJKjxbwHTp_uwght8A4nxrgOytHGIg7EsEa__G7-2FgktpCpXq7616SPPCiRQW3TFOJCCPeWHw7JofAQtgLW8PwJ7RnWiLu-f3lKODdpprr55T8fJjhiUgPpyxSDvlTh3dkDFlG-1XLkYNLQYemDkaraqqqnvnj9L9SICfS0_K7YlICbGAhnWxOeom7BswWVtjs"/>
+</div>
+<div class="flex flex-col h-full justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h4 class="font-headline font-bold text-lg text-on-surface">Marco Valeska</h4>
+<div class="flex items-center gap-1 bg-white/80 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-amber-500 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[11px] font-bold">4.8</span>
+</div>
+</div>
+<p class="text-xs text-stone-500 mb-4">Bridal Makeup &amp; Editorial Expert</p>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-primary font-bold text-sm">$120/hr</span>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-full text-xs font-bold shadow-md shadow-primary-container/20 active:scale-95 transition-transform active:scale-95 transition-all duration-200">Book Now</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Stylist Card 3 -->
+<div class="relative pt-6">
+<div class="bg-surface-container-low rounded-xl p-6 pl-32 relative shadow-sm active:scale-[0.98] transition-transform">
+<div class="absolute -top-4 left-6 w-24 h-32 rounded-lg overflow-hidden shadow-xl z-20">
+<img class="w-full h-full object-cover" data-alt="well-groomed male stylist in a minimalist studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDubDqP0TMtc1He5lTIpCrt0T1ZLiGUfx0i13jejb3KoiQEgPbRZgSxrGub7ghnmfUf6HfOxeaFOf72gtZIqmKhUgdCLd8Lh4ZdfWEG6x2qLfZXXj4ja5e_Vwz2eNMderNzNSnwaN9vfFKqxMjVgN7EXvEuOfvYb5-3oPio18ibgXik7kgwo5EI3uheUBOXfH_v_mVBWcqvu0gwzPVuIMeSNzq5L2qAtrXqkd17g7N5Ere2D3D35g6cXboGkJ4trMmdrt6ApOJpEEX"/>
+</div>
+<div class="flex flex-col h-full justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h4 class="font-headline font-bold text-lg text-on-surface">Andre Costa</h4>
+<div class="flex items-center gap-1 bg-white/80 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-amber-500 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[11px] font-bold">5.0</span>
+</div>
+</div>
+<p class="text-xs text-stone-500 mb-4">Mens Grooming &amp; Braiding</p>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-primary font-bold text-sm">$70/hr</span>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-full text-xs font-bold shadow-md shadow-primary-container/20 active:scale-95 transition-transform active:scale-95 transition-all duration-200">Book Now</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+
+
+</div>
+
+<!-- Screen: glamathome_checkout_screen -->
+<div id="screen-glamathome_checkout_screen" class="app-screen hidden w-full min-h-[100dvh]">
+
+<!-- Top Navigation (Contextual Suppression of BottomNavBar for Transactional Flow) -->
+<header class="fixed top-0 w-full z-50 glass-nav shadow-sm shadow-primary/5">
+<div class="flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-high transition-colors active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined text-on-surface">arrow_back_ios_new</span>
+</button>
+<h1 class="text-rose-950 font-headline font-extrabold tracking-tight text-lg">GlamAtHome</h1>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-label text-[10px] font-bold uppercase tracking-widest text-primary">Secure Checkout</span>
+</div>
+</div>
+</header>
+<main class="pt-24 px-6 max-w-2xl mx-auto space-y-8">
+<!-- Booking Summary Card -->
+<section>
+<div class="bg-surface-container-lowest rounded-xl p-5 shadow-sm shadow-on-surface/5 flex items-center gap-5 active:scale-[0.98] transition-transform">
+<div class="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="African braids hairstyle" class="w-full h-full object-cover" data-alt="Close up of intricate African knotless braids with neat parting on a woman, soft warm studio lighting, elegant beauty aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4p2NBbvtczlFho0NTLDDvirmgh1QXgy7ux4a6w4U91oO1CW5_H-UI3hRRHdHzrfOM1mOeznxxJ2YtcyKHhGEWwYxzAjQy6vDtGTgSHOf2r-J1v5cfMaXqprZFOHhLt11VYSSoLdxLp1bn4iDJON4YrO5YlhA8HYj32bMs7YIqVRHCb6m2VqWd-hV4-x25KpS-bcEyJwHkrS07q91-cS2Po1GNJWcY7eATQE1ky01ivniOqVH90EA8nSwILeYTArmgGcvW0BAfuFjN"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h2 class="font-headline font-bold text-lg leading-tight">Goddess Knotless Braids</h2>
+<span class="font-headline font-extrabold text-primary text-xl">$180</span>
+</div>
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<p class="font-body text-sm text-on-surface-variant">with <span class="font-semibold text-on-surface">Amara K.</span></p>
+</div>
+<div class="flex items-center gap-4">
+<div class="bg-primary-fixed px-3 py-1 rounded-full">
+<span class="font-label text-[10px] font-bold text-on-primary-fixed uppercase tracking-tighter">4.5 Hours</span>
+</div>
+<div class="flex items-center text-secondary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold ml-1">4.9</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Location Section -->
+<section class="space-y-4">
+<h3 class="font-headline font-bold text-lg px-1">Service Location</h3>
+<div class="space-y-3">
+<div class="relative group">
+<div class="absolute left-4 top-1/2 -translate-y-1/2 text-primary">
+<span class="material-symbols-outlined">location_on</span>
+</div>
+<input class="w-full bg-surface-container-low border-none rounded-xl py-4 pl-12 pr-4 focus:ring-2 focus:ring-primary-container font-body transition-all active:scale-[0.98] transition-transform" placeholder="Enter your home address" type="text" value="124 Elegant Way, West Hollywood"/>
+</div>
+<div class="relative rounded-xl overflow-hidden h-44 shadow-inner">
+<img alt="Map snippet" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 transition-all duration-700" data-alt="Minimalist top-down map of a residential city grid in soft peach and grey tones with a single rose gold location pin" data-location="West Hollywood" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyNOc8twVxScYHjGitvVwdLw7HatFolltac0pL96FiQs28Lyg9w9obgi4XQh8NvH3hIR74eCfHO_6xaBzwlnj2iqMgAO9-tj165OKDcDRhWgXl2d7vDHbFkG1zAaKHyy2_qFsu63MwWfgT6uUD_2D9HsNeKmeBNL61qM82EY1zJsmSagUsfaYiyNgbcwOo8wfuJlK-4l5sOKefdbfZ-IBT3EH0RwhBnpqUPl-Jg4NMa3E4BVMSMV9wgKEIhMOFIqq1MQ50vnGzgREC"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low/40 to-transparent"></div>
+<button class="absolute bottom-4 right-4 bg-surface-container-lowest/90 backdrop-blur-sm px-4 py-2 rounded-full flex items-center gap-2 shadow-lg active:scale-95 transition-transform active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined text-primary text-lg">my_location</span>
+<span class="font-label font-bold text-xs text-on-surface">Use current location</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Date & Time Section -->
+<section class="space-y-4">
+<div class="flex justify-between items-end px-1">
+<h3 class="font-headline font-bold text-lg">Select Date &amp; Time</h3>
+<span class="font-label text-xs font-semibold text-secondary">October 2024</span>
+</div>
+<!-- Horizontal Date Scroll -->
+<div class="flex gap-3 overflow-x-auto no-scrollbar py-2 -mx-6 px-6">
+<div class="flex-shrink-0 w-16 h-20 rounded-xl bg-surface-container-high flex flex-col items-center justify-center group cursor-pointer hover:bg-primary-fixed transition-colors">
+<span class="text-[10px] font-bold uppercase text-on-surface-variant group-hover:text-on-primary-fixed">Mon</span>
+<span class="text-lg font-extrabold text-on-surface group-hover:text-on-primary-fixed">14</span>
+</div>
+<div class="flex-shrink-0 w-16 h-20 rounded-xl bg-primary-fixed flex flex-col items-center justify-center ring-2 ring-primary ring-offset-2 ring-offset-surface">
+<span class="text-[10px] font-bold uppercase text-on-primary-fixed">Tue</span>
+<span class="text-lg font-extrabold text-on-primary-fixed">15</span>
+</div>
+<div class="flex-shrink-0 w-16 h-20 rounded-xl bg-surface-container-high flex flex-col items-center justify-center group cursor-pointer hover:bg-primary-fixed transition-colors">
+<span class="text-[10px] font-bold uppercase text-on-surface-variant group-hover:text-on-primary-fixed">Wed</span>
+<span class="text-lg font-extrabold text-on-surface group-hover:text-on-primary-fixed">16</span>
+</div>
+<div class="flex-shrink-0 w-16 h-20 rounded-xl bg-surface-container-high flex flex-col items-center justify-center group cursor-pointer hover:bg-primary-fixed transition-colors">
+<span class="text-[10px] font-bold uppercase text-on-surface-variant group-hover:text-on-primary-fixed">Thu</span>
+<span class="text-lg font-extrabold text-on-surface group-hover:text-on-primary-fixed">17</span>
+</div>
+<div class="flex-shrink-0 w-16 h-20 rounded-xl bg-surface-container-high flex flex-col items-center justify-center group cursor-pointer hover:bg-primary-fixed transition-colors">
+<span class="text-[10px] font-bold uppercase text-on-surface-variant group-hover:text-on-primary-fixed">Fri</span>
+<span class="text-lg font-extrabold text-on-surface group-hover:text-on-primary-fixed">18</span>
+</div>
+<div class="flex-shrink-0 w-16 h-20 rounded-xl bg-surface-container-high flex flex-col items-center justify-center group cursor-pointer hover:bg-primary-fixed transition-colors">
+<span class="text-[10px] font-bold uppercase text-on-surface-variant group-hover:text-on-primary-fixed">Sat</span>
+<span class="text-lg font-extrabold text-on-surface group-hover:text-on-primary-fixed">19</span>
+</div>
+</div>
+<!-- Time Slots Grid -->
+<div class="grid grid-cols-3 gap-3">
+<button class="py-3 rounded-lg border border-outline-variant/20 bg-surface-container-lowest text-sm font-semibold text-on-surface-variant hover:bg-primary-container/20 transition-colors active:scale-95 transition-all duration-200">09:00 AM</button>
+<button class="py-3 rounded-lg bg-on-surface text-sm font-bold text-white shadow-md active:scale-95 transition-all duration-200">11:30 AM</button>
+<button class="py-3 rounded-lg border border-outline-variant/20 bg-surface-container-lowest text-sm font-semibold text-on-surface-variant hover:bg-primary-container/20 transition-colors active:scale-95 transition-all duration-200">02:00 PM</button>
+<button class="py-3 rounded-lg border border-outline-variant/20 bg-surface-container-lowest text-sm font-semibold text-on-surface-variant hover:bg-primary-container/20 transition-colors active:scale-95 transition-all duration-200">04:30 PM</button>
+<button class="py-3 rounded-lg border border-outline-variant/20 bg-surface-container-lowest text-sm font-semibold text-on-surface-variant hover:bg-primary-container/20 transition-colors active:scale-95 transition-all duration-200">06:00 PM</button>
+<button class="py-3 rounded-lg border border-outline-variant/20 bg-surface-container-lowest text-sm font-semibold text-on-surface-variant hover:bg-primary-container/20 transition-colors opacity-40 cursor-not-allowed active:scale-95 transition-all duration-200">08:00 PM</button>
+</div>
+</section>
+<!-- Payment Method Section -->
+<section class="space-y-4">
+<h3 class="font-headline font-bold text-lg px-1">Payment Method</h3>
+<div class="space-y-3">
+<!-- Credit Card -->
+<div class="bg-surface-container-lowest border-2 border-primary-container p-4 rounded-xl flex items-center justify-between shadow-sm active:scale-[0.98] transition-transform">
+<div class="flex items-center gap-4">
+<div class="w-12 h-8 bg-surface-container rounded flex items-center justify-center text-xs font-bold text-on-surface-variant">VISA</div>
+<div>
+<p class="font-body font-bold text-sm">•••• 4242</p>
+<p class="font-label text-[10px] text-on-surface-variant">Expires 12/26</p>
+</div>
+</div>
+<div class="w-5 h-5 rounded-full border-2 border-primary flex items-center justify-center">
+<div class="w-2.5 h-2.5 rounded-full bg-primary"></div>
+</div>
+</div>
+<!-- Digital Wallets -->
+<div class="grid grid-cols-2 gap-3">
+<button class="bg-surface-container-low p-4 rounded-xl flex items-center justify-center gap-2 hover:bg-surface-container-high transition-colors active:scale-95 transition-all duration-200 active:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined text-on-surface" style="font-variation-settings: 'FILL' 1;">ios</span>
+<span class="font-headline font-bold text-sm">Apple Pay</span>
+</button>
+<button class="bg-surface-container-low p-4 rounded-xl flex items-center justify-center gap-2 hover:bg-surface-container-high transition-colors active:scale-95 transition-all duration-200 active:scale-[0.98] transition-transform">
+<div class="w-5 h-5 rounded-full bg-on-surface text-white flex items-center justify-center text-[8px] font-black">G</div>
+<span class="font-headline font-bold text-sm">Google Pay</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Trust Badges -->
+<div class="flex justify-center items-center gap-6 py-4 opacity-60">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">lock</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">End-to-End Encrypted</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">shield</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Insured Stylists</span>
+</div>
+</div>
+</main>
+<!-- Bottom Sticky CTA -->
+<div class="fixed bottom-0 w-full glass-nav px-6 pt-6 pb-10 border-t border-outline-variant/5">
+<div class="max-w-2xl mx-auto flex flex-col gap-4">
+<div class="flex justify-between items-center mb-2">
+<div>
+<p class="font-label text-xs font-semibold text-on-surface-variant">Service Total</p>
+<p class="font-headline font-extrabold text-2xl text-rose-950">$180.00</p>
+</div>
+<div class="text-right">
+<p class="font-label text-[10px] font-bold text-primary uppercase">No hidden fees</p>
+<p class="font-label text-[10px] text-on-surface-variant">Service + Travel included</p>
+</div>
+</div>
+<button class="button-gradient w-full py-5 rounded-full flex items-center justify-center gap-3 shadow-xl shadow-primary/20 active:scale-95 transition-all active:scale-95 transition-all duration-200">
+<span class="text-white font-headline font-extrabold tracking-tight text-lg">Confirm &amp; Pay</span>
+<span class="material-symbols-outlined text-white">chevron_right</span>
+</button>
+</div>
+</div>
+
+</div>
+
+<!-- Screen: glamathome_home_men_s_grooming_update -->
+<div id="screen-glamathome_home_men_s_grooming_update" class="app-screen hidden w-full min-h-[100dvh]">
+
+<!-- Top Navigation Shell -->
+<header class="fixed top-0 w-full z-50 bg-white/70 dark:bg-stone-900/70 backdrop-blur-md shadow-sm shadow-rose-900/5 px-6 py-4 flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-primary-fixed">
+<img alt="User profile photo" class="w-full h-full object-cover" data-alt="close up portrait of a smiling young woman with glowing skin and soft makeup against a warm neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6A_JS07M-ZP7ljSBOGtaZgfCTolnvGsOGvQWnyFfLGmFYA07rMfUjRubvtVECOl7ZP7aeoO9Kt6yB6F_iu4sqHmGbhvzvu0cFgbzkPaYYq33JvoBJuahhuHYFmfiBQDbC9B3WKwmr-BPKsMY4c8kH5tgZ-0HoW7Ls7_TG6WTyRbh94zIXwkwD0K9tjAtqg64h3v9xGc3DhhHJ8yvKCzyh6u1_VrosTKRA7LP0nY4YKuXaXjzGlb1Zy3yvyw6WwIxmM8I8QKELBbWs"/>
+</div>
+<div>
+<p class="text-[10px] font-semibold text-stone-500 uppercase tracking-widest leading-none mb-1">Welcome back</p>
+<h1 class="text-rose-950 dark:text-rose-100 font-headline font-extrabold tracking-tight leading-none text-lg">Hello, Sarah</h1>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex flex-col items-end mr-2">
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<span class="font-bold text-xs">Istanbul</span>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-rose-900 hover:opacity-80 transition-opacity active:opacity-70 active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6">
+<!-- Search & Filter -->
+<section class="mb-8">
+<div class="flex gap-3">
+<div class="flex-grow relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline-variant">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-xl py-4 pl-12 pr-4 text-sm focus:ring-2 focus:ring-primary-container placeholder:text-stone-400 active:scale-[0.98] transition-transform" placeholder="Search services or stylists..." type="text"/>
+</div>
+<button class="aspect-square w-[52px] bg-primary text-on-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20 active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined">tune</span>
+</button>
+</div>
+</section>
+<!-- Categories Section -->
+<section class="mb-10">
+<div class="flex justify-between items-end mb-4">
+<h2 class="font-headline font-bold text-xl text-on-background">Categories</h2>
+<span class="text-xs font-semibold text-primary underline">View All</span>
+</div>
+<div class="flex gap-4 overflow-x-auto hide-scrollbar -mx-6 px-6">
+<!-- African Braids -->
+<div class="flex flex-col items-center gap-2 shrink-0">
+<div class="w-20 h-20 rounded-2xl bg-surface-container-lowest shadow-sm flex items-center justify-center">
+<img class="w-14 h-14 rounded-xl object-cover" data-alt="stylized photography of intricate african hair braids with golden accessories" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCV9xN3tWVO8P_p48GcD010COttW3aSQGxDiOJSb2OcLYbili7WmaABzwryY6ud82PQdJP0-3374CU-3_MDk_BcXn8ejl2R0y7_u0kvcL9xnO6ECn7scf_q5XLMLJHxRhvebG0PV2j6P8iHfWL34vfaZh9Nrayn2_nH0jc7TmomqqOG1zLpkC4qoWFLCU85VsrA2AffzWs7Izr6Qk7zjQjQFgH1DqpjYB7Ks0gN5IPuXyJKuPdxHRy6foi-3igkgXSYoIY2bfI4Q-UO"/>
+</div>
+<span class="text-[11px] font-bold text-stone-600">African Braids</span>
+</div>
+<!-- Haircut -->
+<div class="flex flex-col items-center gap-2 shrink-0">
+<div class="w-20 h-20 rounded-2xl bg-surface-container-lowest shadow-sm flex items-center justify-center">
+<img class="w-14 h-14 rounded-xl object-cover" data-alt="professional hair cutting shears and a comb resting on a clean marble surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdN3XWvnCDP237b2QB67t30Y8lHMqtFjKMl5mbufe-VRZ0rGIVynDyM547kFUxKzFz3Dta98CoVxD_UDJplfhyVJ6evBfgTfvTreGI493_U6LbADvw0pmK1Ap17tZnQ6hl_KWqxuYQMnr9kf9AHSZvYlBbRvZAxCJhFBsyWqKNr1d4ythTpzK8l5BTyUTUxgUHo4aDGllvPTUD0V8s4gI4RCtafjZkIdQ3wq0ugOP4YobgnHunEz9A7e6n24RNczdnQo-RR3EUBgXt"/>
+</div>
+<span class="text-[11px] font-bold text-stone-600">Haircut</span>
+</div>
+<!-- Makeup -->
+<div class="flex flex-col items-center gap-2 shrink-0">
+<div class="w-20 h-20 rounded-2xl bg-surface-container-lowest shadow-sm flex items-center justify-center">
+<img class="w-14 h-14 rounded-xl object-cover" data-alt="luxury makeup brushes and rose gold eyeshadow palette in soft focus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAILPwIceo9-cPvV1yMT5l95IFdhFVWNWlnO4lzR1XuuBkm1U1nnm6vqnI4PG59KMIyul9r5hM72Nc-5UT_1H9Ku4d6UbIwHF7sjmfWj0H0ys3ou8gKiJoGqssyK9wASUym8G-tvVb0NljiWhiREC3FM6FU8_tFxDKeKjOatDeE1MKPM7hPu6XtA6nuZPexiajNAtnZNr8Ol5MgHvZ-l3N6OEQsdggLcPM3_4xSg_zLVenkAgie32_cTcftm_INVTLlReK4HSnY5iy1"/>
+</div>
+<span class="text-[11px] font-bold text-stone-600">Makeup</span>
+</div>
+<!-- Nails -->
+<div class="flex flex-col items-center gap-2 shrink-0">
+<div class="w-20 h-20 rounded-2xl bg-surface-container-lowest shadow-sm flex items-center justify-center">
+<img class="w-14 h-14 rounded-xl object-cover" data-alt="close up of perfectly manicured nails with soft pink polish and gold foil accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6-UkhuTCnMLxAJXi4YtwSn-Gp1qIOJiGJX3HrZ8aWfWSwAMGZ_TKkQUWstCxFKZ6Y-GUUnYHqQxv3scY4u4noGEK9AqV9CjudZ8ByeZJWIs52_6UzGSBVouTC3eR3A1EWeIIObjQu19BlHjnJc9qHzb2dK456nuat0AUYDZK2_cjTPyZUJ5G5O4YLFZjOD5PvdrbL6jSFy9dOK0QUnvCyr1rfYZBkQsZ0Af4KVz2mFverEoq6Ga0qfNlG8eeOZYi3rX-QmL_X7eXt"/>
+</div>
+<span class="text-[11px] font-bold text-stone-600">Nails</span>
+</div>
+<!-- Barber -->
+<div class="flex flex-col items-center gap-2 shrink-0">
+<div class="w-20 h-20 rounded-2xl bg-surface-container-lowest shadow-sm flex items-center justify-center">
+<img class="w-14 h-14 rounded-xl object-cover" data-alt="sophisticated close-up of professional barber tools with a deep charcoal and rose gold finish" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBM2Y8V087i_fK2L8wX_Q6U2_T_7_S_8_9_0_1_2_3_4_5_6_7_8_9_0_1_2_3_4_5_6_7_8_9_0_1_2_3_4_5_6_7_8_9_0_1_2_3_4_5_6_7_8_9_0_1_2_3_4_5_6_7_8_9_0_1_2_3_4_5_6_7_8_9_0"/>
+</div>
+<span class="text-[11px] font-bold text-stone-600">Barber</span>
+</div></div>
+</section>
+<!-- AI Style Assistant Banner -->
+<section class="mb-10">
+<div class="relative w-full h-44 rounded-xl overflow-hidden editorial-gradient shadow-xl shadow-primary-container/30 group">
+<div class="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-all duration-500"></div>
+<!-- Abstract decorative element -->
+<div class="absolute -right-10 -bottom-10 w-48 h-48 bg-white/20 rounded-full blur-3xl"></div>
+<div class="relative h-full flex items-center px-8 z-10">
+<div class="w-2/3">
+<div class="inline-flex items-center gap-2 bg-white/30 backdrop-blur-md px-3 py-1 rounded-full mb-3">
+<span class="material-symbols-outlined text-white text-[14px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-[10px] font-extrabold text-white uppercase tracking-wider">New Feature</span>
+</div>
+<h3 class="font-headline font-extrabold text-2xl text-white leading-tight mb-2">AI Style Assistant</h3>
+<p class="text-white/90 text-xs leading-relaxed font-medium">Find your perfect look with our intelligent beauty analysis.</p>
+</div>
+<div class="absolute right-0 bottom-0 top-0 w-1/3">
+<img class="w-full h-full object-cover opacity-80 mix-blend-overlay" data-alt="abstract artistic visualization of facial mapping with glowing digital lines on a beautiful woman's face" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtVyUa1d_ntRSHZ1sOqYgyjki1NIOzTWxicyQs1FsXt_EQxlW1Ja3lTbOfevVrzE_xPvNLjxwitSDo1od_75doq5s5rFR-lvKEZR0NY-xBWYFdwkK2FCcP68DegNAF44EIKPfkAfJUPg0hDxJCtP6gdOF9EK59EAmt-y4Nr25w_3bMIY1f_NDB3Jt-iuO5C6-z1qlCILR08csa5ztjc07l6mxGpybyJOEuag1gGvjIwtLrykWlktW9Z3QO_mI3GRLx6jxZnW36tlbN"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Top Rated Stylists (Vertical List) -->
+<section class="mb-8">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-headline font-bold text-xl text-on-background tracking-tight">Top Rated Stylists</h2>
+</div>
+<div class="space-y-6">
+<!-- Specialist Spotlight Pattern -->
+<div class="relative pt-6">
+<div class="bg-surface-container-low rounded-xl p-6 pl-32 relative shadow-sm active:scale-[0.98] transition-transform">
+<!-- Overlapping profile photo -->
+<div class="absolute -top-4 left-6 w-24 h-32 rounded-lg overflow-hidden shadow-xl z-20">
+<img class="w-full h-full object-cover" data-alt="professional portrait of a confident female stylist with stylish hair and minimalist jewelry" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrLdrhFjKuz7KlcTcEYCdvsLIu_M--KTcqqwyWoKTUmbsN3KzIHdW3i5EZ7Y3uBuK6P0PzO5yp_88JOtNw_vaNCVLOx4Xf1aX8V7ikH-FiT4tUFT0PE-XvRyuBndSLZL03tEWplp7pU7JeVxVMSAytCkYHz548t5g3nU0maX3creuJvQTPjE1aLIbNYmSJB4LLxxH_UJnRDaGIOgk2AH2TLyJMb-GHlLnnufSNQOsLUuuBup_Zr90OgHtyGrvrwoM1ajcZ3NEMVAZx"/>
+</div>
+<div class="flex flex-col h-full justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h4 class="font-headline font-bold text-lg text-on-surface">Elena Russo</h4>
+<div class="flex items-center gap-1 bg-white/80 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-amber-500 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[11px] font-bold">4.9</span>
+</div>
+</div>
+<p class="text-xs text-stone-500 mb-4">Master Hair Stylist &amp; Colorist</p>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-primary font-bold text-sm">$85/hr</span>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-full text-xs font-bold shadow-md shadow-primary-container/20 active:scale-95 transition-transform active:scale-95 transition-all duration-200">Book Now</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Stylist Card 2 -->
+<div class="relative pt-6">
+<div class="bg-surface-container-low rounded-xl p-6 pl-32 relative shadow-sm active:scale-[0.98] transition-transform">
+<div class="absolute -top-4 left-6 w-24 h-32 rounded-lg overflow-hidden shadow-xl z-20">
+<img class="w-full h-full object-cover" data-alt="portrait of a male professional makeup artist with a creative and edgy look" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4QOoN57-hTmDltixE2MN8WnlceFnXyroiuC9yKnSiwfsu_56WbuYoqxIqAug_IjxEMmFzTh0LTBJKjxbwHTp_uwght8A4nxrgOytHGIg7EsEa__G7-2FgktpCpXq7616SPPCiRQW3TFOJCCPeWHw7JofAQtgLW8PwJ7RnWiLu-f3lKODdpprr55T8fJjhiUgPpyxSDvlTh3dkDFlG-1XLkYNLQYemDkaraqqqnvnj9L9SICfS0_K7YlICbGAhnWxOeom7BswWVtjs"/>
+</div>
+<div class="flex flex-col h-full justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h4 class="font-headline font-bold text-lg text-on-surface">Marco Valeska</h4>
+<div class="flex items-center gap-1 bg-white/80 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-amber-500 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[11px] font-bold">4.8</span>
+</div>
+</div>
+<p class="text-xs text-stone-500 mb-4">Bridal Makeup &amp; Editorial Expert</p>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-primary font-bold text-sm">$120/hr</span>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-full text-xs font-bold shadow-md shadow-primary-container/20 active:scale-95 transition-transform active:scale-95 transition-all duration-200">Book Now</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Stylist Card 3 -->
+<div class="relative pt-6">
+<div class="bg-surface-container-low rounded-xl p-6 pl-32 relative shadow-sm active:scale-[0.98] transition-transform">
+<div class="absolute -top-4 left-6 w-24 h-32 rounded-lg overflow-hidden shadow-xl z-20">
+<img class="w-full h-full object-cover" data-alt="well-groomed male stylist in a minimalist studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDubDqP0TMtc1He5lTIpCrt0T1ZLiGUfx0i13jejb3KoiQEgPbRZgSxrGub7ghnmfUf6HfOxeaFOf72gtZIqmKhUgdCLd8Lh4ZdfWEG6x2qLfZXXj4ja5e_Vwz2eNMderNzNSnwaN9vfFKqxMjVgN7EXvEuOfvYb5-3oPio18ibgXik7kgwo5EI3uheUBOXfH_v_mVBWcqvu0gwzPVuIMeSNzq5L2qAtrXqkd17g7N5Ere2D3D35g6cXboGkJ4trMmdrt6ApOJpEEX"/>
+</div>
+<div class="flex flex-col h-full justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h4 class="font-headline font-bold text-lg text-on-surface">Andre Costa</h4>
+<div class="flex items-center gap-1 bg-white/80 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-amber-500 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[11px] font-bold">5.0</span>
+</div>
+</div>
+<p class="text-xs text-stone-500 mb-4">Mens Grooming &amp; Braiding</p>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-primary font-bold text-sm">$70/hr</span>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-full text-xs font-bold shadow-md shadow-primary-container/20 active:scale-95 transition-transform active:scale-95 transition-all duration-200">Book Now</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+
+
+</div>
+
+<!-- Screen: glamathome_home_screen -->
+<div id="screen-glamathome_home_screen" class="app-screen active w-full min-h-[100dvh]">
+
+<!-- Top Navigation Shell -->
+<header class="fixed top-0 w-full z-50 bg-white/70 dark:bg-stone-900/70 backdrop-blur-md shadow-sm shadow-rose-900/5 px-6 py-4 flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-primary-fixed">
+<img alt="User profile photo" class="w-full h-full object-cover" data-alt="close up portrait of a smiling young woman with glowing skin and soft makeup against a warm neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6A_JS07M-ZP7ljSBOGtaZgfCTolnvGsOGvQWnyFfLGmFYA07rMfUjRubvtVECOl7ZP7aeoO9Kt6yB6F_iu4sqHmGbhvzvu0cFgbzkPaYYq33JvoBJuahhuHYFmfiBQDbC9B3WKwmr-BPKsMY4c8kH5tgZ-0HoW7Ls7_TG6WTyRbh94zIXwkwD0K9tjAtqg64h3v9xGc3DhhHJ8yvKCzyh6u1_VrosTKRA7LP0nY4YKuXaXjzGlb1Zy3yvyw6WwIxmM8I8QKELBbWs"/>
+</div>
+<div>
+<p class="text-[10px] font-semibold text-stone-500 uppercase tracking-widest leading-none mb-1">Welcome back</p>
+<h1 class="text-rose-950 dark:text-rose-100 font-headline font-extrabold tracking-tight leading-none text-lg">Hello, Sarah</h1>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex flex-col items-end mr-2">
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<span class="font-bold text-xs">Istanbul</span>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-rose-900 hover:opacity-80 transition-opacity active:opacity-70 active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6">
+<!-- Search & Filter -->
+<section class="mb-8">
+<div class="flex gap-3">
+<div class="flex-grow relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline-variant">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-xl py-4 pl-12 pr-4 text-sm focus:ring-2 focus:ring-primary-container placeholder:text-stone-400 active:scale-[0.98] transition-transform" placeholder="Search services or stylists..." type="text"/>
+</div>
+<button class="aspect-square w-[52px] bg-primary text-on-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20 active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined">tune</span>
+</button>
+</div>
+</section>
+<!-- Categories Section -->
+<section class="mb-10">
+<div class="flex justify-between items-end mb-4">
+<h2 class="font-headline font-bold text-xl text-on-background">Categories</h2>
+<span class="text-xs font-semibold text-primary underline">View All</span>
+</div>
+<div class="flex gap-4 overflow-x-auto hide-scrollbar -mx-6 px-6">
+<!-- African Braids -->
+<div class="flex flex-col items-center gap-2 shrink-0">
+<div class="w-20 h-20 rounded-2xl bg-surface-container-lowest shadow-sm flex items-center justify-center">
+<img class="w-14 h-14 rounded-xl object-cover" data-alt="stylized photography of intricate african hair braids with golden accessories" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCV9xN3tWVO8P_p48GcD010COttW3aSQGxDiOJSb2OcLYbili7WmaABzwryY6ud82PQdJP0-3374CU-3_MDk_BcXn8ejl2R0y7_u0kvcL9xnO6ECn7scf_q5XLMLJHxRhvebG0PV2j6P8iHfWL34vfaZh9Nrayn2_nH0jc7TmomqqOG1zLpkC4qoWFLCU85VsrA2AffzWs7Izr6Qk7zjQjQFgH1DqpjYB7Ks0gN5IPuXyJKuPdxHRy6foi-3igkgXSYoIY2bfI4Q-UO"/>
+</div>
+<span class="text-[11px] font-bold text-stone-600">African Braids</span>
+</div>
+<!-- Haircut -->
+<div class="flex flex-col items-center gap-2 shrink-0">
+<div class="w-20 h-20 rounded-2xl bg-surface-container-lowest shadow-sm flex items-center justify-center">
+<img class="w-14 h-14 rounded-xl object-cover" data-alt="professional hair cutting shears and a comb resting on a clean marble surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdN3XWvnCDP237b2QB67t30Y8lHMqtFjKMl5mbufe-VRZ0rGIVynDyM547kFUxKzFz3Dta98CoVxD_UDJplfhyVJ6evBfgTfvTreGI493_U6LbADvw0pmK1Ap17tZnQ6hl_KWqxuYQMnr9kf9AHSZvYlBbRvZAxCJhFBsyWqKNr1d4ythTpzK8l5BTyUTUxgUHo4aDGllvPTUD0V8s4gI4RCtafjZkIdQ3wq0ugOP4YobgnHunEz9A7e6n24RNczdnQo-RR3EUBgXt"/>
+</div>
+<span class="text-[11px] font-bold text-stone-600">Haircut</span>
+</div>
+<!-- Makeup -->
+<div class="flex flex-col items-center gap-2 shrink-0">
+<div class="w-20 h-20 rounded-2xl bg-surface-container-lowest shadow-sm flex items-center justify-center">
+<img class="w-14 h-14 rounded-xl object-cover" data-alt="luxury makeup brushes and rose gold eyeshadow palette in soft focus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAILPwIceo9-cPvV1yMT5l95IFdhFVWNWlnO4lzR1XuuBkm1U1nnm6vqnI4PG59KMIyul9r5hM72Nc-5UT_1H9Ku4d6UbIwHF7sjmfWj0H0ys3ou8gKiJoGqssyK9wASUym8G-tvVb0NljiWhiREC3FM6FU8_tFxDKeKjOatDeE1MKPM7hPu6XtA6nuZPexiajNAtnZNr8Ol5MgHvZ-l3N6OEQsdggLcPM3_4xSg_zLVenkAgie32_cTcftm_INVTLlReK4HSnY5iy1"/>
+</div>
+<span class="text-[11px] font-bold text-stone-600">Makeup</span>
+</div>
+<!-- Nails -->
+<div class="flex flex-col items-center gap-2 shrink-0">
+<div class="w-20 h-20 rounded-2xl bg-surface-container-lowest shadow-sm flex items-center justify-center">
+<img class="w-14 h-14 rounded-xl object-cover" data-alt="close up of perfectly manicured nails with soft pink polish and gold foil accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6-UkhuTCnMLxAJXi4YtwSn-Gp1qIOJiGJX3HrZ8aWfWSwAMGZ_TKkQUWstCxFKZ6Y-GUUnYHqQxv3scY4u4noGEK9AqV9CjudZ8ByeZJWIs52_6UzGSBVouTC3eR3A1EWeIIObjQu19BlHjnJc9qHzb2dK456nuat0AUYDZK2_cjTPyZUJ5G5O4YLFZjOD5PvdrbL6jSFy9dOK0QUnvCyr1rfYZBkQsZ0Af4KVz2mFverEoq6Ga0qfNlG8eeOZYi3rX-QmL_X7eXt"/>
+</div>
+<span class="text-[11px] font-bold text-stone-600">Nails</span>
+</div>
+</div>
+</section>
+<!-- AI Style Assistant Banner -->
+<section class="mb-10">
+<div class="relative w-full h-44 rounded-xl overflow-hidden editorial-gradient shadow-xl shadow-primary-container/30 group">
+<div class="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-all duration-500"></div>
+<!-- Abstract decorative element -->
+<div class="absolute -right-10 -bottom-10 w-48 h-48 bg-white/20 rounded-full blur-3xl"></div>
+<div class="relative h-full flex items-center px-8 z-10">
+<div class="w-2/3">
+<div class="inline-flex items-center gap-2 bg-white/30 backdrop-blur-md px-3 py-1 rounded-full mb-3">
+<span class="material-symbols-outlined text-white text-[14px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-[10px] font-extrabold text-white uppercase tracking-wider">New Feature</span>
+</div>
+<h3 class="font-headline font-extrabold text-2xl text-white leading-tight mb-2">AI Style Assistant</h3>
+<p class="text-white/90 text-xs leading-relaxed font-medium">Find your perfect look with our intelligent beauty analysis.</p>
+</div>
+<div class="absolute right-0 bottom-0 top-0 w-1/3">
+<img class="w-full h-full object-cover opacity-80 mix-blend-overlay" data-alt="abstract artistic visualization of facial mapping with glowing digital lines on a beautiful woman's face" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtVyUa1d_ntRSHZ1sOqYgyjki1NIOzTWxicyQs1FsXt_EQxlW1Ja3lTbOfevVrzE_xPvNLjxwitSDo1od_75doq5s5rFR-lvKEZR0NY-xBWYFdwkK2FCcP68DegNAF44EIKPfkAfJUPg0hDxJCtP6gdOF9EK59EAmt-y4Nr25w_3bMIY1f_NDB3Jt-iuO5C6-z1qlCILR08csa5ztjc07l6mxGpybyJOEuag1gGvjIwtLrykWlktW9Z3QO_mI3GRLx6jxZnW36tlbN"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Top Rated Stylists (Vertical List) -->
+<section class="mb-8">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-headline font-bold text-xl text-on-background tracking-tight">Top Rated Stylists</h2>
+</div>
+<div class="space-y-6">
+<!-- Specialist Spotlight Pattern -->
+<div class="relative pt-6">
+<div class="bg-surface-container-low rounded-xl p-6 pl-32 relative shadow-sm active:scale-[0.98] transition-transform">
+<!-- Overlapping profile photo -->
+<div class="absolute -top-4 left-6 w-24 h-32 rounded-lg overflow-hidden shadow-xl z-20">
+<img class="w-full h-full object-cover" data-alt="professional portrait of a confident female stylist with stylish hair and minimalist jewelry" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrLdrhFjKuz7KlcTcEYCdvsLIu_M--KTcqqwyWoKTUmbsN3KzIHdW3i5EZ7Y3uBuK6P0PzO5yp_88JOtNw_vaNCVLOx4Xf1aX8V7ikH-FiT4tUFT0PE-XvRyuBndSLZL03tEWplp7pU7JeVxVMSAytCkYHz548t5g3nU0maX3creuJvQTPjE1aLIbNYmSJB4LLxxH_UJnRDaGIOgk2AH2TLyJMb-GHlLnnufSNQOsLUuuBup_Zr90OgHtyGrvrwoM1ajcZ3NEMVAZx"/>
+</div>
+<div class="flex flex-col h-full justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h4 class="font-headline font-bold text-lg text-on-surface">Elena Russo</h4>
+<div class="flex items-center gap-1 bg-white/80 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-amber-500 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[11px] font-bold">4.9</span>
+</div>
+</div>
+<p class="text-xs text-stone-500 mb-4">Master Hair Stylist &amp; Colorist</p>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-primary font-bold text-sm">$85/hr</span>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-full text-xs font-bold shadow-md shadow-primary-container/20 active:scale-95 transition-transform active:scale-95 transition-all duration-200">Book Now</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Stylist Card 2 -->
+<div class="relative pt-6">
+<div class="bg-surface-container-low rounded-xl p-6 pl-32 relative shadow-sm active:scale-[0.98] transition-transform">
+<div class="absolute -top-4 left-6 w-24 h-32 rounded-lg overflow-hidden shadow-xl z-20">
+<img class="w-full h-full object-cover" data-alt="portrait of a male professional makeup artist with a creative and edgy look" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4QOoN57-hTmDltixE2MN8WnlceFnXyroiuC9yKnSiwfsu_56WbuYoqxIqAug_IjxEMmFzTh0LTBJKjxbwHTp_uwght8A4nxrgOytHGIg7EsEa__G7-2FgktpCpXq7616SPPCiRQW3TFOJCCPeWHw7JofAQtgLW8PwJ7RnWiLu-f3lKODdpprr55T8fJjhiUgPpyxSDvlTh3dkDFlG-1XLkYNLQYemDkaraqqqnvnj9L9SICfS0_K7YlICbGAhnWxOeom7BswWVtjs"/>
+</div>
+<div class="flex flex-col h-full justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h4 class="font-headline font-bold text-lg text-on-surface">Marco Valeska</h4>
+<div class="flex items-center gap-1 bg-white/80 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-amber-500 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[11px] font-bold">4.8</span>
+</div>
+</div>
+<p class="text-xs text-stone-500 mb-4">Bridal Makeup &amp; Editorial Expert</p>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-primary font-bold text-sm">$120/hr</span>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-full text-xs font-bold shadow-md shadow-primary-container/20 active:scale-95 transition-transform active:scale-95 transition-all duration-200">Book Now</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Stylist Card 3 -->
+<div class="relative pt-6">
+<div class="bg-surface-container-low rounded-xl p-6 pl-32 relative shadow-sm active:scale-[0.98] transition-transform">
+<div class="absolute -top-4 left-6 w-24 h-32 rounded-lg overflow-hidden shadow-xl z-20">
+<img class="w-full h-full object-cover" data-alt="well-groomed male stylist in a minimalist studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDubDqP0TMtc1He5lTIpCrt0T1ZLiGUfx0i13jejb3KoiQEgPbRZgSxrGub7ghnmfUf6HfOxeaFOf72gtZIqmKhUgdCLd8Lh4ZdfWEG6x2qLfZXXj4ja5e_Vwz2eNMderNzNSnwaN9vfFKqxMjVgN7EXvEuOfvYb5-3oPio18ibgXik7kgwo5EI3uheUBOXfH_v_mVBWcqvu0gwzPVuIMeSNzq5L2qAtrXqkd17g7N5Ere2D3D35g6cXboGkJ4trMmdrt6ApOJpEEX"/>
+</div>
+<div class="flex flex-col h-full justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h4 class="font-headline font-bold text-lg text-on-surface">Andre Costa</h4>
+<div class="flex items-center gap-1 bg-white/80 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-amber-500 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[11px] font-bold">5.0</span>
+</div>
+</div>
+<p class="text-xs text-stone-500 mb-4">Mens Grooming &amp; Braiding</p>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-primary font-bold text-sm">$70/hr</span>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-full text-xs font-bold shadow-md shadow-primary-container/20 active:scale-95 transition-transform active:scale-95 transition-all duration-200">Book Now</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+
+
+</div>
+
+<!-- Screen: men_s_styling_gallery -->
+<div id="screen-men_s_styling_gallery" class="app-screen hidden w-full min-h-[100dvh]">
+
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#faf9f6]/70 backdrop-blur-md shadow-sm shadow-[#1a1c1a]/5 flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#8d4d3b]" data-icon="location_on">location_on</span>
+<h1 class="font-headline font-extrabold text-[#8d4d3b] text-lg tracking-tighter">GlamAtHome</h1>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-stone-400 hover:opacity-80 transition-opacity cursor-pointer" data-icon="notifications">notifications</span>
+</div>
+</header>
+<main class="pt-20 pb-32 px-6 max-w-2xl mx-auto">
+<!-- Hero Editorial Section -->
+<section class="mb-12">
+<div class="flex flex-col gap-2">
+<span class="font-label text-label-md text-primary font-semibold uppercase tracking-[0.2em]">Curated Collection</span>
+<h2 class="font-headline text-[2.5rem] leading-tight font-extrabold tracking-tight text-on-surface">Men's Styling</h2>
+<p class="font-body text-on-surface-variant mt-2 max-w-[85%]">Elevated grooming for the modern gentleman. Discover precise cuts and tailored beard designs from top-tier specialists.</p>
+</div>
+</section>
+<!-- Category Filter Chips -->
+<div class="flex gap-3 overflow-x-auto no-scrollbar mb-10 pb-2">
+<button class="flex-shrink-0 px-6 py-2.5 bg-primary-container text-on-primary-container rounded-full font-label text-sm font-bold shadow-sm active:scale-95 transition-all duration-200">All Styles</button>
+<button class="flex-shrink-0 px-6 py-2.5 bg-surface-container-high text-on-surface-variant rounded-full font-label text-sm font-semibold hover:bg-surface-container-highest transition-colors active:scale-95 transition-all duration-200">Sharp Fades</button>
+<button class="flex-shrink-0 px-6 py-2.5 bg-surface-container-high text-on-surface-variant rounded-full font-label text-sm font-semibold hover:bg-surface-container-highest transition-colors active:scale-95 transition-all duration-200">Classic Cuts</button>
+<button class="flex-shrink-0 px-6 py-2.5 bg-surface-container-high text-on-surface-variant rounded-full font-label text-sm font-semibold hover:bg-surface-container-highest transition-colors active:scale-95 transition-all duration-200">Beard Trims</button>
+</div>
+<!-- Editorial Gallery Grid (Vertical) -->
+<div class="space-y-16">
+<!-- Style Card 1: Sharp Fade -->
+<article class="relative group active:scale-95 transition-all duration-200">
+<div class="relative w-full aspect-[4/5] rounded-lg overflow-hidden shadow-2xl shadow-on-surface/5">
+<img alt="Sharp Fade" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="close-up of a sharp skin fade haircut with clean lines on a male model, professional studio lighting, sophisticated atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBb5-1nkpAA_KuN5-qZyjm4zftcmgbGpwdry0WqaTsCc2_PA_7q4a2CXRZuGoEuf5fdQi4eDxYt8bxzD1sMmy0_PiTfN2ugjB78uBvyElPg1unGUkQvTNpekzChMAt74sglnhjKZFXkOFAckWBMtpnGg819FfkZOF-EC5kYWrNZfSzp4VupKccSPSP6myVLKYmr40AbHrKhcE0iF1K5frTL6srpM0qume-klyPeQzEe7mXYVTtqZYsUhti7hU3zoTlGGMSdAmTFSReS"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+</div>
+<!-- Asymmetrical Detail Card -->
+<div class="absolute -bottom-8 right-0 left-6 bg-surface-container-lowest p-6 rounded-lg shadow-xl shadow-on-surface/5 flex flex-col gap-4 border border-outline-variant/10">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline text-xl font-bold text-on-surface tracking-tight">The Executive Fade</h3>
+<p class="font-body text-sm text-on-surface-variant">Signature high-skin fade with a textured crop finish.</p>
+</div>
+<div class="flex items-center gap-1 bg-surface-container px-2 py-1 rounded-full">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold text-on-surface">4.9</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-2">
+<span class="font-headline font-bold text-lg text-primary">$55.00</span>
+<button class="bg-gradient-to-br from-[#8d4d3b] to-[#f4a28c] text-white px-6 py-3 rounded-full font-label text-xs font-bold uppercase tracking-widest shadow-lg active:scale-95 transition-all active:scale-95 transition-all duration-200">Book Style</button>
+</div>
+</div>
+</article>
+<!-- Style Card 2: Precise Beard -->
+<article class="relative group mt-12 active:scale-95 transition-all duration-200">
+<div class="relative w-full aspect-[4/5] rounded-lg overflow-hidden shadow-2xl shadow-on-surface/5">
+<img alt="Precise Beard" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="side profile of a man with a perfectly groomed thick beard and sharp mustache, elegant dark charcoal background, moody editorial lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAmxSbLCTSIndJSY-nLWifNnD_nQSvNWQ36gYEoXH-ABs30cMaBL5x_XomEhnRLzDhIgnj-A4PUjLm-pXMIUkbWdmcSEV3b1oNS1lGf29trm_cHxKB7J7LC5il78SWJWOclY9EsmMI1SeInlGeHTOOipqoQvPGEpL1AncV5LbntCTBT7Id8GWmj6TudSE9e8VaPlPzZug_N21_4YXWokzncVswU3mMZ8oAFEpG9Be8FHnfBkHxfuZ0atVYz7_jyBly-tkLpT7aoS74"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+</div>
+<div class="absolute -bottom-8 left-0 right-6 bg-surface-container-lowest p-6 rounded-lg shadow-xl shadow-on-surface/5 flex flex-col gap-4 border border-outline-variant/10">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline text-xl font-bold text-on-surface tracking-tight">Artisan Beard Sculpt</h3>
+<p class="font-body text-sm text-on-surface-variant">Full-shape definition with hot towel and razor finish.</p>
+</div>
+<div class="flex items-center gap-1 bg-surface-container px-2 py-1 rounded-full">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-xs font-bold text-on-surface">PRO</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-2">
+<span class="font-headline font-bold text-lg text-primary">$40.00</span>
+<button class="bg-gradient-to-br from-[#8d4d3b] to-[#f4a28c] text-white px-6 py-3 rounded-full font-label text-xs font-bold uppercase tracking-widest shadow-lg active:scale-95 transition-all active:scale-95 transition-all duration-200">Match with a Barber</button>
+</div>
+</div>
+</article>
+<!-- Style Card 3: Classic Taper -->
+<article class="relative group mt-12 active:scale-95 transition-all duration-200">
+<div class="relative w-full aspect-[4/5] rounded-lg overflow-hidden shadow-2xl shadow-on-surface/5">
+<img alt="Classic Taper" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="man with a classic slicked-back taper haircut, timeless grooming style, high-end barber shop background with warm wood accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1rC_lSs8fHk6Hh6bzoaZooWHlI-8fNo-ss7Zu_mtt7lp8zrhkw82Sosdl8RTxAptOZAjhgd7kDiz6WeufdSpgMM7RlDSXg1bFClUNo1F0MYYYSAwq4arpQ6ecnQiw4qDddU8mafe4nu2S06BxFcLRv0Y5hilKtOCLK3XZclxEffC-uGi-WrJGThKuf1GsXQ6QWrb6pPcZpQ6TlLbbYmcdFIPaoGLM_GEfi7GI3uOiUL7SDr4d85RLJDPz6yvzay2yaJM96G1L2C-5"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+</div>
+<div class="absolute -bottom-8 right-0 left-6 bg-surface-container-lowest p-6 rounded-lg shadow-xl shadow-on-surface/5 flex flex-col gap-4 border border-outline-variant/10">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline text-xl font-bold text-on-surface tracking-tight">Timeless Heritage Cut</h3>
+<p class="font-body text-sm text-on-surface-variant">Low taper with classic scissor-work and weight removal.</p>
+</div>
+<div class="flex items-center gap-1 bg-surface-container px-2 py-1 rounded-full">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-xs font-bold text-on-surface">POPULAR</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-2">
+<span class="font-headline font-bold text-lg text-primary">$65.00</span>
+<button class="bg-gradient-to-br from-[#8d4d3b] to-[#f4a28c] text-white px-6 py-3 rounded-full font-label text-xs font-bold uppercase tracking-widest shadow-lg active:scale-95 transition-all active:scale-95 transition-all duration-200">Book Style</button>
+</div>
+</div>
+</article>
+</div>
+<!-- AI Stylist Prompt Card -->
+<section class="mt-24 bg-[#1a1c1a] rounded-lg p-8 relative overflow-hidden text-white">
+<div class="relative z-10">
+<h4 class="font-headline text-2xl font-bold mb-2">Unsure of your look?</h4>
+<p class="font-body text-stone-400 mb-6 text-sm">Let our AI analyze your face shape and suggest the perfect cut.</p>
+<button class="bg-white text-black px-6 py-3 rounded-full font-label text-xs font-bold uppercase tracking-widest flex items-center gap-2 hover:scale-105 transition-transform active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined text-sm" data-icon="auto_awesome">auto_awesome</span>
+                    Try AI Stylist
+                </button>
+</div>
+<!-- Decorative Gradient Blobs -->
+<div class="absolute -top-10 -right-10 w-40 h-40 bg-primary/30 blur-[80px] rounded-full"></div>
+<div class="absolute -bottom-10 -left-10 w-40 h-40 bg-primary-container/20 blur-[80px] rounded-full"></div>
+</section>
+</main>
+<!-- BottomNavBar -->
+
+
+</div>
+
+<!-- Screen: my_appointments -->
+<div id="screen-my_appointments" class="app-screen hidden w-full min-h-[100dvh]">
+
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#faf9f6]/70 dark:bg-stone-900/70 backdrop-blur-md shadow-sm shadow-[#1a1c1a]/5 flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-4">
+<button class="text-[#8d4d3b] hover:opacity-80 transition-opacity active:scale-95 duration-200 active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-['Manrope'] font-extrabold text-2xl tracking-tighter text-[#8d4d3b] dark:text-[#f4a28c]">GlamAtHome</h1>
+</div>
+<div class="flex items-center">
+<img alt="User profile avatar" class="w-8 h-8 rounded-full object-cover ring-2 ring-primary-fixed" data-alt="Close up portrait of a smiling woman with clear skin and natural makeup, professional lighting, soft studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVDQlwbFORmOna0-jrvA2JdqJgJNLPBoKoI30SwNdDrAX0Rgm5Wtnz6et7WhPs65-OUuvfRSgD59esUZYr2_kehxRxokdcxDNnkCvZZrvtmqiZEOVgQeLEw714GMxoMKmYkSlbO5-ejx3VPV5ruvl2FT0XGf2HWb12KH03jU2Qwnum78HpLMYIJz4FaJqZB-_NxSg-VVpvZnOM2Z4Bge9TdFSELILF2dZFLv2lPrVR7fYOjMvhaBtYkoJE228t_jqemiOIQj8DSxm-"/>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-2xl mx-auto min-h-screen">
+<!-- Page Title & Asymmetric Header -->
+<div class="mb-10 relative">
+<span class="font-label text-primary font-semibold tracking-widest uppercase text-[10px] mb-2 block">Your Schedule</span>
+<h2 class="font-headline text-display-lg text-4xl font-extrabold tracking-tight text-on-surface">My Appointments</h2>
+<div class="absolute -top-4 -right-2 w-24 h-24 bg-primary-fixed/30 rounded-full blur-3xl -z-10"></div>
+</div>
+<!-- Tab Switcher (Editorial Style) -->
+<div class="flex p-1 bg-surface-container-low rounded-xl mb-12 active:scale-[0.98] transition-transform">
+<button class="flex-1 py-3 px-6 rounded-lg text-sm font-semibold transition-all duration-300 bg-white text-primary shadow-sm active:scale-95 transition-all duration-200">
+                Upcoming
+            </button>
+<button class="flex-1 py-3 px-6 rounded-lg text-sm font-semibold transition-all duration-300 text-on-surface-variant hover:text-primary active:scale-95 transition-all duration-200">
+                Past
+            </button>
+</div>
+<!-- Booking List -->
+<div class="space-y-8">
+<!-- Appointment Card 1: Specialist Spotlight Layout -->
+<div class="relative pt-6">
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-[0_-4px_24px_rgba(26,28,26,0.04)] relative z-10 active:scale-[0.98] transition-transform">
+<div class="flex flex-col md:flex-row gap-6">
+<div class="relative -mt-12 md:mt-0 w-24 h-24 md:w-32 md:h-40 shrink-0">
+<img class="w-full h-full object-cover rounded-lg shadow-lg ring-4 ring-white" data-alt="Portrait of a professional female hairstylist with styled hair, wearing a designer apron in a luxury salon environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCS-AmvWvaCg5uZY-ZYuJ41KkhrWV4ISYawL7cslzgpoyJDkZwMrDhUmX9GgOJNHFhAeV6DXzp5mFOf2rLAr6tYFaHjGQgSzSDIsUqsHuC-UwfFSDLDtqjXMtoIyfrXZyI8aoZb1qWvB_SeOvnrp6b4xT6KgcUHLBVbtg6ZsIrqubnecsztasdKoAzKx3STLKBhuyDTfjthwST9Ev-WY5Oq-vAu_Lj1o_GXfcVAWTreM5lAZl6EszgTRnNnCDyILV5yz-rkdxy2n0e5"/>
+</div>
+<div class="flex-1 space-y-3">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline text-xl font-bold text-on-surface">Elena Rodriguez</h3>
+<p class="text-primary font-medium">Fulani Braids</p>
+</div>
+<div class="bg-primary-fixed/50 px-3 py-1 rounded-full">
+<span class="text-[10px] font-bold text-on-primary-fixed-variant uppercase">Confirmed</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-4 pt-2">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg" data-icon="calendar_today">calendar_today</span>
+<span class="text-sm">Oct 24, 2023</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg" data-icon="schedule">schedule</span>
+<span class="text-sm">10:30 AM</span>
+</div>
+</div>
+<div class="flex gap-3 pt-4">
+<button class="flex-1 bg-gradient-to-br from-primary to-primary-container text-white py-3 rounded-full font-semibold text-sm shadow-md hover:opacity-90 active:scale-95 transition-all active:scale-95 transition-all duration-200">
+                                    View Details
+                                </button>
+<button class="flex-1 bg-surface-container-high text-on-primary-container py-3 rounded-full font-semibold text-sm hover:bg-surface-container-highest transition-colors active:scale-95 transition-all duration-200">
+                                    Reschedule
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Appointment Card 2 -->
+<div class="relative pt-6">
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-[0_-4px_24px_rgba(26,28,26,0.04)] relative z-10 active:scale-[0.98] transition-transform">
+<div class="flex flex-col md:flex-row gap-6">
+<div class="relative -mt-12 md:mt-0 w-24 h-24 md:w-32 md:h-40 shrink-0">
+<img class="w-full h-full object-cover rounded-lg shadow-lg ring-4 ring-white" data-alt="Close up portrait of a skilled aesthetician with glowing skin, soft-focus background of a high-end beauty studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEqcKpyg5lgGvKi6qwNsHh0DCXW7hvGa_w2x2JI1VmtcXKQkbscMxaNLCdHrlqPtdsQHzwNREbgXusl4BKoUIF2zIyl5bOii6vNCOZPpYl6KohNt7J8hFk2Frta9UBUfcPOSYpO48a0FW5cE1pNDzPdaVzSiUdWvW-FPWluq9Vd2Yi6LYzbfqjeuqSymGhrhDAYYCn2ICzB_qAi-IsE2FO91MIg8aQQj9WWAV_CCaXZGex8vkGQzhpW0sQCyHRteCzu8kOG2W0PkmU"/>
+</div>
+<div class="flex-1 space-y-3">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline text-xl font-bold text-on-surface">Jordan Chen</h3>
+<p class="text-primary font-medium">Radiance Facial</p>
+</div>
+<div class="bg-tertiary-fixed/50 px-3 py-1 rounded-full">
+<span class="text-[10px] font-bold text-on-tertiary-fixed-variant uppercase">Pending</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-4 pt-2">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg" data-icon="calendar_today">calendar_today</span>
+<span class="text-sm">Oct 28, 2023</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg" data-icon="schedule">schedule</span>
+<span class="text-sm">2:00 PM</span>
+</div>
+</div>
+<div class="flex gap-3 pt-4">
+<button class="flex-1 bg-gradient-to-br from-primary to-primary-container text-white py-3 rounded-full font-semibold text-sm shadow-md hover:opacity-90 active:scale-95 transition-all active:scale-95 transition-all duration-200">
+                                    View Details
+                                </button>
+<button class="flex-1 bg-surface-container-high text-on-primary-container py-3 rounded-full font-semibold text-sm hover:bg-surface-container-highest transition-colors active:scale-95 transition-all duration-200">
+                                    Reschedule
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty Space/Editorial Tip -->
+<div class="pt-8 border-t border-outline-variant/15">
+<div class="bg-primary-fixed/20 p-6 rounded-lg flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="auto_awesome">auto_awesome</span>
+<div>
+<p class="font-headline font-bold text-on-primary-fixed-variant">Beauty Tip</p>
+<p class="text-xs text-on-surface-variant">Prep your skin with hydration 24 hours before your Radiance Facial for the best results.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+
+
+</div>
+
+<!-- Screen: saved_styles_stylists -->
+<div id="screen-saved_styles_stylists" class="app-screen hidden w-full min-h-[100dvh]">
+
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#faf9f6]/70 dark:bg-stone-900/70 backdrop-blur-md shadow-sm shadow-[#1a1c1a]/5 flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#8d4d3b] cursor-pointer hover:opacity-80 transition-opacity">menu</span>
+<h1 class="font-['Manrope'] font-extrabold text-2xl tracking-tighter text-[#8d4d3b] dark:text-[#f4a28c]">GlamAtHome</h1>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-fixed shadow-sm">
+<img alt="User Profile" data-alt="close-up portrait of a smiling young woman with glowing skin and soft waves in her hair against a neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXGV_80sq_OGmSEqtEc_7-pGKe_se6o2zQCb2KGslQiztqujc_xUn65QLaw06mOErAt_O4lkJMWfRsNyDPMlz2ZX08b5enJppyvs_Qj3gC07O9HNpAcEEuE7zGpKz8qiX84p8rONoQqUmyNMZtFTaBhyYh8oCm4P3AElER8o0m0yo506_s9nUcAowDeflW8QJRpzcqMQ9DJy4AQ0k1iJVmCzD-9ZHAZFaHLA1mAQf8iCJxCqfKcmGlkDweQPaTSqEVkEwig6g_qiJ5"/>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-5xl mx-auto">
+<!-- Header Section -->
+<header class="mb-12">
+<p class="font-label text-primary font-semibold tracking-widest uppercase text-xs mb-2">Curated Collection</p>
+<h2 class="font-headline font-extrabold text-4xl tracking-tight text-on-surface">Saved Styles &amp; Stylists</h2>
+<div class="h-1 w-12 bg-silk-gradient mt-4 rounded-full"></div>
+</header>
+<!-- Tabs/Filter Chips -->
+<div class="flex gap-3 mb-10 overflow-x-auto hide-scrollbar">
+<button class="px-8 py-3 bg-silk-gradient text-white rounded-full font-semibold shadow-lg shadow-primary/20 whitespace-nowrap active:scale-95 transition-all duration-200">All Favorites</button>
+<button class="px-8 py-3 bg-surface-container-high text-on-surface-variant rounded-full font-semibold hover:bg-surface-container-highest transition-colors whitespace-nowrap active:scale-95 transition-all duration-200">Styles</button>
+<button class="px-8 py-3 bg-surface-container-high text-on-surface-variant rounded-full font-semibold hover:bg-surface-container-highest transition-colors whitespace-nowrap active:scale-95 transition-all duration-200">Stylists</button>
+</div>
+<!-- Section 1: Favorite Styles (Asymmetric Bento Grid) -->
+<section class="mb-16">
+<div class="flex justify-between items-end mb-8">
+<div>
+<h3 class="font-headline font-bold text-2xl">Inspiration Gallery</h3>
+<p class="text-on-surface-variant text-sm">Your visual mood board for upcoming appointments</p>
+</div>
+<button class="text-primary font-bold text-sm flex items-center gap-1 hover:underline active:scale-95 transition-all duration-200">View All <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px]">
+<!-- Large Featured Style -->
+<div class="col-span-2 row-span-2 relative group overflow-hidden rounded-xl">
+<img alt="Rose Gold Waves" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="vibrant rose gold hair with voluminous soft waves, professionally styled, glowing under studio lighting with a warm peach aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHkTnha6rPvuuM0FK0vdi1rD2zGgQZggiy6hr1NASsofd5ZAG4gVMj2-uCmDhA_9dWx5WZzarNAsBBi0fkz-elL3xgCeKFMloeKBxsopV9xW95x0daJ9O5CA_6oIyyRFa_ywcW9nlpj1-mQWS6zG_zUi99M_0x3zRnjCd5tHzYvuRI4W-IwH5mj9Ha-vuqM8MnZWPQXMgC5iOP7ZG7LUEOCUdo6K7Jz-EFhrGLBpfXXQsk4zd6vgoTxSDwVYerGb3NlsMPHhTTJPoZ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6">
+<span class="text-white font-bold text-xl">Sunset Balayage</span>
+<p class="text-white/80 text-sm">Saved 2 days ago</p>
+</div>
+<button class="absolute top-4 right-4 bg-white/90 backdrop-blur-md p-2 rounded-full text-primary shadow-lg active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<!-- Small Grid Items -->
+<div class="relative group overflow-hidden rounded-xl">
+<img alt="Sleek Bob" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="sleek platinum blonde bob haircut, sharp edges, modern minimalist aesthetic, soft natural daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXCFPZQjFOtxKmlYNf4NjdC1mS5BQpHwo4KAdYNHmix_3Hme5xT6VH8qS6XlyYit1QqPADPsb5voMwjXrH6r9-tTMF9IzLW53YUymCHako-Dm6qfEPmqv5HRSMEFuLiw2okytpD9JKbDMbt13WBWjarXlDL5yBgq1i40SJJq_bTlW4q8OdWqx-dQuDs7tIhYLFcSUm1FyrTZn5hTunMlf1C_XRKDCczBmvSulgj1iMz8zyF4Svnjj0KktVH8lhQfl3ClbHKGpOBxEQ"/>
+<button class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm p-1.5 rounded-full text-primary active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="relative group overflow-hidden rounded-xl">
+<img alt="Braided Crown" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="intricate braided crown hairstyle on dark hair with small flower accents, ethereal and romantic garden setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDScraLMJpuIJoq2NTTJiG1vAbt4TbGcsxIb6R9yFFKFHDYn-ENZrAicxjOEPZj16_JOn2eb5SRxXsTJHHDg-P4lrmIJo0dpgZgEwyJTPcEWqYF7UeAZRAX_IkvOZ6hKfWakJoZ-MNM4IOl23mvXY7fk8QER0O7aPHq0Qgl2lsGr8HteqzD_s5-fNFPLLCHilCbbBub_x_4Xkr9o8RIfPGpIsQlIuQBIUyTRvk3kX3ezXPnYfjabo9hvejYa6fXerm2sBRGUAk6KuoJ"/>
+<button class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm p-1.5 rounded-full text-primary active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="relative group overflow-hidden rounded-xl col-span-2 md:col-span-1">
+<img alt="Soft Curls" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="long dark hair with high-gloss soft curls, luxury hair salon lighting, focusing on texture and shine" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbr-QGzNkca-DduqxF8g6iY_Nv-OFIt05UC01ny8LAc4qcad9ltuLpQDjZn91KRc6cUn87cWFS59sxMowNXc3vbI-d8amL7LJNdFoMRAxcRFTOK15E078moh_C-RIlAJfMDXthWSG7yAEHRxED-NFWhvbi_LDa-iri-MYgpUc-BkV2tBfKKzlFzvmnDWtfOVI_k4GYHY_rUtMXQAulFMkJDHDSNDwyWZNx4Jyw93ovKjBPEQIvsIxDN_rrbDa8E09bH8UGUfZveKGN"/>
+<button class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm p-1.5 rounded-full text-primary active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="relative group overflow-hidden rounded-xl">
+<img alt="Pixie Cut" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="modern textured pixie cut on a model with warm skin tones, chic editorial style, neutral studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8NlSdOKJ1knKt990PDg-zeF_N_uETMOIrxxk0AIuKaxFeW39GzFT7gePQMBk_OxdckxIv2jHegS-aouignZbdZR0JWFnUKZXGbD6H76Wwo6vHYqZyjqVEN10eXIgwEdYp7DYJfd5TXzFK_mMsTVvjoY6D-I0iT049iPPguYVMTl3MGxd6-YC39ntwgHA1ras5JlLokrcwSCt6cxKAMUG6X54KmWz65cBNfB3RmgTV_19wZDRcFyNasvw0Z16HmtTgjvnU-9-weOgK"/>
+<button class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm p-1.5 rounded-full text-primary active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Section 2: Favorite Stylists (Specialist Spotlight) -->
+<section>
+<div class="flex justify-between items-end mb-8">
+<div>
+<h3 class="font-headline font-bold text-2xl text-on-surface">Top-Tier Specialists</h3>
+<p class="text-on-surface-variant text-sm">Experts who understand your unique style</p>
+</div>
+</div>
+<div class="space-y-12">
+<!-- Specialist Spotlight 1 -->
+<div class="relative flex flex-col md:flex-row items-center bg-surface-container-low rounded-xl p-8 md:p-12 transition-all hover:shadow-xl hover:shadow-[#1a1c1a]/5 active:scale-[0.98] transition-transform">
+<div class="w-48 h-48 md:w-64 md:h-64 rounded-lg overflow-hidden -mt-20 md:-mt-0 md:-ml-20 shadow-2xl z-10">
+<img alt="Sofia Loren" class="w-full h-full object-cover" data-alt="professional female hair stylist in her late 20s with an artistic vibe, standing in a bright modern salon interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMzs-N4fzXLPtGrG7jDt6Ef5_BeMRx5K0QboUE5aJYXG6SWftsfX3hdtitP28wLN7A5B9Ur82xMaP3KUmLjreHs2ngTCkVLHllRmqL39P7J_F28JetWXxdoMN_f21T8gDbXKvZnK_VGeD7g6h326wQIZfMjb1W1C87ONKdCAIOR_Xk1JJnKKWoZrzFiVuR6vJBRqrLEYU2v4pP8-ytVXlkOSLePL8zBHy2A68qnRYNxgK7B7S3db-yiERWMNSbWAJHcwCeAQXgeWnD"/>
+</div>
+<div class="mt-8 md:mt-0 md:ml-12 flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-headline font-extrabold text-2xl text-primary">Sofia Loren</h4>
+<p class="text-on-tertiary-fixed-variant font-medium tracking-wide uppercase text-xs mb-4">Master Colorist &amp; Bridal Expert</p>
+</div>
+<div class="bg-primary-fixed px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-on-primary-fixed-variant font-bold text-sm">4.9</span>
+</div>
+</div>
+<p class="text-on-surface-variant leading-relaxed mb-6">"Beauty is about being comfortable in your own skin. I specialize in lived-in color that looks as good at 12 weeks as it does on day one."</p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="bg-white px-3 py-1 rounded-full text-xs font-semibold text-on-surface-variant">Balayage</span>
+<span class="bg-white px-3 py-1 rounded-full text-xs font-semibold text-on-surface-variant">Precision Cut</span>
+<span class="bg-white px-3 py-1 rounded-full text-xs font-semibold text-on-surface-variant">Silk Press</span>
+</div>
+<button class="bg-silk-gradient text-white px-10 py-4 rounded-xl font-bold shadow-lg shadow-primary/30 hover:scale-[1.02] transition-transform active:scale-95 transition-all duration-200">Book Next Session</button>
+</div>
+</div>
+<!-- Specialist Spotlight 2 -->
+<div class="relative flex flex-col md:flex-row items-center bg-surface-container-low rounded-xl p-8 md:p-12 transition-all hover:shadow-xl hover:shadow-[#1a1c1a]/5 active:scale-[0.98] transition-transform">
+<div class="w-48 h-48 md:w-64 md:h-64 rounded-lg overflow-hidden -mt-20 md:-mt-0 md:-ml-20 shadow-2xl z-10">
+<img alt="Elena V." class="w-full h-full object-cover" data-alt="sophisticated female stylist looking confidently at the camera, wearing professional black attire, blurred upscale boutique background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVejZnIA5WJQChTeKdavuR9Rku2vIvRpPRwz37yu0SV9P104dX8C6QMROXmFID7l54JZixT_Aq6z2cvWJSxdsD8i6TpPC3R9HKivcLaHBgtbV9Ta-BbjsV0rkW7McVqro5N1uj5ggJcf1Ob63sjIJbc3dZ3oL6s76RMukftQaSIFUfVX8HjwyxlY-N14HuipCC2eYffxhIbfb24v2xeDXTrIoFh9hsYskfeiaAasnA2qH5pr8VdM8qKQP_84FdGaiExSEnlXwKftpN"/>
+</div>
+<div class="mt-8 md:mt-0 md:ml-12 flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-headline font-extrabold text-2xl text-primary">Elena V.</h4>
+<p class="text-on-tertiary-fixed-variant font-medium tracking-wide uppercase text-xs mb-4">Editorial &amp; High-Fashion Stylist</p>
+</div>
+<div class="bg-primary-fixed px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-on-primary-fixed-variant font-bold text-sm">5.0</span>
+</div>
+</div>
+<p class="text-on-surface-variant leading-relaxed mb-6">Bringing the runway to your living room. Expertise in avant-garde transformations and hair health restoration treatments.</p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="bg-white px-3 py-1 rounded-full text-xs font-semibold text-on-surface-variant">Editorial Styling</span>
+<span class="bg-white px-3 py-1 rounded-full text-xs font-semibold text-on-surface-variant">Keratin</span>
+<span class="bg-white px-3 py-1 rounded-full text-xs font-semibold text-on-surface-variant">Extensions</span>
+</div>
+<button class="bg-silk-gradient text-white px-10 py-4 rounded-xl font-bold shadow-lg shadow-primary/30 hover:scale-[1.02] transition-transform active:scale-95 transition-all duration-200">Book Next Session</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+
+
+</div>
+
+<!-- Screen: stylist_profile_portfolio -->
+<div id="screen-stylist_profile_portfolio" class="app-screen hidden w-full min-h-[100dvh]">
+
+<!-- Top AppBar (Internal Navigation State) -->
+<header class="fixed top-0 w-full z-50 bg-[#faf9f6]/70 dark:bg-stone-900/70 backdrop-blur-xl flex justify-between items-center px-6 h-16 shadow-[0_4px_24px_rgba(26,28,26,0.04)]">
+<div class="flex items-center gap-4">
+<button class="text-primary hover:opacity-80 transition-opacity active:scale-95 duration-200 active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<span class="font-headline font-extrabold italic text-primary tracking-tight">GlamAtHome</span>
+</div>
+<div class="flex items-center gap-3">
+<button class="text-primary hover:opacity-80 transition-opacity active:scale-95 duration-200 active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary-fixed overflow-hidden">
+<img alt="User profile photo" class="w-full h-full object-cover" data-alt="professional portrait of a woman with a warm smile and styled hair against a soft studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqLsgWPHRaqc6Oq6EJLmrOJyPZpwuRJqKiO3AILhZPZIREZ2-Dd_3PVS8YaJQ7w-hz51F4ibe6A53SLISVIhSSxtCJomULySG5hwlBp9F5w3uNTsvTXNr2WBlyfx0n6TSrQJwEynzd_l4AtWBUqNvv8bv3guBMycA1oQlHBm8AJ3xNPgKH5F-Rysuhks5XGwxtYZTwpJsdtJ4vefOHsAoumq9rdJCUHFX7Lw9lnLhVqftRgADAe3EZzBP1hVKNg4NA5EF6DsZTPOuF"/>
+</div>
+</div>
+</header>
+<main class="pb-32 pt-16">
+<!-- Hero Section -->
+<section class="relative h-[397px] w-full overflow-hidden">
+<img alt="Stylist at work" class="w-full h-full object-cover" data-alt="close-up of professional stylist's hands intricately braiding hair with gold accessories in a sunlit high-end salon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-jL3REziOBtSaU01eeQjuldsDaqkhD71CvkSqvKRfs1RgFLjfmkleUZU6pwz3Kp_k--dDmDXLoVZ4OZg9d9WA4q9QTG67ovYw3uaw70IXeaztteTAHqRQLLq_ViAjuP2EHR703b-l2OFdrC0Bb_pe1f5-P_wc_wxxM7j50V-DYd_Rt2l8tcgqlpo3lxhITuZPOs7cZrxlEWv9zICgvBBf2XSD0O8RLqwlyo3H4eNkPOABAtdpUTn1uZz2Qr2fhTeq096xuNqjUzZA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+</section>
+<!-- Stylist Info Card (The Specialist Spotlight Principle) -->
+<section class="px-6 -mt-20 relative z-10">
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-[0_12px_40px_rgba(141,77,59,0.08)] active:scale-[0.98] transition-transform">
+<div class="flex flex-col items-center text-center">
+<div class="relative mb-4">
+<div class="w-24 h-24 rounded-full border-4 border-surface-container-lowest overflow-hidden shadow-lg">
+<img alt="Stylist Avatar" class="w-full h-full object-cover" data-alt="headshot of a talented African female hairstylist with elegant micro-braids and professional makeup" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCANJH0my4S0PRRXZPAn6G_BIktFCmPBZLRLYZEqXM6g3ufHMHINglBGZvLdLv9rHyc0aA1cboa6sHTInQtg79PV_vBegIcZzAJCczDgvp4Si0e6_m5EeLMwOhJQ00F51FOTDs2ogE5wlnBhNVEjVXIxiXdi4CiFJ4kGhKEYhd4XJApc4-xGGFvatB9HLE4aEvq5f4NwHWOdICOkMawx_Vaa9FhBq-rBlhX8OOlWewvkSYI_jkhQyEtBQicI9W-Lm_25apjp1R2yj2e"/>
+</div>
+<div class="absolute -bottom-1 -right-1 bg-gradient-to-br from-primary to-primary-container text-white px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase shadow-md">
+                            Pro
+                        </div>
+</div>
+<h1 class="font-headline text-2xl font-bold text-on-surface mb-1">Amara Vance</h1>
+<p class="text-primary font-semibold tracking-wide text-sm mb-3">Braid Expert</p>
+<div class="flex items-center gap-2 bg-surface-container-low px-4 py-2 rounded-full">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-on-surface">4.9</span>
+<span class="text-outline text-sm">(124 Reviews)</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Portfolio Gallery -->
+<section class="mt-10">
+<div class="px-6 mb-6 flex justify-between items-end">
+<div>
+<h2 class="font-headline text-xl font-bold text-on-surface">My Work</h2>
+<p class="text-on-surface-variant text-xs">Recent Transformations</p>
+</div>
+<button class="text-primary text-sm font-semibold active:scale-95 transition-all duration-200">View All</button>
+</div>
+<div class="flex overflow-x-auto gap-4 px-6 hide-scrollbar">
+<!-- Gallery Item 1 -->
+<div class="flex-shrink-0 w-64">
+<div class="relative rounded-lg overflow-hidden h-80 shadow-sm group">
+<img alt="Before and After Braids" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="side-by-side comparison of natural hair before and after perfectly executed long knotless braids" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOgnosBhroYjtTohitYrBH4NaX3vpDqlPoEMNOov-YQoPXrUdluCcGkWCdiWFGfTaUqv5NXDKR9EmfFDOH3_wqMa7YGuh2rWqGKfO8ztpQA1yEveiyTPH5m0lZBo5lv1kCb2R9li8E0PUhGwKfPaDZHsOBCoEqPm7YhQhaAX8dNhseqIrbqUs_WHDotk98-PogXlE6UOeRllOPacK8LfQ5Ny01O-DioNg6hLbHCCU0pHc0MQfv2lbcFGssGQnbN5swa97-VWYj8BIg"/>
+<div class="absolute top-3 left-3 bg-white/80 backdrop-blur-md px-2 py-1 rounded text-[10px] font-bold uppercase tracking-tighter">Knotless</div>
+</div>
+</div>
+<!-- Gallery Item 2 -->
+<div class="flex-shrink-0 w-64">
+<div class="relative rounded-lg overflow-hidden h-80 shadow-sm group">
+<img alt="African Braid Style" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="high-detail shot of intricate geometric cornrow patterns on a model with warm studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiv1uus7h47SIMs0xI4EpW-bAaa3-RpbrLkP7SYXduBdGeOdxh5VCgjPhX7rTrn-E5HQIoXKFlR6n70d54IL5arAAJmeccnDCKlt7_T1v4o5W1uudzmAJQk3nWi9mKZ4HdrzlsW2x7HxGWtTHYRpTfdkNVkIZfWjKpKt914WzX56zmF2VBUxhPEmKlxQuWQ7luS77srCdzzeic8Esujux7HyM2Cy1dhXNPTx5rnQ4ODAcIJOiNPdkMHRupkmuoaSu1MRJ4V9MDiwLR"/>
+<div class="absolute top-3 left-3 bg-white/80 backdrop-blur-md px-2 py-1 rounded text-[10px] font-bold uppercase tracking-tighter">Cornrows</div>
+</div>
+</div>
+<!-- Gallery Item 3 -->
+<div class="flex-shrink-0 w-64">
+<div class="relative rounded-lg overflow-hidden h-80 shadow-sm group">
+<img alt="Fulani Braid Style" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="woman wearing elaborate Fulani braids adorned with gold beads and rings, elegant composition" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhH1oYtUl3NwzD3E3BK6hy93NZuXPAj_Zzubblj55-04welLtfKFvAyANIwxoe_5XxhkGrph0dRe-EJ_ROoRybwNufALjJqO4UjkT94WkmMhat0LBRL0lA6wW3kLZkupSybZqmL_SawfTisnQnt6wAmYG4rD0fijhPTZ0wCBV83qnUIEmyxJpjIkjFsGF1ff1QFlfv4qfEvokGAoJN6zFrOoPk0x3iz86Widstzg_kp8qO7pS9dOO5d_f_YJZprPUbNIPzK4KfI4rl"/>
+<div class="absolute top-3 left-3 bg-white/80 backdrop-blur-md px-2 py-1 rounded text-[10px] font-bold uppercase tracking-tighter">Specialty</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Service Menu -->
+<section class="mt-12 px-6">
+<h2 class="font-headline text-xl font-bold text-on-surface mb-6">Service Menu</h2>
+<div class="space-y-4">
+<!-- Service 1 -->
+<div class="bg-surface-container-low p-5 rounded-lg flex justify-between items-center group active:scale-[0.98] transition-all">
+<div class="flex-1">
+<h3 class="font-body font-bold text-on-surface text-lg">Knotless Braids (Medium)</h3>
+<div class="flex items-center gap-3 mt-1">
+<span class="text-xs text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="schedule">schedule</span> 4h 30m
+                            </span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="text-xs font-bold text-primary">Starts at $180</span>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+<!-- Service 2 -->
+<div class="bg-surface-container-low p-5 rounded-lg flex justify-between items-center group active:scale-[0.98] transition-all">
+<div class="flex-1">
+<h3 class="font-body font-bold text-on-surface text-lg">Cornrows with Design</h3>
+<div class="flex items-center gap-3 mt-1">
+<span class="text-xs text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="schedule">schedule</span> 2h 15m
+                            </span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="text-xs font-bold text-primary">Starts at $95</span>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+<!-- Service 3 -->
+<div class="bg-surface-container-low p-5 rounded-lg flex justify-between items-center group active:scale-[0.98] transition-all">
+<div class="flex-1">
+<h3 class="font-body font-bold text-on-surface text-lg">Goddess Braids</h3>
+<div class="flex items-center gap-3 mt-1">
+<span class="text-xs text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="schedule">schedule</span> 5h 00m
+                            </span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="text-xs font-bold text-primary">Starts at $210</span>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Action Bar -->
+<footer class="fixed bottom-0 w-full px-6 pb-8 pt-4 bg-surface/80 backdrop-blur-xl z-50">
+<button class="w-full h-16 bg-gradient-to-br from-primary to-primary-container text-white rounded-xl font-headline font-bold text-lg shadow-[0_12px_24px_rgba(141,77,59,0.3)] flex items-center justify-center gap-3 active:scale-95 transition-transform duration-300 active:scale-95 transition-all duration-200">
+            Book Appointment
+            <span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+</button>
+</footer>
+
+</div>
+
+<!-- Screen: user_profile_settings -->
+<div id="screen-user_profile_settings" class="app-screen hidden w-full min-h-[100dvh]">
+
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#faf9f6]/70 dark:bg-[#1a1c1a]/70 backdrop-blur-md shadow-sm shadow-[#1a1c1a]/5 flex items-center justify-between px-6 h-16 w-full">
+<button class="text-[#8d4d3b] dark:text-[#f4a28c] hover:opacity-80 transition-opacity active:scale-95 duration-200 active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-['Manrope'] font-semibold text-lg tracking-tight text-[#8d4d3b] dark:text-[#f4a28c]">My Profile</h1>
+<button class="text-[#8d4d3b] dark:text-[#f4a28c] hover:opacity-80 transition-opacity active:scale-95 duration-200 active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</header>
+<main class="pt-24 px-6 max-w-2xl mx-auto space-y-10">
+<!-- Profile Header / The Specialist Spotlight Pattern -->
+<section class="relative pt-12">
+<div class="bg-surface-container-low rounded-xl p-8 text-center relative overflow-visible active:scale-[0.98] transition-transform">
+<!-- Overlapping Avatar -->
+<div class="absolute -top-12 left-1/2 -translate-x-1/2">
+<div class="relative inline-block">
+<img alt="User Avatar" class="w-24 h-24 rounded-full border-4 border-surface shadow-lg object-cover" data-alt="Close-up portrait of a stylish young woman with a warm smile, soft natural lighting, elegant minimalist aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlRlZ3w_AhCDSmQezcMnu5502p0dNzJrvyWbfuyUloNF6MV22-zipN8kgrWwUblLOOd64PvmmZov1N_jJD6Tj--ZCxlCNDZvCJsCkPlEoZ8eyDi5qryGZWdw--adNUq1uDefMsW0KyMS9cKF1CutzZ7BySXoTNzGuA7rJ32tF63CizlIvF1LgQ1tMEWdkahNSyfjMGpLXPr0QRbxjMwAoDdohZqEReQxRLlnlHH67NxSKjnJvgtvxXyF-rZAjiZf-AOyBdSFw0uO_F"/>
+<div class="absolute bottom-1 right-1 bg-[#4285F4] text-white rounded-full p-1 border-2 border-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-xs" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+</div>
+<div class="mt-8 space-y-1">
+<h2 class="font-headline text-2xl font-bold tracking-tight text-on-surface">Sarah</h2>
+<p class="font-label text-label-md text-on-surface-variant uppercase tracking-widest">Verified User</p>
+</div>
+<div class="mt-6 flex justify-center gap-4">
+<div class="bg-surface-container-lowest px-4 py-2 rounded-lg">
+<p class="font-headline font-bold text-primary">12</p>
+<p class="text-[10px] uppercase tracking-tighter text-on-surface-variant">Bookings</p>
+</div>
+<div class="bg-surface-container-lowest px-4 py-2 rounded-lg">
+<p class="font-headline font-bold text-primary">4.9</p>
+<p class="text-[10px] uppercase tracking-tighter text-on-surface-variant">Rating</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Information -->
+<section class="space-y-4">
+<h3 class="font-headline text-lg font-semibold text-on-surface px-2">Contact Information</h3>
+<div class="bg-surface-container-lowest rounded-lg p-6 space-y-6 shadow-sm shadow-outline-variant/5">
+<div>
+<label class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant mb-3 block">Linked Accounts</label>
+<button class="w-full flex items-center justify-center gap-3 py-3 px-4 border border-outline-variant/20 rounded-xl hover:bg-surface-container-low transition-colors active:scale-95 transition-all duration-200">
+<svg class="w-5 h-5" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 12-4.53z" fill="#EA4335"></path>
+</svg>
+<span class="font-body font-medium text-sm">Continue with Google</span>
+</button>
+</div>
+<div class="pt-4 border-t border-outline-variant/10">
+<label class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant mb-1 block">Phone Number</label>
+<div class="flex items-center justify-between">
+<p class="font-body font-medium text-on-surface">+1 (555) 012-3456</p>
+<div class="flex items-center gap-1 text-green-600">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Verified</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Payment & Wallet -->
+<section class="space-y-4">
+<h3 class="font-headline text-lg font-semibold text-on-surface px-2">Payment &amp; Wallet</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Saved Card -->
+<div class="bg-gradient-to-br from-primary to-primary-container p-6 rounded-xl text-white shadow-lg shadow-primary/20 aspect-[1.6/1] flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-3xl opacity-80">contactless</span>
+<p class="font-headline font-bold italic tracking-widest text-lg">VISA</p>
+</div>
+<div class="space-y-4">
+<p class="font-body tracking-[0.2em] text-lg">•••• •••• •••• 4242</p>
+<div class="flex justify-between items-end">
+<div class="space-y-1">
+<p class="text-[8px] uppercase tracking-widest opacity-60">Card Holder</p>
+<p class="text-xs font-medium uppercase tracking-wider">Sarah Johnson</p>
+</div>
+<div class="space-y-1 text-right">
+<p class="text-[8px] uppercase tracking-widest opacity-60">Expires</p>
+<p class="text-xs font-medium">12/26</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Add New Card -->
+<button class="bg-surface-container-low border-2 border-dashed border-outline-variant/30 rounded-xl aspect-[1.6/1] flex flex-col items-center justify-center gap-2 hover:bg-surface-container-high transition-colors group active:scale-95 transition-all duration-200 active:scale-[0.98] transition-transform">
+<div class="w-12 h-12 rounded-full bg-surface-container-lowest flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary">add</span>
+</div>
+<span class="font-body text-sm font-medium text-on-surface-variant">+ Add new card</span>
+</button>
+</div>
+</section>
+<!-- Menu List -->
+<section class="space-y-2 pb-10">
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm shadow-outline-variant/5">
+<a class="flex items-center justify-between p-5 hover:bg-surface-container-low transition-colors group border-b border-outline-variant/5 active:scale-95 transition-all duration-200" href="#">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">calendar_month</span>
+</div>
+<span class="font-body font-medium text-on-surface">Past Bookings</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+</a>
+<a class="flex items-center justify-between p-5 hover:bg-surface-container-low transition-colors group border-b border-outline-variant/5 active:scale-95 transition-all duration-200" href="#">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">favorite</span>
+</div>
+<span class="font-body font-medium text-on-surface">Favorite Stylists</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+</a>
+<a class="flex items-center justify-between p-5 hover:bg-surface-container-low transition-colors group border-b border-outline-variant/5 active:scale-95 transition-all duration-200" href="#">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">shield_person</span>
+</div>
+<span class="font-body font-medium text-on-surface">Privacy Settings</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+</a>
+<button class="w-full flex items-center justify-between p-5 hover:bg-error/5 transition-colors group active:scale-95 transition-all duration-200">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-error/5 flex items-center justify-center text-error">
+<span class="material-symbols-outlined">logout</span>
+</div>
+<span class="font-body font-medium text-error">Log Out</span>
+</div>
+</button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+
+
+</div>
+<!-- Hamburger Overlay Sidebar -->
+<div id="global-sidebar-overlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[10001] hidden transition-opacity opacity-0"></div>
+<div id="global-sidebar" class="fixed inset-y-0 left-0 w-72 bg-[#faf9f6] z-[10002] shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out">
+    <div class="p-6 h-full flex flex-col pt-16 relative">
+        <button id="close-sidebar" class="absolute top-6 right-6 text-stone-500 hover:text-[#8d4d3b] active:scale-95 transition-all outline-none">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <div class="flex items-center gap-4 mb-10 pb-6 border-b border-stone-200">
+            <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-[#f4a28c]">
+                <!-- Static avatar referencing previous URL injected -->
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6A_JS07M-ZP7ljSBOGtaZgfCTolnvGsOGvQWnyFfLGmFYA07rMfUjRubvtVECOl7ZP7aeoO9Kt6yB6F_iu4sqHmGbhvzvu0cFgbzkPaYYq33JvoBJuahhuHYFmfiBQDbC9B3WKwmr-BPKsMY4c8kH5tgZ-0HoW7Ls7_TG6WTyRbh94zIXwkwD0K9tjAtqg64h3v9xGc3DhhHJ8yvKCzyh6u1_VrosTKRA7LP0nY4YKuXaXjzGlb1Zy3yvyw6WwIxmM8I8QKELBbWs" class="w-full h-full object-cover">
+            </div>
+            <div>
+                <h3 class="font-headline font-bold text-lg text-[#8d4d3b] leading-tight">Sarah J.</h3>
+                <p class="text-[10px] text-stone-500 uppercase tracking-widest font-bold mt-0.5">Premium Member</p>
+            </div>
+        </div>
+        <div class="flex flex-col gap-2 flex-grow">
+            <button class="sidebar-link flex items-center gap-4 p-4 rounded-xl hover:bg-[#f4a28c]/10 text-stone-600 hover:text-[#8d4d3b] transition-colors text-left active:scale-95 outline-none" data-target="user_profile_settings">
+                <span class="material-symbols-outlined">person</span>
+                <span class="font-bold text-sm tracking-wide">Profile</span>
+            </button>
+            <button class="sidebar-link flex items-center gap-4 p-4 rounded-xl hover:bg-[#f4a28c]/10 text-stone-600 hover:text-[#8d4d3b] transition-colors text-left active:scale-95 outline-none" data-target="user_profile_settings">
+                <span class="material-symbols-outlined">settings</span>
+                <span class="font-bold text-sm tracking-wide">Settings</span>
+            </button>
+            <div class="mt-auto border-t border-stone-200 pt-4">
+                <button class="flex items-center gap-4 p-4 w-full text-red-600 hover:bg-red-50 rounded-xl transition-colors text-left active:scale-95 outline-none">
+                    <span class="material-symbols-outlined">logout</span>
+                    <span class="font-bold text-sm tracking-wide">Logout</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Notifications Dropdown -->
+<div id="global-notifications-dropdown" class="fixed top-16 right-4 w-80 bg-white rounded-2xl shadow-2xl z-[10000] hidden border border-stone-100 overflow-hidden transform origin-top-right transition-all scale-95 opacity-0">
+    <div class="bg-gradient-to-r from-[#8d4d3b] to-[#f4a28c] p-4 text-white flex justify-between items-center">
+        <h3 class="font-headline font-bold">Notifications</h3>
+        <span class="text-[10px] uppercase font-bold bg-white/20 px-2 py-1 rounded-full text-white">3 New</span>
+    </div>
+    <div class="max-h-80 overflow-y-auto">
+        <div class="p-4 border-b border-stone-100 hover:bg-stone-50 transition-colors cursor-pointer active:scale-[0.98]">
+            <p class="font-bold text-sm text-stone-800">Booking Confirmed</p>
+            <p class="text-xs text-stone-500 mt-1">Your appointment with Elena is set for tomorrow at 2 PM.</p>
+        </div>
+        <div class="p-4 border-b border-stone-100 hover:bg-stone-50 transition-colors cursor-pointer active:scale-[0.98]">
+            <p class="font-bold text-sm text-[#8d4d3b]">New Stylist Match</p>
+            <p class="text-xs text-stone-500 mt-1">Based on your recent AI analysis, we found 2 local specialists.</p>
+        </div>
+        <div class="p-4 hover:bg-stone-50 transition-colors cursor-pointer active:scale-[0.98]">
+            <p class="font-bold text-sm text-stone-800">Payment Processed</p>
+            <p class="text-xs text-stone-500 mt-1">Receipt for $85.00 has been sent to your email.</p>
+        </div>
+    </div>
+</div><!-- Fixed Universal Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-end px-4 pb-4 pt-3 bg-[#faf9f6]/95 backdrop-blur-xl z-[9999] shadow-[0_-8px_30px_rgba(183,110,121,0.15)] border-t border-[#f4a28c]/20 rounded-t-[2.5rem]">
+    <a href="#" id="nav-btn-home" onclick="navigate('glamathome_home_screen'); return false;" class="group flex flex-col items-center justify-center text-[#86736e] hover:text-[#8d4d3b] p-2 transition-all active:scale-95 duration-200 outline-none">
+        <span class="material-symbols-outlined pb-1 group-hover:scale-110 transition-transform" style="font-variation-settings: 'FILL' 1;">home</span>
+        <span class="font-['Be_Vietnam_Pro'] text-[9px] font-bold uppercase tracking-widest mt-1">Home</span>
+    </a>
+    <a href="#" id="nav-btn-discover" onclick="navigate('discover_styles_stylists'); return false;" class="group flex flex-col items-center justify-center text-[#86736e] hover:text-[#8d4d3b] p-2 transition-all active:scale-95 duration-200 outline-none">
+        <span class="material-symbols-outlined pb-1 group-hover:scale-110 transition-transform">search</span>
+        <span class="font-['Be_Vietnam_Pro'] text-[9px] font-bold uppercase tracking-widest mt-1">Discover</span>
+    </a>
+    <a href="#" id="nav-btn-bookings" onclick="navigate('my_appointments'); return false;" class="group flex flex-col items-center justify-center text-[#86736e] hover:text-[#8d4d3b] p-2 transition-all active:scale-95 duration-200 outline-none">
+        <span class="material-symbols-outlined pb-1 group-hover:scale-110 transition-transform">calendar_month</span>
+        <span class="font-['Be_Vietnam_Pro'] text-[9px] font-bold uppercase tracking-widest mt-1">Bookings</span>
+    </a>
+    <a href="#" id="nav-btn-favorites" onclick="navigate('saved_styles_stylists'); return false;" class="group flex flex-col items-center justify-center text-[#86736e] hover:text-[#8d4d3b] p-2 transition-all active:scale-95 duration-200 outline-none">
+        <span class="material-symbols-outlined pb-1 group-hover:scale-110 transition-transform">favorite</span>
+        <span class="font-['Be_Vietnam_Pro'] text-[9px] font-bold uppercase tracking-widest mt-1">Favorites</span>
+    </a>
+    <a href="#" id="nav-btn-chats" onclick="navigate('chats'); return false;" class="group flex flex-col items-center justify-center bg-gradient-to-br from-[#8d4d3b] to-[#f4a28c] text-white rounded-full p-3 mb-2 scale-[1.12] shadow-lg shadow-[#8d4d3b]/30 active:scale-[0.98] transition-all duration-300 outline-none hover:opacity-90">
+        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+        <span class="font-['Be_Vietnam_Pro'] text-[8px] font-extrabold uppercase tracking-widest mt-1">Messages</span>
+    </a>
+</nav>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

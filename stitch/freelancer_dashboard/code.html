@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GlamAtHome - Freelancer Dashboard</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Be+Vietnam+Pro:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "outline-variant": "#d8c2bc",
+              "tertiary-fixed": "#ffdcbe",
+              "on-error-container": "#93000a",
+              "surface-container-lowest": "#ffffff",
+              "surface": "#faf9f6",
+              "background": "#faf9f6",
+              "tertiary-fixed-dim": "#e3c0a0",
+              "surface-variant": "#e3e2e0",
+              "tertiary": "#74593f",
+              "primary-fixed": "#ffdbd1",
+              "secondary-container": "#feaab6",
+              "secondary": "#8c4b55",
+              "on-tertiary": "#ffffff",
+              "inverse-on-surface": "#f2f1ee",
+              "on-error": "#ffffff",
+              "error-container": "#ffdad6",
+              "on-surface": "#1a1c1a",
+              "surface-container-high": "#e9e8e5",
+              "secondary-fixed": "#ffd9dd",
+              "primary-container": "#f4a28c",
+              "on-tertiary-fixed-variant": "#5a422a",
+              "primary": "#8d4d3b",
+              "inverse-surface": "#2f312f",
+              "inverse-primary": "#ffb5a1",
+              "on-secondary-fixed-variant": "#70343e",
+              "on-primary-fixed": "#390c02",
+              "surface-container-low": "#f4f3f1",
+              "on-surface-variant": "#53433f",
+              "on-secondary-fixed": "#3a0915",
+              "surface-dim": "#dbdad7",
+              "surface-tint": "#8d4d3b",
+              "on-tertiary-container": "#5b422a",
+              "on-secondary": "#ffffff",
+              "on-primary-fixed-variant": "#703626",
+              "tertiary-container": "#d2b091",
+              "surface-container": "#efeeeb",
+              "error": "#ba1a1a",
+              "on-secondary-container": "#7a3c46",
+              "surface-bright": "#faf9f6",
+              "primary-fixed-dim": "#ffb5a1",
+              "on-primary-container": "#713726",
+              "outline": "#86736e",
+              "on-background": "#1a1c1a",
+              "on-tertiary-fixed": "#2a1704",
+              "on-primary": "#ffffff",
+              "secondary-fixed-dim": "#ffb2bc",
+              "surface-container-highest": "#e3e2e0"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Be Vietnam Pro"],
+              "label": ["Be Vietnam Pro"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        -webkit-tap-highlight-color: transparent;
+      }
+      .tonal-transition-bg {
+        background: linear-gradient(180deg, rgba(250,249,246,1) 0%, rgba(244,243,241,1) 100%);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#faf9f6]/70 dark:bg-stone-900/70 backdrop-blur-xl shadow-[0_4px_24px_rgba(26,28,26,0.04)]">
+<div class="flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#8d4d3b] dark:text-[#f4a28c]">menu</span>
+<h1 class="font-manrope font-extrabold italic text-xl tracking-tight text-[#8d4d3b] dark:text-[#f4a28c]">GlamAtHome</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex flex-col items-end mr-1">
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant leading-none">Status</span>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-xs font-semibold text-primary">Online</span>
+<div class="w-10 h-5 bg-primary-container/30 rounded-full relative p-0.5">
+<div class="absolute right-0.5 top-0.5 w-4 h-4 bg-primary rounded-full shadow-sm"></div>
+</div>
+</div>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container/20">
+<img alt="Specialist Profile" class="w-full h-full object-cover" data-alt="close-up portrait of a professional female hair stylist with a warm smile in a brightly lit modern studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb9nkplC_rbNPljGlJgpMVvCLy-slKA7fflKTqxshhn-Bijwub7EZsZAZocFrMh-GCPyCRW73AsrPfpU597ZIYZ1Yoa9wFEih1a3uENGh5iZEyV1Ptqt9VJwCedN5_w0XB-JaXFeoKoy8GENd2IEhfYEuw0SMriJNAKSPPQSy7GfwKh2jWj-71C0BI-mT-f41RrekQCk4Gf7xwDr2FiqVIQP5CToWXKClMjHFWd_ouS0NFJixJRBGxf69KXlmKVZU8VYID3BiIp5R6"/>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-md mx-auto min-h-screen">
+<!-- Welcome Section -->
+<section class="mb-8">
+<p class="font-headline font-bold text-on-surface-variant text-sm tracking-wide mb-1 uppercase">Welcome back,</p>
+<h2 class="font-headline text-3xl font-extrabold tracking-tight text-on-surface">Alexandria</h2>
+</section>
+<!-- Earnings Bento Grid -->
+<section class="grid grid-cols-2 gap-4 mb-10">
+<div class="col-span-2 p-6 rounded-xl bg-gradient-to-br from-primary to-primary-container text-white shadow-lg relative overflow-hidden">
+<div class="relative z-10">
+<span class="text-white/80 font-medium text-sm">Today's Earnings</span>
+<div class="text-4xl font-headline font-extrabold mt-1 tracking-tight">$428.50</div>
+<div class="mt-4 flex items-center gap-2 bg-white/20 w-fit px-3 py-1 rounded-full backdrop-blur-md">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+<span class="text-xs font-bold tracking-wide">+12% from yesterday</span>
+</div>
+</div>
+<!-- Decorative silk sheen texture element -->
+<div class="absolute -right-10 -bottom-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
+</div>
+<div class="p-5 rounded-xl bg-surface-container-low shadow-sm">
+<span class="text-on-surface-variant font-medium text-xs uppercase tracking-wider">This Month</span>
+<div class="text-xl font-headline font-bold mt-1 text-on-surface">$5,820</div>
+</div>
+<div class="p-5 rounded-xl bg-surface-container-low shadow-sm">
+<span class="text-on-surface-variant font-medium text-xs uppercase tracking-wider">Next Payout</span>
+<div class="text-xl font-headline font-bold mt-1 text-on-surface">Oct 14</div>
+</div>
+</section>
+<!-- Quick Actions Scroll -->
+<section class="mb-10 overflow-x-auto -mx-6 px-6 no-scrollbar">
+<div class="flex gap-4">
+<button class="flex flex-col items-center justify-center gap-2 min-w-[100px] h-24 bg-surface-container-lowest rounded-lg shadow-sm hover:opacity-80 transition-opacity">
+<div class="p-3 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded-full">
+<span class="material-symbols-outlined">calendar_month</span>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface text-center">Schedule</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 min-w-[100px] h-24 bg-surface-container-lowest rounded-lg shadow-sm hover:opacity-80 transition-opacity">
+<div class="p-3 bg-secondary-fixed text-on-secondary-fixed-variant rounded-full">
+<span class="material-symbols-outlined">auto_awesome_motion</span>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface text-center">Portfolio</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 min-w-[100px] h-24 bg-surface-container-lowest rounded-lg shadow-sm hover:opacity-80 transition-opacity">
+<div class="p-3 bg-primary-fixed text-on-primary-fixed-variant rounded-full">
+<span class="material-symbols-outlined">chat_bubble</span>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface text-center">Messages</span>
+</button>
+</div>
+</section>
+<!-- Upcoming Appointments -->
+<section>
+<div class="flex justify-between items-end mb-6">
+<h3 class="font-headline text-xl font-extrabold text-on-surface">Today's Clients</h3>
+<span class="text-primary font-bold text-xs uppercase tracking-widest">3 Remaining</span>
+</div>
+<div class="space-y-6">
+<!-- Appointment Card 1 -->
+<div class="group bg-surface-container-lowest p-5 rounded-lg shadow-[0_8px_30px_rgb(0,0,0,0.02)] border-l-4 border-primary relative">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-lg overflow-hidden shrink-0">
+<img alt="Client 1" class="w-full h-full object-cover" data-alt="portrait of a young african american woman with natural hair and minimalist jewelry" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBODwbZMLg1R50IV71G8-RwyBW8dqjY7oF4Sbi0dkTW5BIvY7bv3ZZZek0ZjGCYDSk01gyW4P_8FGFr902_naKBPJ-CXt6G1pn8U7gjbzPXRc8YcNg6t_MmkEdcdV1cCOqc2u3gVgyfU9yU4skLQ1y_hKxmgCfHmkcFvvExWevXLm_JgvugVYvqogv-XVPsdKsiYPF94mfa1yosTV5IDxQJLWwoG6BMCW0QT2IXLapdcjSC9vSKkAnj6Zo0gIwijfdo_jowH_R2vcdq"/>
+</div>
+<div>
+<h4 class="font-headline font-bold text-lg text-on-surface leading-tight">Sarah Jenkins</h4>
+<div class="flex items-center gap-1 mt-0.5 text-primary font-bold text-xs uppercase tracking-tight">
+<span>Box Braids</span>
+<span class="text-outline-variant text-[10px] mx-1">•</span>
+<span>2.5 Hours</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<span class="block font-headline font-extrabold text-lg text-on-surface">11:30</span>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">AM</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-surface-container">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg">location_on</span>
+<span class="text-sm font-medium">82 Maple Ave, Brooklyn</span>
+</div>
+<button class="bg-surface-container-high p-2 rounded-full text-primary hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">near_me</span>
+</button>
+</div>
+</div>
+<!-- Appointment Card 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-lg shadow-[0_8px_30px_rgb(0,0,0,0.02)] border-l-4 border-secondary-container relative opacity-80">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-lg overflow-hidden shrink-0">
+<img alt="Client 2" class="w-full h-full object-cover" data-alt="portrait of a woman with long flowing hair and natural makeup in soft sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBNI2TJj0akoZEADiqwdM_IP1oGoiOPvU1nkBRJQOcBz0_I0Zi1GHs8c8qfrIg7GhOCvWOZSSwMwvJC7OHb07bb6crjq3OhSTut_zj3vgrGeZ-LZ0ARhjZeJYwYU91iPtMxTPCLFfUUm7rqfWZpAcEDCUK-XF0PHwq-0-8WY7rKYrH5jUFcvBC2pdNqYoCDgsNQcnSlP2kRV6ZFx78FRLvLLDQAmTDl9rnyUKFXQ3YB_WqL7sEK8eOtPWFw66D_oJy1PUzwdUMCJsF"/>
+</div>
+<div>
+<h4 class="font-headline font-bold text-lg text-on-surface leading-tight">Maya Rodriguez</h4>
+<div class="flex items-center gap-1 mt-0.5 text-secondary font-bold text-xs uppercase tracking-tight">
+<span>Silk Press</span>
+<span class="text-outline-variant text-[10px] mx-1">•</span>
+<span>1.5 Hours</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<span class="block font-headline font-extrabold text-lg text-on-surface">02:15</span>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">PM</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-surface-container">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg">location_on</span>
+<span class="text-sm font-medium">412 Prospect Park W</span>
+</div>
+<button class="bg-surface-container-high p-2 rounded-full text-secondary hover:bg-secondary-container/20 transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">near_me</span>
+</button>
+</div>
+</div>
+<!-- Appointment Card 3 -->
+<div class="bg-surface-container-lowest p-5 rounded-lg shadow-[0_8px_30px_rgb(0,0,0,0.02)] border-l-4 border-tertiary-container relative opacity-80">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-lg overflow-hidden shrink-0">
+<img alt="Client 3" class="w-full h-full object-cover" data-alt="close up of a stylish woman with glasses and freckles against a neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCD_W-MixQyTqPNe25ov_0Kem4zz_zeOiETSzptsG4Cl-sX3_FgHVS3WY1KHq3oXzAnk7dVWTOTCLeCRrp2bm1uoAGv_17RPjBJl-WG1yY3UZPDB5KjjJkVKJ2wn52dd3Zsiic-2dL-GqvZ3sLUDS51oBKEneDpEXILpnny51LhoE6-zC-Esec2cBDIHzkznOJpbkDZQeBIZwRzlFBxXEzQPw7CeJq3_iUKkvY8kwx60Dsw_SBMZV1xPEMJaT_Vp5prss5z2OV1gl8n"/>
+</div>
+<div>
+<h4 class="font-headline font-bold text-lg text-on-surface leading-tight">Chloe Smith</h4>
+<div class="flex items-center gap-1 mt-0.5 text-tertiary font-bold text-xs uppercase tracking-tight">
+<span>Bridal Updo</span>
+<span class="text-outline-variant text-[10px] mx-1">•</span>
+<span>2 Hours</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<span class="block font-headline font-extrabold text-lg text-on-surface">05:00</span>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">PM</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-surface-container">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg">location_on</span>
+<span class="text-sm font-medium">19 Gramercy Park S</span>
+</div>
+<button class="bg-surface-container-high p-2 rounded-full text-tertiary hover:bg-tertiary-container/20 transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">near_me</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-2 bg-[#faf9f6]/70 dark:bg-stone-900/70 backdrop-blur-xl rounded-t-[3rem] z-50 shadow-[0_-4px_24px_rgba(26,28,26,0.04)]">
+<div class="flex flex-col items-center justify-center bg-gradient-to-br from-[#8d4d3b] to-[#f4a28c] text-white rounded-full p-3 mb-1 scale-110 shadow-lg">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-be-vietnam-pro text-[8px] font-bold uppercase tracking-widest mt-0.5">Dashboard</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 p-2 hover:text-[#8d4d3b] transition-colors">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-be-vietnam-pro text-[8px] font-semibold uppercase tracking-widest mt-1">Calendar</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 p-2 hover:text-[#8d4d3b] transition-colors">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-be-vietnam-pro text-[8px] font-semibold uppercase tracking-widest mt-1">Earnings</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 p-2 hover:text-[#8d4d3b] transition-colors">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-be-vietnam-pro text-[8px] font-semibold uppercase tracking-widest mt-1">Settings</span>
+</div>
+</nav>
+<!-- Map Logic for data-location (Reference only) -->
+<div class="hidden" data-location="Brooklyn, NY" style=""></div>
+</body></html>

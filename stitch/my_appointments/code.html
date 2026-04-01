@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My Appointments - GlamAtHome</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Be+Vietnam+Pro:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-fixed-variant": "#5a422a",
+              "surface-container-lowest": "#ffffff",
+              "on-primary": "#ffffff",
+              "tertiary": "#74593f",
+              "secondary-fixed-dim": "#ffb2bc",
+              "on-surface": "#1a1c1a",
+              "on-secondary-fixed": "#3a0915",
+              "on-primary-fixed-variant": "#703626",
+              "outline-variant": "#d8c2bc",
+              "primary-fixed": "#ffdbd1",
+              "surface-tint": "#8d4d3b",
+              "on-error": "#ffffff",
+              "surface-container-highest": "#e3e2e0",
+              "surface-container-high": "#e9e8e5",
+              "primary-container": "#f4a28c",
+              "on-primary-container": "#713726",
+              "error": "#ba1a1a",
+              "on-secondary": "#ffffff",
+              "inverse-on-surface": "#f2f1ee",
+              "secondary": "#8c4b55",
+              "tertiary-fixed": "#ffdcbe",
+              "inverse-surface": "#2f312f",
+              "on-surface-variant": "#53433f",
+              "primary": "#8d4d3b",
+              "surface-container-low": "#f4f3f1",
+              "on-secondary-fixed-variant": "#70343e",
+              "primary-fixed-dim": "#ffb5a1",
+              "on-tertiary-fixed": "#2a1704",
+              "on-tertiary": "#ffffff",
+              "secondary-container": "#feaab6",
+              "surface-bright": "#faf9f6",
+              "surface-variant": "#e3e2e0",
+              "surface-dim": "#dbdad7",
+              "tertiary-fixed-dim": "#e3c0a0",
+              "inverse-primary": "#ffb5a1",
+              "tertiary-container": "#d2b091",
+              "secondary-fixed": "#ffd9dd",
+              "on-primary-fixed": "#390c02",
+              "background": "#faf9f6",
+              "outline": "#86736e",
+              "on-secondary-container": "#7a3c46",
+              "on-error-container": "#93000a",
+              "on-background": "#1a1c1a",
+              "on-tertiary-container": "#5b422a",
+              "surface": "#faf9f6",
+              "surface-container": "#efeeeb",
+              "error-container": "#ffdad6"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Be Vietnam Pro"],
+              "label": ["Be Vietnam Pro"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .tonal-transition {
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      }
+      body {
+        -webkit-tap-highlight-color: transparent;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface selection:bg-primary-fixed">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#faf9f6]/70 dark:bg-stone-900/70 backdrop-blur-md shadow-sm shadow-[#1a1c1a]/5 flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-4">
+<button class="text-[#8d4d3b] hover:opacity-80 transition-opacity active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-['Manrope'] font-extrabold text-2xl tracking-tighter text-[#8d4d3b] dark:text-[#f4a28c]">GlamAtHome</h1>
+</div>
+<div class="flex items-center">
+<img alt="User profile avatar" class="w-8 h-8 rounded-full object-cover ring-2 ring-primary-fixed" data-alt="Close up portrait of a smiling woman with clear skin and natural makeup, professional lighting, soft studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVDQlwbFORmOna0-jrvA2JdqJgJNLPBoKoI30SwNdDrAX0Rgm5Wtnz6et7WhPs65-OUuvfRSgD59esUZYr2_kehxRxokdcxDNnkCvZZrvtmqiZEOVgQeLEw714GMxoMKmYkSlbO5-ejx3VPV5ruvl2FT0XGf2HWb12KH03jU2Qwnum78HpLMYIJz4FaJqZB-_NxSg-VVpvZnOM2Z4Bge9TdFSELILF2dZFLv2lPrVR7fYOjMvhaBtYkoJE228t_jqemiOIQj8DSxm-"/>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-2xl mx-auto min-h-screen">
+<!-- Page Title & Asymmetric Header -->
+<div class="mb-10 relative">
+<span class="font-label text-primary font-semibold tracking-widest uppercase text-[10px] mb-2 block">Your Schedule</span>
+<h2 class="font-headline text-display-lg text-4xl font-extrabold tracking-tight text-on-surface">My Appointments</h2>
+<div class="absolute -top-4 -right-2 w-24 h-24 bg-primary-fixed/30 rounded-full blur-3xl -z-10"></div>
+</div>
+<!-- Tab Switcher (Editorial Style) -->
+<div class="flex p-1 bg-surface-container-low rounded-xl mb-12">
+<button class="flex-1 py-3 px-6 rounded-lg text-sm font-semibold transition-all duration-300 bg-white text-primary shadow-sm">
+                Upcoming
+            </button>
+<button class="flex-1 py-3 px-6 rounded-lg text-sm font-semibold transition-all duration-300 text-on-surface-variant hover:text-primary">
+                Past
+            </button>
+</div>
+<!-- Booking List -->
+<div class="space-y-8">
+<!-- Appointment Card 1: Specialist Spotlight Layout -->
+<div class="relative pt-6">
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-[0_-4px_24px_rgba(26,28,26,0.04)] relative z-10">
+<div class="flex flex-col md:flex-row gap-6">
+<div class="relative -mt-12 md:mt-0 w-24 h-24 md:w-32 md:h-40 shrink-0">
+<img class="w-full h-full object-cover rounded-lg shadow-lg ring-4 ring-white" data-alt="Portrait of a professional female hairstylist with styled hair, wearing a designer apron in a luxury salon environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCS-AmvWvaCg5uZY-ZYuJ41KkhrWV4ISYawL7cslzgpoyJDkZwMrDhUmX9GgOJNHFhAeV6DXzp5mFOf2rLAr6tYFaHjGQgSzSDIsUqsHuC-UwfFSDLDtqjXMtoIyfrXZyI8aoZb1qWvB_SeOvnrp6b4xT6KgcUHLBVbtg6ZsIrqubnecsztasdKoAzKx3STLKBhuyDTfjthwST9Ev-WY5Oq-vAu_Lj1o_GXfcVAWTreM5lAZl6EszgTRnNnCDyILV5yz-rkdxy2n0e5"/>
+</div>
+<div class="flex-1 space-y-3">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline text-xl font-bold text-on-surface">Elena Rodriguez</h3>
+<p class="text-primary font-medium">Fulani Braids</p>
+</div>
+<div class="bg-primary-fixed/50 px-3 py-1 rounded-full">
+<span class="text-[10px] font-bold text-on-primary-fixed-variant uppercase">Confirmed</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-4 pt-2">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg" data-icon="calendar_today">calendar_today</span>
+<span class="text-sm">Oct 24, 2023</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg" data-icon="schedule">schedule</span>
+<span class="text-sm">10:30 AM</span>
+</div>
+</div>
+<div class="flex gap-3 pt-4">
+<button class="flex-1 bg-gradient-to-br from-primary to-primary-container text-white py-3 rounded-full font-semibold text-sm shadow-md hover:opacity-90 active:scale-95 transition-all">
+                                    View Details
+                                </button>
+<button class="flex-1 bg-surface-container-high text-on-primary-container py-3 rounded-full font-semibold text-sm hover:bg-surface-container-highest transition-colors">
+                                    Reschedule
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Appointment Card 2 -->
+<div class="relative pt-6">
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-[0_-4px_24px_rgba(26,28,26,0.04)] relative z-10">
+<div class="flex flex-col md:flex-row gap-6">
+<div class="relative -mt-12 md:mt-0 w-24 h-24 md:w-32 md:h-40 shrink-0">
+<img class="w-full h-full object-cover rounded-lg shadow-lg ring-4 ring-white" data-alt="Close up portrait of a skilled aesthetician with glowing skin, soft-focus background of a high-end beauty studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEqcKpyg5lgGvKi6qwNsHh0DCXW7hvGa_w2x2JI1VmtcXKQkbscMxaNLCdHrlqPtdsQHzwNREbgXusl4BKoUIF2zIyl5bOii6vNCOZPpYl6KohNt7J8hFk2Frta9UBUfcPOSYpO48a0FW5cE1pNDzPdaVzSiUdWvW-FPWluq9Vd2Yi6LYzbfqjeuqSymGhrhDAYYCn2ICzB_qAi-IsE2FO91MIg8aQQj9WWAV_CCaXZGex8vkGQzhpW0sQCyHRteCzu8kOG2W0PkmU"/>
+</div>
+<div class="flex-1 space-y-3">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline text-xl font-bold text-on-surface">Jordan Chen</h3>
+<p class="text-primary font-medium">Radiance Facial</p>
+</div>
+<div class="bg-tertiary-fixed/50 px-3 py-1 rounded-full">
+<span class="text-[10px] font-bold text-on-tertiary-fixed-variant uppercase">Pending</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-4 pt-2">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg" data-icon="calendar_today">calendar_today</span>
+<span class="text-sm">Oct 28, 2023</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg" data-icon="schedule">schedule</span>
+<span class="text-sm">2:00 PM</span>
+</div>
+</div>
+<div class="flex gap-3 pt-4">
+<button class="flex-1 bg-gradient-to-br from-primary to-primary-container text-white py-3 rounded-full font-semibold text-sm shadow-md hover:opacity-90 active:scale-95 transition-all">
+                                    View Details
+                                </button>
+<button class="flex-1 bg-surface-container-high text-on-primary-container py-3 rounded-full font-semibold text-sm hover:bg-surface-container-highest transition-colors">
+                                    Reschedule
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty Space/Editorial Tip -->
+<div class="pt-8 border-t border-outline-variant/15">
+<div class="bg-primary-fixed/20 p-6 rounded-lg flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="auto_awesome">auto_awesome</span>
+<div>
+<p class="font-headline font-bold text-on-primary-fixed-variant">Beauty Tip</p>
+<p class="text-xs text-on-surface-variant">Prep your skin with hydration 24 hours before your Radiance Facial for the best results.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-end px-4 pb-6 pt-2 bg-[#faf9f6]/70 dark:bg-stone-900/70 backdrop-blur-md z-50 rounded-t-[3rem] shadow-[0_-4px_24px_rgba(26,28,26,0.04)]">
+<a class="flex flex-col items-center justify-center text-stone-400 p-2 hover:text-[#8d4d3b] transition-all active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-semibold tracking-wide uppercase mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 p-2 hover:text-[#8d4d3b] transition-all active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-semibold tracking-wide uppercase mt-1">Discover</span>
+</a>
+<!-- Active Tab: Bookings -->
+<a class="flex flex-col items-center justify-center bg-gradient-to-br from-[#8d4d3b] to-[#f4a28c] text-white rounded-full p-3 mb-2 scale-110 shadow-lg active:scale-90 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+<span class="font-['Be_Vietnam_Pro'] text-[8px] font-bold tracking-wide uppercase mt-0.5">Bookings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 p-2 hover:text-[#8d4d3b] transition-all active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-semibold tracking-wide uppercase mt-1">Favorites</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 p-2 hover:text-[#8d4d3b] transition-all active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-semibold tracking-wide uppercase mt-1">Messages</span>
+</a>
+</nav>
+</body></html>
