@@ -2167,12 +2167,67 @@ class="bg-primary text-white py-3 rounded-xl font-semibold shadow-md">✨ Try AI
     </a>
 </nav>
 </div>
+<script type="module">
+    // 1. IMPORTATION DE FIREBASE (Mise à jour avec ta version 12.12.1)
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
+    import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-auth.js";
 
-</body>
-</html><script>
-    // 1. Navigation
-    function navigate(screenName) {
-        const targetId = screenName.startsWith("screen-") ? screenName : "screen-" + screenName;
+    // ⚠️ 2. TA CONFIGURATION FIREBASE (Avec tes VRAIES clés !)
+    const firebaseConfig = {
+      apiKey: "AIzaSyBQlgAINBRM3YvG_GGGF4J2gsEstoBDe6k",
+      authDomain: "glamathome-30bfd.firebaseapp.com",
+      projectId: "glamathome-30bfd",
+      storageBucket: "glamathome-30bfd.firebasestorage.app",
+      messagingSenderId: "126884062776",
+      appId: "1:126884062776:web:24a303108fbb611af0e8cd",
+      measurementId: "G-484G2WSR1Y"
+    };
+
+    // 3. INITIALISATION DE FIREBASE
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+    
+    let currentUser = null;
+
+    // 3. ÉCOUTEUR DE CONNEXION (Met à jour le profil avec les infos Google)
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            currentUser = user;
+            console.log("🟢 Utilisateur reconnu :", user.displayName);
+            
+            const profileName = document.querySelector("#screen-user_profile_settings h2");
+            const profileImg = document.querySelector("#screen-user_profile_settings img");
+            if(profileName) profileName.innerText = user.displayName;
+            if(profileImg) profileImg.src = user.photoURL;
+        } else {
+            currentUser = null;
+            console.log("🔴 Aucun utilisateur connecté.");
+        }
+    });
+
+    // 🛠️ 4. NAVIGATION GLOBALE (Le "Videur")
+    window.navigate = async function(screenName) {
+        let targetName = screenName;
+        if (targetName.startsWith("screen-")) {
+            targetName = targetName.replace("screen-", "");
+        }
+
+        // 🛑 RÈGLE DE SÉCURITÉ : L'écran "user_profile_settings" est protégé !
+        if (targetName === "user_profile_settings" && !currentUser) {
+            console.log("🔒 Accès au profil bloqué. Lancement de la connexion Google...");
+            try {
+                const result = await signInWithPopup(auth, provider);
+                currentUser = result.user;
+                console.log("✅ Connecté avec succès :", currentUser.displayName);
+            } catch (error) {
+                console.error("❌ Connexion annulée :", error);
+                return; // Si l'utilisateur annule, on arrête
+            }
+        }
+
+        // ✅ Navigation normale
+        const targetId = "screen-" + targetName;
         const target = document.getElementById(targetId);
         if (target) {
             document.querySelectorAll('.app-screen').forEach(screen => {
@@ -2183,61 +2238,79 @@ class="bg-primary text-white py-3 rounded-xl font-semibold shadow-md">✨ Try AI
             target.style.display = 'block';
             window.scrollTo(0,0);
         }
-    }
+    };
 
-    // 2. Rendre TOUTES les bannières cliquables
     document.addEventListener("DOMContentLoaded", () => {
+        // Rend la bannière IA cliquable
         document.querySelectorAll('.editorial-gradient').forEach(banniere => {
             banniere.classList.add('cursor-pointer');
             banniere.onclick = function() {
-                navigate('ai_style_assistant_unisex_update');
+                window.navigate('ai_style_assistant_unisex_update');
             };
+        });
+        
+        // Change la souris en "petite main" quand on passe sur les photos de profil en haut
+        document.querySelectorAll('header img').forEach(img => {
+            img.classList.add('cursor-pointer');
         });
     });
 
-    // 3. Gestion de l'IA et du Genre
-    let selectedGender = "female"; // Le genre par défaut
+    let selectedGender = "female";
 
+    // 5. LE COEUR DE L'APPLICATION (Écoute Globale des clics)
     document.addEventListener("click", async (e) => {
         
-        // ---- A. Si on clique sur les boutons Male / Female ----
-        const btn = e.target.closest("button");
+        // 🎯 NOUVEAU : Clic sur N'IMPORTE QUELLE photo de profil dans n'importe quel header (menu du haut) !
+        const profilePic = e.target.closest("header img");
+        if (profilePic) {
+            e.preventDefault();
+            window.navigate('user_profile_settings');
+            return;
+        }
         
+        // ---- Choix du Genre (IA) ----
+        const btn = e.target.closest("button");
         if (btn && btn.innerText) {
             const text = btn.innerText.trim();
-            
-            // Si on a cliqué sur Female
             if (text === "Female" || text.includes("woman")) {
                 selectedGender = "female";
-                
-                // On met à jour les couleurs (Visuel)
                 const container = btn.parentElement;
                 const allBtns = container.querySelectorAll("button");
-                // Allume Female
-                allBtns[0].className = "flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-full border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all active:scale-95 duration-200";
-                // Éteint Male
-                allBtns[1].className = "flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-full border-2 border-outline-variant/30 text-on-surface-variant font-bold hover:border-primary hover:text-primary transition-all active:scale-95 duration-200";
+                if (allBtns.length >= 2) {
+                    allBtns[0].className = "flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-full border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all active:scale-95 duration-200";
+                    allBtns[1].className = "flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-full border-2 border-outline-variant/30 text-on-surface-variant font-bold hover:border-primary hover:text-primary transition-all active:scale-95 duration-200";
+                }
                 return;
             }
-            // Si on a cliqué sur Male
             else if (text === "Male" || text.includes("man")) {
                 selectedGender = "male";
-                
-                // On met à jour les couleurs (Visuel)
                 const container = btn.parentElement;
                 const allBtns = container.querySelectorAll("button");
-                // Éteint Female
-                allBtns[0].className = "flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-full border-2 border-outline-variant/30 text-on-surface-variant font-bold hover:border-primary hover:text-primary transition-all active:scale-95 duration-200";
-                // Allume Male
-                allBtns[1].className = "flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-full border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all active:scale-95 duration-200";
+                if (allBtns.length >= 2) {
+                    allBtns[0].className = "flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-full border-2 border-outline-variant/30 text-on-surface-variant font-bold hover:border-primary hover:text-primary transition-all active:scale-95 duration-200";
+                    allBtns[1].className = "flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-full border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all active:scale-95 duration-200";
+                }
                 return;
             }
         }
 
-        // ---- B. Si on clique sur le bouton "Try AI Hairstyle" ----
+        // ---- LE BOUTON IA ----
         const analyzeBtn = e.target.closest("#analyzeBtn");
         if (analyzeBtn) {
             e.preventDefault();
+            
+            // Si pas connecté, on force Google
+            if (!currentUser) {
+                try {
+                    const result = await signInWithPopup(auth, provider);
+                    currentUser = result.user;
+                    alert("Bienvenue " + currentUser.displayName + " ! La génération va pouvoir commencer.");
+                } catch (error) {
+                    alert("Tu dois te connecter avec Google pour utiliser l'intelligence artificielle.");
+                    return; 
+                }
+            }
+
             const container = analyzeBtn.parentElement;
             const input = container.querySelector("#photoInput");
             const preview = container.querySelector("#preview");
@@ -2252,7 +2325,6 @@ class="bg-primary text-white py-3 rounded-xl font-semibold shadow-md">✨ Try AI
             analyzeBtn.innerText = "L'IA analyse ton visage...";
             analyzeBtn.classList.add("opacity-75", "animate-pulse");
 
-            // On prépare le colis pour le serveur (On met le GENRE en premier, c'est plus sûr)
             const formData = new FormData();
             formData.append("gender", selectedGender); 
             formData.append("image", file);
@@ -2275,13 +2347,13 @@ class="bg-primary text-white py-3 rounded-xl font-semibold shadow-md">✨ Try AI
             } catch (err) {
                 console.error(err);
                 alert("Erreur de connexion avec le serveur IA.");
-                analyzeBtn.innerText = "Réessayer";
+                analyzeBtn.innerText = "✨ Try AI Hairstyle";
                 analyzeBtn.classList.remove("opacity-75", "animate-pulse");
             }
         }
     });
 
-    // Aperçu de la photo avant envoi
+    // Aperçu de la photo
     document.addEventListener("change", (e) => {
       if (e.target.id === "photoInput") {
         const input = e.target;
@@ -2294,3 +2366,5 @@ class="bg-primary text-white py-3 rounded-xl font-semibold shadow-md">✨ Try AI
       }
     });  
 </script>
+</body>
+</html>

@@ -1,21 +1,33 @@
-import "dotenv/config"; // 1. On charge le fichier .env dès le début
+import "dotenv/config";
 import express from "express";
 import multer from "multer";
 import OpenAI from "openai";
 import fs from "fs";
 import cors from "cors";
 
+// 👉 Ces deux lignes sont obligatoires avec "import" pour trouver ton fichier index.html
+import path from "path";
+import { fileURLToPath } from "url";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const app = express();
 const upload = multer({ dest: "uploads/" });
 
 app.use(cors());
 
-// 2. On utilise la variable d'environnement ici
+// 👉 C'EST ICI QUE LA MAGIE OPÈRE : On demande au serveur d'afficher ton site web !
+app.use(express.static(__dirname));
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// On configure OpenAI
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY, 
 });
 
-// Le reste de ton code ne change pas...
+// Ton code pour l'IA qui ne change pas
 app.post("/analyze", upload.single("image"), async (req, res) => {
   try {
     if (!req.file) {
@@ -76,13 +88,14 @@ app.post("/analyze", upload.single("image"), async (req, res) => {
   }
 });
 
+// Démarrage du serveur
 const PORT = 3001;
 app.listen(PORT, '127.0.0.1', () => {
     console.log("=========================================");
     console.log(`🔥 Serveur PRÊT sur le port ${PORT}`);
+    console.log(`🌍 Clique ici pour voir le site : http://localhost:${PORT}`);
     console.log("=========================================");
 });
-
 setInterval(() => {
     console.log("💓 Serveur toujours actif...");
 }, 10000);
