@@ -1,4 +1,4 @@
-
+import "dotenv/config"; // 1. On charge le fichier .env dès le début
 import express from "express";
 import multer from "multer";
 import OpenAI from "openai";
@@ -10,19 +10,18 @@ const upload = multer({ dest: "uploads/" });
 
 app.use(cors());
 
-// Ta clé API
+// 2. On utilise la variable d'environnement ici
 const openai = new OpenAI({
-  apiKey: 
+  apiKey: process.env.OPENAI_API_KEY, 
 });
 
-// Attention, on s'assure d'accepter le texte (gender) envoyé avec l'image
+// Le reste de ton code ne change pas...
 app.post("/analyze", upload.single("image"), async (req, res) => {
   try {
     if (!req.file) {
       return res.status(400).json({ error: "Aucune image uploadée" });
     }
 
-    // On récupère le genre cliqué sur le site (par défaut "female")
     const gender = req.body.gender || "female";
     console.log(`📸 Image reçue ! Genre sélectionné : ${gender.toUpperCase()}`);
 
@@ -31,7 +30,6 @@ app.post("/analyze", upload.single("image"), async (req, res) => {
 
     console.log("👁️ Analyse très précise du visage...");
     
-    // On force GPT-4o à être hyper précis sur les détails du visage
     const visionResponse = await openai.chat.completions.create({
       model: "gpt-4o",
       messages: [
@@ -53,10 +51,8 @@ app.post("/analyze", upload.single("image"), async (req, res) => {
 
     console.log("🎨 Création de l'image par DALL-E...");
 
-    // On adapte la coiffure en fonction du genre
     let hairstyle = "stylish African knotless braids";
     if (gender === "male") {
-        // Si c'est un homme, on lui fait un dégradé précis (fade)
         hairstyle = "a clean, sharp low skin fade haircut with a styled textured top and a neat beard";
     }
 
