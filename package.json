@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "fs": "^0.0.1-security",
+    "multer": "^2.1.1",
+    "openai": "^6.36.0"
+  },
+  "name": "stitch",
+  "version": "1.0.0",
+  "description": "Application mobile GlamAtHome-projet etude",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aryannemanfoumbi-ops/stitch.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/aryannemanfoumbi-ops/stitch/issues"
+  },
+  "homepage": "https://github.com/aryannemanfoumbi-ops/stitch#readme"
+}
