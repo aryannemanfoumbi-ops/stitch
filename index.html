@@ -1218,28 +1218,33 @@ class="bg-primary text-white py-3 rounded-xl font-semibold shadow-md">✨ Try AI
 <!-- Screen: glamathome_home_screen -->
 <div id="screen-glamathome_home_screen" class="app-screen active w-full min-h-[100dvh]">
 
-<!-- Top Navigation Shell -->
+<!-- Top Navigation Shell - Dynamique -->
 <header class="fixed top-0 w-full z-50 bg-white/70 dark:bg-stone-900/70 backdrop-blur-md shadow-sm shadow-rose-900/5 px-6 py-4 flex justify-between items-center">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-full overflow-hidden bg-primary-fixed">
-<img alt="User profile photo" class="w-full h-full object-cover" data-alt="close up portrait of a smiling young woman with glowing skin and soft makeup against a warm neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6A_JS07M-ZP7ljSBOGtaZgfCTolnvGsOGvQWnyFfLGmFYA07rMfUjRubvtVECOl7ZP7aeoO9Kt6yB6F_iu4sqHmGbhvzvu0cFgbzkPaYYq33JvoBJuahhuHYFmfiBQDbC9B3WKwmr-BPKsMY4c8kH5tgZ-0HoW7Ls7_TG6WTyRbh94zIXwkwD0K9tjAtqg64h3v9xGc3DhhHJ8yvKCzyh6u1_VrosTKRA7LP0nY4YKuXaXjzGlb1Zy3yvyw6WwIxmM8I8QKELBbWs"/>
-</div>
-<div>
-<p class="text-[10px] font-semibold text-stone-500 uppercase tracking-widest leading-none mb-1">Welcome back</p>
-<h1 class="text-rose-950 dark:text-rose-100 font-headline font-extrabold tracking-tight leading-none text-lg">Hello, Sarah</h1>
-</div>
-</div>
-<div class="flex items-center gap-3">
-<div class="flex flex-col items-end mr-2">
-<div class="flex items-center gap-1 text-primary">
-<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">location_on</span>
-<span class="font-bold text-xs">Istanbul</span>
-</div>
-</div>
-<button class="w-10 h-10 rounded-full flex items-center justify-center text-rose-900 hover:opacity-80 transition-opacity active:opacity-70 active:scale-95 transition-all duration-200">
-<span class="material-symbols-outlined">notifications</span>
-</button>
-</div>
+    <!-- Zone cliquable pour le profil -->
+    <div class="flex items-center gap-3 cursor-pointer transition-transform active:scale-95" onclick="navigate('user_profile_settings')">
+        <div class="w-10 h-10 rounded-full overflow-hidden bg-primary-fixed border border-primary/10">
+            <!-- ID ajouté pour la photo Google -->
+            <img id="header-user-img" alt="Photo de profil" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6A_JS07M-ZP7ljSBOGtaZgfCTolnvGsOGvQWnyFfLGmFYA07rMfUjRubvtVECOl7ZP7aeoO9Kt6yB6F_iu4sqHmGbhvzvu0cFgbzkPaYYq33JvoBJuahhuHYFmfiBQDbC9B3WKwmr-BPKsMY4c8kH5tgZ-0HoW7Ls7_TG6WTyRbh94zIXwkwD0K9tjAtqg64h3v9xGc3DhhHJ8yvKCzyh6u1_VrosTKRA7LP0nY4YKuXaXjzGlb1Zy3yvyw6WwIxmM8I8QKELBbWs"/>
+        </div>
+        <div>
+            <p class="text-[10px] font-semibold text-stone-500 uppercase tracking-widest leading-none mb-1">Welcome back</p>
+            <!-- ID ajouté pour le nom dynamique -->
+            <h1 id="header-user-name" class="text-rose-950 dark:text-rose-100 font-headline font-extrabold tracking-tight leading-none text-lg">Profile</h1>
+        </div>
+    </div>
+
+    <!-- Icônes de droite (Notifications, etc.) -->
+    <div class="flex items-center gap-3">
+        <div class="flex flex-col items-end mr-2">
+            <div class="flex items-center gap-1 text-primary">
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">location_on</span>
+                <span class="font-bold text-xs">Istanbul</span>
+            </div>
+        </div>
+        <button class="w-10 h-10 rounded-full flex items-center justify-center text-rose-900 hover:opacity-80 transition-opacity active:scale-95">
+            <span class="material-symbols-outlined">notifications</span>
+        </button>
+    </div>
 </header>
 <main class="pt-24 pb-32 px-6">
 <!-- Search & Filter -->
@@ -1826,9 +1831,7 @@ class="bg-primary text-white py-3 rounded-xl font-semibold shadow-md">✨ Try AI
 <div class="w-24 h-24 rounded-full border-4 border-surface-container-lowest overflow-hidden shadow-lg">
 <img alt="Stylist Avatar" class="w-full h-full object-cover" data-alt="headshot of a talented African female hairstylist with elegant micro-braids and professional makeup" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCANJH0my4S0PRRXZPAn6G_BIktFCmPBZLRLYZEqXM6g3ufHMHINglBGZvLdLv9rHyc0aA1cboa6sHTInQtg79PV_vBegIcZzAJCczDgvp4Si0e6_m5EeLMwOhJQ00F51FOTDs2ogE5wlnBhNVEjVXIxiXdi4CiFJ4kGhKEYhd4XJApc4-xGGFvatB9HLE4aEvq5f4NwHWOdICOkMawx_Vaa9FhBq-rBlhX8OOlWewvkSYI_jkhQyEtBQicI9W-Lm_25apjp1R2yj2e"/>
 </div>
-<div class="absolute -bottom-1 -right-1 bg-gradient-to-br from-primary to-primary-container text-white px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase shadow-md">
-                            Pro
-                        </div>
+<div class="absolute -bottom-1 -right-1 bg-gradient-to-br from-primary to-primary-container text-white px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase shadow-md">Pro</div>
 </div>
 <h1 class="font-headline text-2xl font-bold text-on-surface mb-1">Amara Vance</h1>
 <p class="text-primary font-semibold tracking-wide text-sm mb-3">Braid Expert</p>
@@ -2041,51 +2044,78 @@ class="bg-primary text-white py-3 rounded-xl font-semibold shadow-md">✨ Try AI
 </button>
 </div>
 </section>
-<!-- Menu List -->
+<!-- Menu List : Le nouveau centre de commande -->
 <section class="space-y-2 pb-10">
-<div class="bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm shadow-outline-variant/5">
-<a class="flex items-center justify-between p-5 hover:bg-surface-container-low transition-colors group border-b border-outline-variant/5 active:scale-95 transition-all duration-200" href="#">
-<div class="flex items-center gap-4">
-<div class="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center text-primary">
-<span class="material-symbols-outlined">calendar_month</span>
-</div>
-<span class="font-body font-medium text-on-surface">Past Bookings</span>
-</div>
-<span class="material-symbols-outlined text-outline-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
-</a>
-<a class="flex items-center justify-between p-5 hover:bg-surface-container-low transition-colors group border-b border-outline-variant/5 active:scale-95 transition-all duration-200" href="#">
-<div class="flex items-center gap-4">
-<div class="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center text-primary">
-<span class="material-symbols-outlined">favorite</span>
-</div>
-<span class="font-body font-medium text-on-surface">Favorite Stylists</span>
-</div>
-<span class="material-symbols-outlined text-outline-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
-</a>
-<a class="flex items-center justify-between p-5 hover:bg-surface-container-low transition-colors group border-b border-outline-variant/5 active:scale-95 transition-all duration-200" href="#">
-<div class="flex items-center gap-4">
-<div class="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center text-primary">
-<span class="material-symbols-outlined">shield_person</span>
-</div>
-<span class="font-body font-medium text-on-surface">Privacy Settings</span>
-</div>
-<span class="material-symbols-outlined text-outline-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
-</a>
-<button class="w-full flex items-center justify-between p-5 hover:bg-error/5 transition-colors group active:scale-95 transition-all duration-200">
-<div class="flex items-center gap-4">
-<div class="w-10 h-10 rounded-full bg-error/5 flex items-center justify-center text-error">
-<span class="material-symbols-outlined">logout</span>
-</div>
-<span class="font-body font-medium text-error">Log Out</span>
-</div>
+    <div class="bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm shadow-outline-variant/5">
+        
+        <!-- MES MESSAGES (Ajouté) -->
+        <a class="flex items-center justify-between p-5 hover:bg-surface-container-low transition-colors group border-b border-outline-variant/5 active:scale-95 transition-all duration-200 cursor-pointer" 
+           onclick="navigate('chats')">
+            <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center text-primary">
+                    <span class="material-symbols-outlined">chat_bubble</span>
+                </div>
+                <span class="font-body font-medium text-on-surface">Mes Messages</span>
+            </div>
+            <span class="material-symbols-outlined text-outline-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+        </a>
+
+        <!-- MES RÉSERVATIONS (Remplacé Past Bookings) -->
+        <a class="flex items-center justify-between p-5 hover:bg-surface-container-low transition-colors group border-b border-outline-variant/5 active:scale-95 transition-all duration-200 cursor-pointer" 
+           onclick="navigate('my_appointments')">
+            <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center text-primary">
+                    <span class="material-symbols-outlined">calendar_month</span>
+                </div>
+                <span class="font-body font-medium text-on-surface">Mes Réservations</span>
+            </div>
+            <span class="material-symbols-outlined text-outline-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+        </a>
+
+        <!-- MES FAVORIS (Remplacé Favorite Stylists) -->
+        <a class="flex items-center justify-between p-5 hover:bg-surface-container-low transition-colors group border-b border-outline-variant/5 active:scale-95 transition-all duration-200 cursor-pointer" 
+           onclick="navigate('saved_styles_stylists')">
+            <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center text-primary">
+                    <span class="material-symbols-outlined">favorite</span>
+                </div>
+                <span class="font-body font-medium text-on-surface">Styles Favoris</span>
+            </div>
+            <span class="material-symbols-outlined text-outline-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+        </a>
+
+        <!-- PRIVACY SETTINGS -->
+        <a class="flex items-center justify-between p-5 hover:bg-surface-container-low transition-colors group border-b border-outline-variant/5 active:scale-95 transition-all duration-200 cursor-pointer" 
+           href="#">
+            <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center text-primary">
+                    <span class="material-symbols-outlined">shield_person</span>
+                </div>
+                <span class="font-body font-medium text-on-surface">Privacy Settings</span>
+            </div>
+            <span class="material-symbols-outlined text-outline-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+        </a>
+
+      <!-- LOG OUT -->
+<button id="btn-logout" class="w-full flex items-center justify-between p-5 hover:bg-error/5 transition-colors group active:scale-95 transition-all duration-200">
+    <div class="flex items-center gap-4">
+        <div class="w-10 h-10 rounded-full bg-error/5 flex items-center justify-center text-error">
+            <span class="material-symbols-outlined">logout</span>
+        </div>
+        <span class="font-body font-medium text-error">Log Out</span>
+    </div>
 </button>
-</div>
+
+<!-- OPTIONNEL : SUPPRIMER LE COMPTE (À ajouter juste après le bouton Log Out si tu le souhaites) -->
+<button id="btn-delete-account" class="w-full flex items-center justify-between p-5 hover:bg-red-600/5 transition-colors group active:scale-95 transition-all duration-200 mt-2">
+    <div class="flex items-center gap-4 text-red-700">
+        <span class="material-symbols-outlined">delete_forever</span>
+        <span class="font-body font-medium text-xs uppercase tracking-widest">Supprimer mon compte</span>
+    </div>
+</button>
+    </div>
 </section>
-</main>
-<!-- BottomNavBar -->
-
-
-</div>
+ </div>
 <!-- Hamburger Overlay Sidebar -->
 <div id="global-sidebar-overlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[10001] transition-opacity opacity-0 pointer-events-none"></div>
 <div id="global-sidebar" class="fixed inset-y-0 left-0 w-72 bg-[#faf9f6] z-[10002] shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out">
@@ -2143,228 +2173,219 @@ class="bg-primary text-white py-3 rounded-xl font-semibold shadow-md">✨ Try AI
         </div>
     </div>
     </div>
-<!-- Fixed Universal Bottom Navigation -->
-<nav class="fixed bottom-0 left-0 w-full flex justify-around items-end px-4 pb-4 pt-3 bg-[#faf9f6]/95 backdrop-blur-xl z-[9999] shadow-[0_-8px_30px_rgba(183,110,121,0.15)] border-t border-[#f4a28c]/20 rounded-t-[2.5rem]">
+<!-- Fixed Universal Bottom Navigation (Version Épurée) -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-8 pb-6 pt-4 bg-[#faf9f6]/95 backdrop-blur-xl z-[9999] shadow-[0_-8px_30px_rgba(183,110,121,0.15)] border-t border-[#f4a28c]/20 rounded-t-[2.5rem]">
+    
+    <!-- HOME -->
     <a href="#" id="nav-btn-home" onclick="navigate('glamathome_home_screen'); return false;" class="group flex flex-col items-center justify-center text-[#86736e] hover:text-[#8d4d3b] p-2 transition-all active:scale-95 duration-200 outline-none">
         <span class="material-symbols-outlined pb-1 group-hover:scale-110 transition-transform" style="font-variation-settings: 'FILL' 1;">home</span>
-        <span class="font-['Be_Vietnam_Pro'] text-[9px] font-bold uppercase tracking-widest mt-1">Home</span>
+        <span class="font-['Be_Vietnam_Pro'] text-[10px] font-bold uppercase tracking-widest mt-1">Home</span>
     </a>
+
+    <!-- DISCOVER -->
     <a href="#" id="nav-btn-discover" onclick="navigate('discover_styles_stylists'); return false;" class="group flex flex-col items-center justify-center text-[#86736e] hover:text-[#8d4d3b] p-2 transition-all active:scale-95 duration-200 outline-none">
         <span class="material-symbols-outlined pb-1 group-hover:scale-110 transition-transform">search</span>
-        <span class="font-['Be_Vietnam_Pro'] text-[9px] font-bold uppercase tracking-widest mt-1">Discover</span>
+        <span class="font-['Be_Vietnam_Pro'] text-[10px] font-bold uppercase tracking-widest mt-1">Discover</span>
     </a>
-    <a href="#" id="nav-btn-bookings" onclick="navigate('my_appointments'); return false;" class="group flex flex-col items-center justify-center text-[#86736e] hover:text-[#8d4d3b] p-2 transition-all active:scale-95 duration-200 outline-none">
-        <span class="material-symbols-outlined pb-1 group-hover:scale-110 transition-transform">calendar_month</span>
-        <span class="font-['Be_Vietnam_Pro'] text-[9px] font-bold uppercase tracking-widest mt-1">Bookings</span>
-    </a>
-    <a href="#" id="nav-btn-favorites" onclick="navigate('saved_styles_stylists'); return false;" class="group flex flex-col items-center justify-center text-[#86736e] hover:text-[#8d4d3b] p-2 transition-all active:scale-95 duration-200 outline-none">
-        <span class="material-symbols-outlined pb-1 group-hover:scale-110 transition-transform">favorite</span>
-        <span class="font-['Be_Vietnam_Pro'] text-[9px] font-bold uppercase tracking-widest mt-1">Favorites</span>
-    </a>
-    <a href="#" id="nav-btn-chats" onclick="navigate('chats'); return false;" class="group flex flex-col items-center justify-center bg-gradient-to-br from-[#8d4d3b] to-[#f4a28c] text-white rounded-full p-3 mb-2 scale-[1.12] shadow-lg shadow-[#8d4d3b]/30 active:scale-[0.98] transition-all duration-300 outline-none hover:opacity-90">
-        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
-        <span class="font-['Be_Vietnam_Pro'] text-[8px] font-extrabold uppercase tracking-widest mt-1">Messages</span>
-    </a>
+
 </nav>
 </div>
 <script type="module">
-    // 1. IMPORTATION DE FIREBASE (Mise à jour avec ta version 12.12.1)
+    // 1. IMPORTATIONS FIREBASE
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
-    import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-auth.js";
+    import { 
+        getAuth, 
+        signInWithPopup, 
+        GoogleAuthProvider, 
+        onAuthStateChanged, 
+        signOut, 
+        deleteUser 
+    } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-auth.js";
+    import { 
+        getFirestore, 
+        collection, 
+        addDoc, 
+        serverTimestamp 
+    } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js";
 
-    // ⚠️ 2. TA CONFIGURATION FIREBASE (Avec tes VRAIES clés !)
+    // 2. CONFIGURATION FIREBASE
     const firebaseConfig = {
-      apiKey: "AIzaSyBQlgAINBRM3YvG_GGGF4J2gsEstoBDe6k",
-      authDomain: "glamathome-30bfd.firebaseapp.com",
-      projectId: "glamathome-30bfd",
-      storageBucket: "glamathome-30bfd.firebasestorage.app",
-      messagingSenderId: "126884062776",
-      appId: "1:126884062776:web:24a303108fbb611af0e8cd",
-      measurementId: "G-484G2WSR1Y"
+        apiKey: "AIzaSyBQlgAINBRM3YvG_GGGF4J2gsEstoBDe6k",
+        authDomain: "glamathome-30bfd.firebaseapp.com",
+        projectId: "glamathome-30bfd",
+        storageBucket: "glamathome-30bfd.firebasestorage.app",
+        messagingSenderId: "126884062776",
+        appId: "1:126884062776:web:24a303108fbb611af0e8cd",
+        measurementId: "G-484G2WSR1Y"
     };
 
-    // 3. INITIALISATION DE FIREBASE
+    // 3. INITIALISATION DES SERVICES
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
+    const db = getFirestore(app);
     const provider = new GoogleAuthProvider();
-    
     let currentUser = null;
 
-    // 3. ÉCOUTEUR DE CONNEXION (Met à jour le profil avec les infos Google)
+    // 4. SURVEILLANCE DE L'ÉTAT DE CONNEXION (Header + Profil)
     onAuthStateChanged(auth, (user) => {
+        // Éléments du Header Accueil
+        const headerName = document.getElementById("header-user-name");
+        const headerImg = document.getElementById("header-user-img");
+        
+        // Éléments de la page Profil
+        const profileName = document.querySelector("#screen-user_profile_settings h2");
+        const profileImg = document.querySelector("#screen-user_profile_settings img");
+
         if (user) {
             currentUser = user;
-            console.log("🟢 Utilisateur reconnu :", user.displayName);
-            
-            const profileName = document.querySelector("#screen-user_profile_settings h2");
-            const profileImg = document.querySelector("#screen-user_profile_settings img");
-            if(profileName) profileName.innerText = user.displayName;
-            if(profileImg) profileImg.src = user.photoURL;
+            const firstName = user.displayName ? user.displayName.split(' ')[0] : "User";
+
+            // Mise à jour visuelle partout
+            if (headerName) headerName.innerText = "Hello, " + firstName;
+            if (headerImg) headerImg.src = user.photoURL;
+            if (profileName) profileName.innerText = user.displayName;
+            if (profileImg) profileImg.src = user.photoURL;
+
+            console.log("🟢 Utilisateur connecté :", user.displayName);
         } else {
             currentUser = null;
-            console.log("🔴 Aucun utilisateur connecté.");
+            
+            // Valeurs par défaut en mode déconnecté
+            if (headerName) headerName.innerText = "Profile";
+            if (profileName) profileName.innerText = "Sarah";
+            console.log("🔴 Mode Invité");
         }
     });
 
-    // 🛠️ 4. NAVIGATION GLOBALE (Le "Videur")
+    // 5. SYSTÈME DE NAVIGATION
     window.navigate = async function(screenName) {
-        let targetName = screenName;
-        if (targetName.startsWith("screen-")) {
-            targetName = targetName.replace("screen-", "");
-        }
+        let targetName = screenName.startsWith("screen-") ? screenName.replace("screen-", "") : screenName;
 
-        // 🛑 RÈGLE DE SÉCURITÉ : L'écran "user_profile_settings" est protégé !
+        // Protection : Connexion Google requise pour accéder au profil
         if (targetName === "user_profile_settings" && !currentUser) {
-            console.log("🔒 Accès au profil bloqué. Lancement de la connexion Google...");
             try {
                 const result = await signInWithPopup(auth, provider);
                 currentUser = result.user;
-                console.log("✅ Connecté avec succès :", currentUser.displayName);
             } catch (error) {
-                console.error("❌ Connexion annulée :", error);
-                return; // Si l'utilisateur annule, on arrête
+                console.error("Connexion annulée");
+                return;
             }
         }
 
-        // ✅ Navigation normale
         const targetId = "screen-" + targetName;
         const target = document.getElementById(targetId);
+        
         if (target) {
+            // Cacher tous les écrans
             document.querySelectorAll('.app-screen').forEach(screen => {
                 screen.classList.remove('active');
                 screen.style.display = 'none';
             });
+            // Afficher l'écran cible
             target.classList.add('active');
             target.style.display = 'block';
-            window.scrollTo(0,0);
+            window.scrollTo(0, 0);
         }
     };
 
-    document.addEventListener("DOMContentLoaded", () => {
-        // Rend la bannière IA cliquable
-        document.querySelectorAll('.editorial-gradient').forEach(banniere => {
-            banniere.classList.add('cursor-pointer');
-            banniere.onclick = function() {
-                window.navigate('ai_style_assistant_unisex_update');
-            };
-        });
-        
-        // Change la souris en "petite main" quand on passe sur les photos de profil en haut
-        document.querySelectorAll('header img').forEach(img => {
-            img.classList.add('cursor-pointer');
-        });
-    });
-
-    let selectedGender = "female";
-
-    // 5. LE COEUR DE L'APPLICATION (Écoute Globale des clics)
+    // 6. GESTIONNAIRE D'ÉVÉNEMENTS (CLICS)
     document.addEventListener("click", async (e) => {
         
-        // 🎯 NOUVEAU : Clic sur N'IMPORTE QUELLE photo de profil dans n'importe quel header (menu du haut) !
-        const profilePic = e.target.closest("header img");
-        if (profilePic) {
-            e.preventDefault();
-            window.navigate('user_profile_settings');
-            return;
-        }
-        
-        // ---- Choix du Genre (IA) ----
-        const btn = e.target.closest("button");
-        if (btn && btn.innerText) {
-            const text = btn.innerText.trim();
-            if (text === "Female" || text.includes("woman")) {
-                selectedGender = "female";
-                const container = btn.parentElement;
-                const allBtns = container.querySelectorAll("button");
-                if (allBtns.length >= 2) {
-                    allBtns[0].className = "flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-full border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all active:scale-95 duration-200";
-                    allBtns[1].className = "flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-full border-2 border-outline-variant/30 text-on-surface-variant font-bold hover:border-primary hover:text-primary transition-all active:scale-95 duration-200";
+        // --- DÉCONNEXION ---
+        if (e.target.closest("#btn-logout")) {
+            if (confirm("Es-tu sûr de vouloir te déconnecter ?")) {
+                try {
+                    await signOut(auth);
+                    alert("Tu es maintenant déconnecté.");
+                    window.navigate('glamathome_home_screen');
+                } catch (error) {
+                    console.error("Erreur déconnexion:", error);
                 }
-                return;
-            }
-            else if (text === "Male" || text.includes("man")) {
-                selectedGender = "male";
-                const container = btn.parentElement;
-                const allBtns = container.querySelectorAll("button");
-                if (allBtns.length >= 2) {
-                    allBtns[0].className = "flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-full border-2 border-outline-variant/30 text-on-surface-variant font-bold hover:border-primary hover:text-primary transition-all active:scale-95 duration-200";
-                    allBtns[1].className = "flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-full border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all active:scale-95 duration-200";
-                }
-                return;
             }
         }
 
-        // ---- LE BOUTON IA ----
+        // --- SUPPRESSION DE COMPTE ---
+        if (e.target.closest("#btn-delete-account")) {
+            if (confirm("🚨 ATTENTION : Ton compte sera définitivement supprimé. Cette action est irréversible !")) {
+                if (currentUser) {
+                    deleteUser(currentUser).then(() => {
+                        alert("Compte supprimé avec succès.");
+                        window.location.reload();
+                    }).catch((error) => {
+                        alert("Sécurité : Veuillez vous déconnecter et vous reconnecter avant de supprimer votre compte.");
+                    });
+                }
+            }
+        }
+
+        // --- ANALYSE IA (Port 3001) ---
         const analyzeBtn = e.target.closest("#analyzeBtn");
         if (analyzeBtn) {
-            e.preventDefault();
-            
-            // Si pas connecté, on force Google
-            if (!currentUser) {
-                try {
-                    const result = await signInWithPopup(auth, provider);
-                    currentUser = result.user;
-                    alert("Bienvenue " + currentUser.displayName + " ! La génération va pouvoir commencer.");
-                } catch (error) {
-                    alert("Tu dois te connecter avec Google pour utiliser l'intelligence artificielle.");
-                    return; 
-                }
-            }
-
             const container = analyzeBtn.parentElement;
             const input = container.querySelector("#photoInput");
             const preview = container.querySelector("#preview");
-            
             const file = input ? input.files[0] : null;
-            
-            if (!file) {
-                alert("Choisis une photo d'abord !");
-                return;
-            }
 
+            if (!file) return alert("Choisis une photo avant l'analyse !");
+            
             analyzeBtn.innerText = "L'IA analyse ton visage...";
-            analyzeBtn.classList.add("opacity-75", "animate-pulse");
+            analyzeBtn.classList.add("animate-pulse", "opacity-70");
 
             const formData = new FormData();
-            formData.append("gender", selectedGender); 
             formData.append("image", file);
 
             try {
-                const res = await fetch("http://127.0.0.1:3001/analyze", {
-                    method: "POST",
-                    body: formData
-                });
-                
+                const res = await fetch("http://127.0.0.1:3001/analyze", { method: "POST", body: formData });
                 const data = await res.json();
-
                 if (res.ok && data.image) {
                     preview.src = data.image;
-                    analyzeBtn.innerText = "✨ Style Généré !";
-                    analyzeBtn.classList.remove("opacity-75", "animate-pulse");
-                } else {
-                    throw new Error(data.error || "Erreur serveur");
+                    analyzeBtn.innerText = "✨ Style Appliqué !";
                 }
             } catch (err) {
-                console.error(err);
-                alert("Erreur de connexion avec le serveur IA.");
+                alert("Le serveur IA n'est pas lancé sur le port 3001.");
                 analyzeBtn.innerText = "✨ Try AI Hairstyle";
-                analyzeBtn.classList.remove("opacity-75", "animate-pulse");
+            } finally {
+                analyzeBtn.classList.remove("animate-pulse", "opacity-70");
             }
         }
     });
 
-    // Aperçu de la photo
-    document.addEventListener("change", (e) => {
-      if (e.target.id === "photoInput") {
-        const input = e.target;
-        const container = input.parentElement;
-        const preview = container.querySelector("#preview");
-        if (preview && input.files[0]) {
-          preview.src = URL.createObjectURL(input.files[0]);
-          preview.style.display = "block";
+    // 7. FORMULAIRE PRESTATAIRE (FIRESTORE)
+    document.addEventListener("submit", async (e) => {
+        if (e.target.id === "form-freelancer") {
+            e.preventDefault();
+            if (!currentUser) return alert("Connecte-toi d'abord avec Google !");
+
+            try {
+                await addDoc(collection(db, "stylistes"), {
+                    nom: currentUser.displayName,
+                    email: currentUser.email,
+                    uid: currentUser.uid,
+                    specialite: document.getElementById("app-specialite").value,
+                    tarif: parseInt(document.getElementById("app-tarif").value),
+                    statut: "en attente",
+                    dateInscription: serverTimestamp()
+                });
+                alert("Ta candidature a été envoyée avec succès ! ✨");
+                window.navigate('user_profile_settings');
+            } catch (error) {
+                console.error("Erreur Firestore:", error);
+                alert("Erreur lors de l'envoi. Vérifie ta connexion.");
+            }
         }
-      }
-    });  
+    });
+
+    // 8. APERÇU PHOTO AVANT ANALYSE
+    document.addEventListener("change", (e) => {
+        if (e.target.id === "photoInput" && e.target.files[0]) {
+            const preview = e.target.parentElement.querySelector("#preview");
+            if (preview) {
+                preview.src = URL.createObjectURL(e.target.files[0]);
+                preview.style.display = "block";
+            }
+        }
+    });
 </script>
+    
 </body>
 </html>
