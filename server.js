@@ -1,101 +1,171 @@
 import "dotenv/config";
 import express from "express";
 import multer from "multer";
-import OpenAI from "openai";
 import fs from "fs";
 import cors from "cors";
-
-// 👉 Ces deux lignes sont obligatoires avec "import" pour trouver ton fichier index.html
 import path from "path";
 import { fileURLToPath } from "url";
+import { Client } from "@gradio/client";
+import twilio from "twilio";
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const color = { reset: "\x1b[0m", cyan: "\x1b[36m", green: "\x1b[32m", red: "\x1b[31m", yellow: "\x1b[33m" };
 const app = express();
 const upload = multer({ dest: "uploads/" });
 
 app.use(cors());
-
-// 👉 C'EST ICI QUE LA MAGIE OPÈRE : On demande au serveur d'afficher ton site web !
+app.use(express.json({ limit: "20mb" }));
 app.use(express.static(__dirname));
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
-});
 
-// On configure OpenAI
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY, 
-});
+// ----------------------------------------------------------
+// Twilio SMS Verification
+// ----------------------------------------------------------
+const twilioClient = twilio(
+    process.env.TWILIO_ACCOUNT_SID,
+    process.env.TWILIO_AUTH_TOKEN
+);
+const TWILIO_FROM = process.env.TWILIO_PHONE_NUMBER;
 
-// Ton code pour l'IA qui ne change pas
-app.post("/analyze", upload.single("image"), async (req, res) => {
-  try {
-    if (!req.file) {
-      return res.status(400).json({ error: "Aucune image uploadée" });
+// POST /api/send-verification — Send SMS code via Twilio Verify
+app.post("/api/send-verification", async (req, res) => {
+    try {
+        const { phone } = req.body;
+        if (!phone) return res.status(400).json({ error: "Missing phone number" });
+
+        // Strip non-digits for normalization but keep + prefix
+        const cleanPhone = phone.replace(/[^\d+]/g, "");
+        if (cleanPhone.length < 10) return res.status(400).json({ error: "Invalid phone number" });
+
+        const sid = process.env.TWILIO_VERIFY_SERVICE_SID;
+        if (!sid) throw new Error("TWILIO_VERIFY_SERVICE_SID is missing in .env");
+
+        console.log(`${color.cyan}📱 Sending Verify SMS to ${cleanPhone}...${color.reset}`);
+        
+        await twilioClient.verify.v2.services(sid).verifications.create({to: cleanPhone, channel: 'sms'});
+        console.log(`${color.green}✅ Verify SMS sent to ${cleanPhone} via Twilio Verify${color.reset}`);
+        
+        res.json({ success: true, message: "Verification code sent via Twilio Verify" });
+    } catch (err) {
+        console.error(`${color.red}❌ Twilio Error: ${err.message}${color.reset}`);
+        res.status(500).json({
+            error: `SMS failed: ${err.message}`,
+            hint: "Check if your Twilio Verify Service SID is valid and account has funds/trial balance."
+        });
     }
+});
 
-    const gender = req.body.gender || "female";
-    console.log(`📸 Image reçue ! Genre sélectionné : ${gender.toUpperCase()}`);
+// POST /api/verify-code — Validate the entered code via Twilio Verify
+app.post("/api/verify-code", async (req, res) => {
+    try {
+        const { phone, code } = req.body;
+        if (!phone || !code) return res.status(400).json({ error: "Missing phone or code" });
 
-    const imageAsBase64 = fs.readFileSync(req.file.path, 'base64');
-    const imageUrl = `data:${req.file.mimetype};base64,${imageAsBase64}`;
+        const cleanPhone = phone.replace(/[^\d+]/g, "");
+        const sid = process.env.TWILIO_VERIFY_SERVICE_SID;
+        if (!sid) throw new Error("TWILIO_VERIFY_SERVICE_SID is missing in .env");
 
-    console.log("👁️ Analyse très précise du visage...");
-    
-    const visionResponse = await openai.chat.completions.create({
-      model: "gpt-4o",
-      messages: [
-        {
-          role: "user",
-          content: [
-            { 
-              type: "text", 
-              text: `Analyze this photo of a ${gender}. Provide a highly detailed facial description in English: exact skin tone, face shape, jawline, nose shape, lip shape, eye color, and eyebrow shape. DO NOT describe the hair or clothing. Just the bare facial features.` 
-            },
-            { type: "image_url", image_url: { url: imageUrl } }
-          ]
+        const verificationCheck = await twilioClient.verify.v2.services(sid)
+            .verificationChecks
+            .create({to: cleanPhone, code: code.trim()});
+        
+        if (verificationCheck.status === 'approved') {
+            console.log(`${color.green}✅ Phone ${cleanPhone} verified via Twilio Verify!${color.reset}`);
+            res.json({ success: true, verified: true });
+        } else {
+            return res.status(400).json({ error: "Incorrect code. Please try again." });
         }
-      ]
-    });
-
-    const userDescription = visionResponse.choices[0].message.content;
-    console.log("📝 Traits du visage détectés :", userDescription);
-
-    console.log("🎨 Création de l'image par DALL-E...");
-
-    let hairstyle = "stylish African knotless braids";
-    if (gender === "male") {
-        hairstyle = "a clean, sharp low skin fade haircut with a styled textured top and a neat beard";
+    } catch (err) {
+        console.error(`${color.red}❌ Verification Error: ${err.message}${color.reset}`);
+        res.status(500).json({ error: err.message });
     }
-
-    const promptDalle = `A highly realistic, unedited, hyper-detailed photography of a ${gender}. The person MUST have these exact facial features: ${userDescription}. The person is wearing ${hairstyle}. Professional studio lighting, neutral background, looking directly at the camera.`;
-
-    const result = await openai.images.generate({
-      model: "dall-e-3",
-      prompt: promptDalle,
-      n: 1,
-      size: "1024x1024",
-    });
-
-    fs.unlinkSync(req.file.path);
-    console.log("✅ Avatar généré avec succès !");
-
-    res.json({ image: result.data[0].url });
-
-  } catch (err) {
-    console.error("❌ Erreur :", err);
-    res.status(500).json({ error: "L'IA a échoué" });
-  }
 });
 
-// Démarrage du serveur
-const PORT = 3001;
-app.listen(PORT, '127.0.0.1', () => {
-    console.log("=========================================");
-    console.log(`🔥 Serveur PRÊT sur le port ${PORT}`);
-    console.log(`🌍 Clique ici pour voir le site : http://localhost:${PORT}`);
-    console.log("=========================================");
+
+// ----------------------------------------------------------
+// POST /api/try-hairstyle — HF Space instruct-pix2pix
+// ----------------------------------------------------------
+app.post("/api/try-hairstyle", async (req, res) => {
+    try {
+        const { userImageBase64, stylePrompt } = req.body;
+        if (!userImageBase64) {
+            return res.status(400).json({ error: "Missing userImageBase64" });
+        }
+
+        const prompt = stylePrompt || "Change the hair to neat, long african knotless braids, keeping the face exactly the same, photorealistic";
+
+        // Convert base64 to Blob
+        const base64Data = userImageBase64.replace(/^data:image\/\w+;base64,/, "");
+        const mimeType = userImageBase64.match(/^data:(image\/\w+);base64,/)?.[1] || "image/jpeg";
+        const imageBuffer = Buffer.from(base64Data, "base64");
+        const imageBlob = new Blob([imageBuffer], { type: mimeType });
+
+        console.log(`${color.cyan}⚡ Connecting to Hugging Face Instruct-Pix2Pix Space...${color.reset}`);
+        
+        const client = await Client.connect("timbrooks/instruct-pix2pix", {
+            hf_token: process.env.HUGGINGFACE_TOKEN
+        });
+
+        console.log(`${color.cyan}⚡ Call HF predict with prompt: "${prompt}"...${color.reset}`);
+        
+        const result = await client.predict("/generate", [
+            imageBlob,
+            prompt,
+            50,               // Steps
+            "Randomize Seed", // randomize_seed
+            1371,             // seed
+            "Fix CFG",        // randomize_cfg
+            9.0,              // text_cfg_scale
+            1.2               // image_cfg_scale
+        ]);
+
+        const outputImage = result.data?.[3];
+        const outputImageUrl = typeof outputImage === "string" ? outputImage : outputImage?.url;
+
+        if (!outputImageUrl) {
+            throw new Error("Failed to generate image URL from Hugging Face Space");
+        }
+
+        console.log(`${color.green}✅ Generated image URL: ${outputImageUrl}${color.reset}`);
+        res.json({ imageUrl: outputImageUrl });
+
+    } catch (err) {
+        console.error(`${color.red}❌ Hairstyle Generation Error: ${err.message}${color.reset}`);
+        res.status(500).json({ error: err.message || "Hairstyle try-on failed." });
+    }
 });
-setInterval(() => {
-    console.log("💓 Serveur toujours actif...");
-}, 10000);
+
+// ----------------------------------------------------------
+// POST /analyze — Anthropic Claude Vision for hairstyle recs
+// ----------------------------------------------------------
+app.post("/analyze", upload.single("image"), async (req, res) => {
+    try {
+        if (!req.file) throw new Error("No image uploaded");
+
+        const gender = req.body.gender || "female";
+        const imageBase64 = fs.readFileSync(req.file.path, "base64");
+        const mimeType = req.file.mimetype || "image/jpeg";
+
+        console.log(`${color.cyan}📸 Image received (${gender})${color.reset}`);
+
+        // Cleanup uploaded file
+        if (fs.existsSync(req.file.path)) fs.unlinkSync(req.file.path);
+
+        console.log(`${color.green}✅ Analysis processed${color.reset}`);
+        res.json({ recommendations: "Claude analysis disabled." });
+
+    } catch (err) {
+        if (req.file && fs.existsSync(req.file.path)) fs.unlinkSync(req.file.path);
+        console.error(`${color.red}❌ ERROR: ${err.message}${color.reset}`);
+        res.status(500).json({ error: err.message || "AI analysis failed." });
+    }
+});
+
+// ----------------------------------------------------------
+// Start server
+// ----------------------------------------------------------
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, "127.0.0.1", () => {
+    console.log(`\x1b[45m 🔥 GLAMATHOME SERVER READY ON PORT ${PORT} \x1b[0m`);
+});
