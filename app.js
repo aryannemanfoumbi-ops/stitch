@@ -145,6 +145,94 @@ function renderFavorites(filter = 'all') {
   `).join('');
 }
 
+const MY_GALLERY_IMAGES = [
+    { id: "braid-01", name: "Classic Box Braids", category: "african-braids", gender: "women", imageUrl: "images/discover/african-braids/braid01.jpg", prompt: "Change the hair to Classic Box Braids, photorealistic" },
+    { id: "braid-02", name: "Jumbo Knotless Braids", category: "african-braids", gender: "women", imageUrl: "images/discover/african-braids/braid02.jpg", prompt: "Change the hair to Jumbo Knotless Braids, photorealistic" },
+    { id: "braid-03", name: "Bohemian Goddess Braids", category: "african-braids", gender: "women", imageUrl: "images/discover/african-braids/braid03.jpg", prompt: "Change the hair to Bohemian Goddess Braids, photorealistic" },
+    { id: "braid-04", name: "Senegalese Twists", category: "african-braids", gender: "women", imageUrl: "images/discover/african-braids/braid04.jpg", prompt: "Change the hair to Senegalese Twists, photorealistic" },
+    { id: "braid-05", name: "Fulani Tribal Braids", category: "african-braids", gender: "women", imageUrl: "images/discover/african-braids/braid05.jpg", prompt: "Change the hair to Fulani Tribal Braids, photorealistic" },
+
+    { id: "haircut-01", name: "Classic Fade", category: "haircut", gender: "men", imageUrl: "images/discover/haircut/haircut01.jpg", prompt: "Change the hair to a Classic Fade Haircut, photorealistic" },
+    { id: "haircut-02", name: "Textured Crop", category: "haircut", gender: "men", imageUrl: "images/discover/haircut/haircut02.jpg", prompt: "Change the hair to a Textured Crop Haircut, photorealistic" },
+    { id: "haircut-03", name: "Pompadour Fade", category: "haircut", gender: "men", imageUrl: "images/discover/haircut/haircut03.jpg", prompt: "Change the hair to a Pompadour Fade Haircut, photorealistic" },
+    { id: "haircut-04", name: "Buzz Cut with Line Up", category: "haircut", gender: "men", imageUrl: "images/discover/haircut/haircut04.jpg", prompt: "Change the hair to a Buzz Cut with Line Up, photorealistic" },
+    { id: "haircut-05", name: "Slick Back Taper", category: "haircut", gender: "men", imageUrl: "images/discover/haircut/haircut05.jpg", prompt: "Change the hair to a Slick Back Taper Haircut, photorealistic" },
+
+    { id: "makeup-01", name: "Soft Glam", category: "makeup", gender: "women", imageUrl: "images/discover/makeup/makeup01.jpg", prompt: "Apply Soft Glam Makeup, photorealistic" },
+    { id: "makeup-02", name: "Smokey Eye Look", category: "makeup", gender: "women", imageUrl: "images/discover/makeup/makeup02.jpg", prompt: "Apply Smokey Eye Makeup, photorealistic" },
+    { id: "makeup-03", name: "Natural Everyday Makeup", category: "makeup", gender: "women", imageUrl: "images/discover/makeup/makeup03.jpg", prompt: "Apply Natural Everyday Makeup, photorealistic" },
+    { id: "makeup-04", name: "Bridal Glow", category: "makeup", gender: "women", imageUrl: "images/discover/makeup/makeup04.jpg", prompt: "Apply Bridal Glow Makeup, photorealistic" },
+    { id: "makeup-05", name: "Bold Red Lip Classic", category: "makeup", gender: "women", imageUrl: "images/discover/makeup/makeup05.jpg", prompt: "Apply Bold Red Lip Makeup, photorealistic" },
+
+    { id: "nails-01", name: "Classic French Tip", category: "nails", gender: "women", imageUrl: "images/discover/nails/nails01.jpg", prompt: "Show Classic French Tip Nails, photorealistic" },
+    { id: "nails-02", name: "Matte Black Coffin", category: "nails", gender: "women", imageUrl: "images/discover/nails/nails02.jpg", prompt: "Show Matte Black Coffin Nails, photorealistic" },
+    { id: "nails-03", name: "Pastel Ombre", category: "nails", gender: "women", imageUrl: "images/discover/nails/nails03.jpg", prompt: "Show Pastel Ombre Nails, photorealistic" },
+    { id: "nails-04", name: "Rhinestone Stiletto", category: "nails", gender: "women", imageUrl: "images/discover/nails/nails04.jpg", prompt: "Show Rhinestone Stiletto Nails, photorealistic" },
+    { id: "nails-05", name: "Nude Almond", category: "nails", gender: "women", imageUrl: "images/discover/nails/nails05.jpg", prompt: "Show Nude Almond Nails, photorealistic" },
+
+    { id: "women-01", name: "Long Beach Waves", category: "women", gender: "women", imageUrl: "images/discover/women/women01.jpg", prompt: "Change the hair to Long Beach Waves, photorealistic" },
+    { id: "women-02", name: "Sleek Straight Bob", category: "women", gender: "women", imageUrl: "images/discover/women/women02.jpg", prompt: "Change the hair to a Sleek Straight Bob, photorealistic" },
+    { id: "women-03", name: "Voluminous Curls", category: "women", gender: "women", imageUrl: "images/discover/women/women03.jpg", prompt: "Change the hair to Voluminous Curls, photorealistic" },
+    { id: "women-04", name: "Messy Updo", category: "women", gender: "women", imageUrl: "images/discover/women/women04.jpg", prompt: "Change the hair to a Messy Updo, photorealistic" },
+    { id: "women-05", name: "Curtain Bangs", category: "women", gender: "women", imageUrl: "images/discover/women/women05.jpg", prompt: "Change the hair to feature Curtain Bangs, photorealistic" },
+
+    { id: "men-01", name: "Executive Contour", category: "men", gender: "men", imageUrl: "images/discover/men/men01.jpg", prompt: "Change the hair to an Executive Contour Haircut, photorealistic" },
+    { id: "men-02", name: "Messy Quiff", category: "men", gender: "men", imageUrl: "images/discover/men/men02.jpg", prompt: "Change the hair to a Messy Quiff Haircut, photorealistic" },
+    { id: "men-03", name: "Mid Skin Fade", category: "men", gender: "men", imageUrl: "images/discover/men/men03.jpg", prompt: "Change the hair to a Mid Skin Fade, photorealistic" },
+    { id: "men-04", name: "Long Flow Bro", category: "men", gender: "men", imageUrl: "images/discover/men/men04.jpg", prompt: "Change the hair to a Long Flow Bro Haircut, photorealistic" },
+    { id: "men-05", name: "Curly Fringe Fade", category: "men", gender: "men", imageUrl: "images/discover/men/men05.jpg", prompt: "Change the hair to a Curly Fringe Fade, photorealistic" }
+];
+
+function renderDiscoverGallery(filterType = 'all') {
+    const container = document.querySelector('#screen-discover_styles_stylists section.mb-12 div.overflow-x-auto');
+    if (!container) return;
+
+    let filtered = MY_GALLERY_IMAGES;
+    if (filterType !== 'all') {
+        const query = filterType.toLowerCase();
+        filtered = MY_GALLERY_IMAGES.filter(item => 
+            item.category.toLowerCase() === query || 
+            item.gender.toLowerCase() === query || 
+            item.category.toLowerCase().replace('-', ' ') === query.replace('-', ' ') ||
+            item.name.toLowerCase().includes(query)
+        );
+    }
+
+    container.innerHTML = filtered.map(f => `
+        <div class="flex-none discover-item w-64 group cursor-pointer" onclick="document.getElementById('ai-style-prompt-input').value = 'Change the hair to ${f.name.replace(/'/g, "\\'")}, photorealistic'; window.scrollTo({top: 0, behavior: 'smooth'});">
+            <div class="relative h-80 rounded-lg overflow-hidden mb-3">
+                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+                     src="${f.imageUrl}.jpeg" 
+                     alt="${f.name}"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                <button onclick="event.stopPropagation(); toggleFavorite('${f.id}','style','${f.name.replace(/'/g, "\\'")}','${f.category}','${f.imageUrl}')" 
+                        class="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/30 backdrop-blur-sm flex items-center justify-center z-10 active:scale-90 transition-all">
+                    <span id="fav-icon-${f.id}" class="material-symbols-outlined text-white text-lg notranslate" translate="no" style="font-variation-settings: ''">
+                        favorite_border
+                    </span>
+                </button>
+                <div class="absolute bottom-4 left-4">
+                    <span class="bg-primary-container/90 backdrop-blur-sm text-on-primary-container text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest">
+                        ${f.category.replace('-', ' ')}
+                    </span>
+                </div>
+            </div>
+            <h3 class="font-headline font-bold text-lg text-on-surface">${f.name}</h3>
+            <p class="text-on-surface-variant text-sm capitalize">${f.gender}</p>
+        </div>
+    `).join('');
+
+    const savedFavs = JSON.parse(localStorage.getItem('glamathome_favorites') || '[]');
+    savedFavs.forEach(fav => {
+        const icon = document.getElementById('fav-icon-' + fav.id);
+        if (icon) {
+            icon.textContent = 'favorite';
+            icon.style.fontVariationSettings = "'FILL' 1";
+            icon.style.color = '#e11d48';
+        }
+    });
+}
+
 // ----------------------------------------------------------
 // 1. CORE NAVIGATION — Single canonical navigate() function
 //    All other definitions have been removed from index.html.
@@ -527,20 +615,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!pills.length) return;
 
         const filterContent = (filterType) => {
-            const items = document.querySelectorAll('.discover-item');
-            items.forEach(item => {
-                const textContent = item.textContent.toLowerCase();
-                const htmlContent = item.innerHTML.toLowerCase();
-                const hasMenContext = textContent.includes('barber') || htmlContent.includes('barber') || textContent.includes('fade') || textContent.includes('grooming') || textContent.includes('men') || textContent.includes('beard') || textContent.includes('taper') || textContent.includes('executive');
-
-                if (filterType === 'all') {
-                    item.classList.remove('hidden-item');
-                } else if (filterType === 'women') {
-                    item.classList.toggle('hidden-item', hasMenContext);
-                } else if (filterType === 'men') {
-                    item.classList.toggle('hidden-item', !hasMenContext);
-                }
-            });
+            renderDiscoverGallery(filterType);
         };
 
         pills.forEach(pill => {
@@ -560,6 +635,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     initFilters();
+    renderDiscoverGallery('all');
 
     // ----- Photo preview for AI screen -----
     const photoInput = document.getElementById('photoInput');
