@@ -7,6 +7,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { Client } from "@gradio/client";
 import twilio from "twilio";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -103,7 +104,7 @@ app.post("/api/try-hairstyle", async (req, res) => {
 
         console.log(`${color.cyan}⚡ Connecting to Hugging Face Instruct-Pix2Pix Space...${color.reset}`);
         
-        const client = await Client.connect("timbrooks/instruct-pix2pix", {
+        const client = await Client.connect("esteraryanne/glamathome-pix2pix", {
             hf_token: process.env.HUGGINGFACE_TOKEN
         });
 
@@ -149,11 +150,34 @@ app.post("/analyze", upload.single("image"), async (req, res) => {
 
         console.log(`${color.cyan}📸 Image received (${gender})${color.reset}`);
 
+        const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+        const prompt = "Analyze this person's face shape. Recommend 5 hairstyles that suit them. Return JSON only: { \"recommendations\": [...] }";
+        const imagePart = {
+            inlineData: {
+                data: imageBase64,
+                mimeType
+            }
+        };
+
+        const result = await model.generateContent([prompt, imagePart]);
+        const responseText = result.response.text();
+
+        let parsedJSON;
+        try {
+            const jsonStr = responseText.replace(/```json/gi, "").replace(/```/g, "").trim();
+            parsedJSON = JSON.parse(jsonStr);
+        } catch (e) {
+            console.error("Failed to parse Gemini JSON:", responseText);
+            throw new Error("Failed to parse AI response as JSON");
+        }
+
         // Cleanup uploaded file
         if (fs.existsSync(req.file.path)) fs.unlinkSync(req.file.path);
 
         console.log(`${color.green}✅ Analysis processed${color.reset}`);
-        res.json({ recommendations: "Claude analysis disabled." });
+        res.json(parsedJSON);
 
     } catch (err) {
         if (req.file && fs.existsSync(req.file.path)) fs.unlinkSync(req.file.path);

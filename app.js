@@ -43,6 +43,108 @@ function updateUserUI(user) {
     });
 }
 
+window.toggleFavorite = function(id, type, name, specialty, image) {
+  const KEY = 'glamathome_favorites';
+  let favs = JSON.parse(localStorage.getItem(KEY) || '[]');
+  const idx = favs.findIndex(f => f.id === id);
+  const icon = document.getElementById('fav-icon-' + id);
+  
+  if (idx === -1) {
+    favs.push({ id, type, name, specialty, image });
+    if (icon) {
+      icon.textContent = 'favorite';
+      icon.style.fontVariationSettings = "'FILL' 1";
+      icon.style.color = '#e11d48';
+    }
+    showToast('Added to favorites');
+  } else {
+    favs.splice(idx, 1);
+    if (icon) {
+      icon.textContent = 'favorite_border';
+      icon.style.fontVariationSettings = '';
+      icon.style.color = '';
+    }
+    showToast('Removed from favorites');
+  }
+  localStorage.setItem(KEY, JSON.stringify(favs));
+  renderFavorites();
+};
+
+function showToast(msg) {
+  let t = document.getElementById('glam-toast');
+  if (!t) {
+    t = document.createElement('div');
+    t.id = 'glam-toast';
+    t.style.cssText = `
+      position:fixed; bottom:100px; left:50%; transform:translateX(-50%);
+      background:#1a1c1a; color:#fff; padding:10px 20px;
+      border-radius:999px; font-size:13px; font-weight:600;
+      z-index:99999; opacity:0; transition:opacity 0.3s;
+      white-space:nowrap; pointer-events:none;
+    `;
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.style.opacity = '1';
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => t.style.opacity = '0', 2500);
+}
+
+function renderFavorites(filter = 'all') {
+  const grid = document.getElementById('favorites-grid');
+  const empty = document.getElementById('favorites-empty-state');
+  if (!grid) return;
+
+  let favs = JSON.parse(
+    localStorage.getItem('glamathome_favorites') || '[]'
+  );
+  
+  if (filter === 'styles') 
+    favs = favs.filter(f => f.type === 'style');
+  else if (filter === 'stylists') 
+    favs = favs.filter(f => f.type === 'stylist');
+
+  if (!favs.length) {
+    grid.innerHTML = '';
+    if (empty) empty.classList.remove('hidden');
+    return;
+  }
+  if (empty) empty.classList.add('hidden');
+
+  grid.innerHTML = favs.map(f => `
+    <div class="bg-surface-container-lowest rounded-xl overflow-hidden 
+                shadow-sm border border-outline-variant/10 relative group">
+      <div class="relative h-48">
+        <img src="${f.image}" alt="${f.name}"
+             class="w-full h-full object-cover"
+             onerror="this.src='https://placehold.co/400x200/f4ede8/8d4d3b?text=No+Image'"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+        <span class="absolute top-3 left-3 text-[10px] font-bold uppercase 
+                     tracking-widest bg-primary/90 text-white px-2 py-1 
+                     rounded-full">${f.type}</span>
+      </div>
+      <div class="p-4 flex justify-between items-start">
+        <div>
+          <h3 class="font-headline font-bold text-on-surface">${f.name}</h3>
+          <p class="text-xs text-on-surface-variant mt-1">${f.specialty || ''}</p>
+        </div>
+        <button onclick="toggleFavorite('${f.id}','${f.type}',
+          '${f.name.replace(/'/g,"\\\\'")}',
+          '${(f.specialty||'').replace(/'/g,"\\\\'")}',
+          '${f.image}')"
+          class="w-9 h-9 rounded-full bg-red-50 flex items-center 
+                 justify-center text-red-500 hover:bg-red-100 
+                 active:scale-90 transition-all flex-shrink-0">
+          <span class="material-symbols-outlined text-lg notranslate" 
+                translate="no" style="font-variation-settings:'FILL' 1">
+            favorite
+          </span>
+        </button>
+      </div>
+    </div>
+  `).join('');
+}
+
 // ----------------------------------------------------------
 // 1. CORE NAVIGATION — Single canonical navigate() function
 //    All other definitions have been removed from index.html.
@@ -67,6 +169,10 @@ window.navigate = function navigate(screenId) {
 
         // Update bottom nav active state
         updateBottomNav(screenId);
+
+        if (screenId === 'saved_styles_stylists') {
+            renderFavorites('all');
+        }
     }
 };
 
@@ -264,6 +370,43 @@ window.runAI = async function runAI(btnElement) {
 // 5. DOM READY — Initializations
 // ----------------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
+
+    // --- Restore heart states on page load ---
+    const savedFavs = JSON.parse(
+      localStorage.getItem('glamathome_favorites') || '[]'
+    );
+    savedFavs.forEach(f => {
+      const icon = document.getElementById('fav-icon-' + f.id);
+      if (icon) {
+        icon.textContent = 'favorite';
+        icon.style.fontVariationSettings = "'FILL' 1";
+        icon.style.color = '#e11d48';
+      }
+    });
+
+    // --- Tab buttons in screen-saved_styles_stylists ---
+    document.querySelectorAll('#screen-saved_styles_stylists button')
+      .forEach(btn => {
+        btn.addEventListener('click', () => {
+          // reset all tabs
+          document.querySelectorAll(
+            '#screen-saved_styles_stylists button'
+          ).forEach(b => {
+            b.className = 'px-8 py-3 bg-surface-container-high ' +
+              'text-on-surface-variant rounded-full font-semibold ' +
+              'whitespace-nowrap active:scale-95 transition-all';
+          });
+          // activate clicked tab
+          btn.className = 'px-8 py-3 bg-primary text-white ' +
+            'rounded-full font-semibold shadow-lg whitespace-nowrap ' +
+            'active:scale-95 transition-all';
+          
+          const label = btn.textContent.trim().toLowerCase();
+          if (label.includes('styles')) renderFavorites('styles');
+          else if (label.includes('stylists')) renderFavorites('stylists');
+          else renderFavorites('all');
+        });
+      });
 
     // --- Send button listener for "Describe your vibe" input ---
     const vibeSendBtn = document.getElementById('ai-vibe-send-btn');
