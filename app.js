@@ -205,7 +205,7 @@ function renderDiscoverGallery(filterType = 'all') {
                      src="${f.imageUrl}.jpeg" 
                      alt="${f.name}"/>
                 <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-                <button onclick="event.stopPropagation(); toggleFavorite('${f.id}','style','${f.name.replace(/'/g, "\\'")}','${f.category}','${f.imageUrl}')" 
+                <button onclick="event.stopPropagation(); toggleFavorite('${f.id}','style','${f.name.replace(/'/g, "\\'")}','${f.category}','${f.imageUrl}.jpeg')" 
                         class="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/30 backdrop-blur-sm flex items-center justify-center z-10 active:scale-90 transition-all">
                     <span id="fav-icon-${f.id}" class="material-symbols-outlined text-white text-lg notranslate" translate="no" style="font-variation-settings: ''">
                         favorite_border
