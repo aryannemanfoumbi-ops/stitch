@@ -1404,6 +1404,7 @@ async function loadApprovedStylists() {
                             <span class="text-primary font-bold text-sm">$${tarif}/hr</span>
                             <div class="flex gap-2">
                                 <button onclick="navigate('stylist_profile_portfolio')" class="border border-primary text-primary px-3 py-1.5 rounded-full text-[11px] font-bold hover:bg-primary/10 transition-colors active:scale-95">View Details</button>
+                                <button onclick="console.log({ id: '${doc.id}', uid: '${data.uid || ''}', nom: '${nom.replace(/'/g, "\\'")}', specialite: '${specialite.replace(/'/g, "\\'")}' })" class="bg-surface-container-high text-primary px-3 py-1.5 rounded-full text-[11px] font-bold shadow-sm hover:opacity-90 active:scale-95 transition-all">Message</button>
                                 <button onclick="openBookingModal('${nom.replace(/'/g, "\\'")}')" class="bg-primary text-white px-3 py-1.5 rounded-full text-[11px] font-bold shadow-md hover:opacity-90 active:scale-95 transition-all">Book Now</button>
                             </div>
                         </div>
@@ -1587,13 +1588,41 @@ window.deleteCard = function(cardElement, silent = false) {
 };
 
 // ----- Google Auth -----
-document.getElementById('btn-google-signin')?.addEventListener('click', async () => {
+(async function initGoogleAuth() {
     try {
-        const provider = new firebase.auth.GoogleAuthProvider();
-        await firebase.auth().signInWithPopup(provider);
-        console.log("Google sign-in successful!");
-        navigate('glamathome_home_screen'); // optionally refresh the screen or show a success message
-    } catch (error) {
-        console.error("Google sign-in error:", error);
+        const { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js");
+        const auth = getAuth();
+
+        document.getElementById('btn-google-signin')?.addEventListener('click', async () => {
+            try {
+                const provider = new GoogleAuthProvider();
+                await signInWithPopup(auth, provider);
+                console.log("Google sign-in successful!");
+            } catch (error) {
+                console.error("Google sign-in error:", error);
+            }
+        });
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                console.log("User is signed in:", user.uid);
+                // Update Profile Screen UI
+                const nameElements = document.querySelectorAll('.user-first-name');
+                nameElements.forEach(el => {
+                    el.textContent = user.displayName || (user.email ? user.email.split('@')[0] : 'User');
+                });
+
+                const avatarElements = document.querySelectorAll('.user-avatar-img');
+                if (user.photoURL) {
+                    avatarElements.forEach(img => {
+                        img.src = user.photoURL;
+                    });
+                }
+            } else {
+                console.log("No user is signed in.");
+            }
+        });
+    } catch (err) {
+        console.error("Failed to load Firebase auth modular API:", err);
     }
-});
+})();
