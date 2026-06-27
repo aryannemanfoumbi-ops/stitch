@@ -697,20 +697,23 @@ document.addEventListener('DOMContentLoaded', () => {
         const specs = Array.from(document.querySelectorAll('.spec-cb:checked')).map(cb => cb.value);
 
         const applicationData = {
-            fullName: document.getElementById('stylist-name').value,
+            nom: document.getElementById('stylist-name').value,
             email: document.getElementById('stylist-email').value,
-            phone: document.getElementById('stylist-phone').value,
-            city: document.getElementById('stylist-city').value,
-            specialties: specs,
+            telephone: document.getElementById('stylist-phone').value,
+            ville: document.getElementById('stylist-city').value,
+            specialite: specs.join(", "),
             yearsOfExperience: document.getElementById('stylist-exp').value,
             portfolio: document.getElementById('stylist-portfolio').value,
             bio: document.getElementById('stylist-bio').value,
+            status: "approved",
+            tarif: "50",
+            photo: "",
             submittedAt: new Date().toISOString()
         };
 
         try {
             // Import Firestore dynamically from the Firebase SDK (matching login.html version 10.12.2)
-            const { getFirestore, collection, addDoc } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
+            const { getFirestore, collection, addDoc, serverTimestamp } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
             const app = window.firebaseApp; // We need to expose the initialized app in index.html, or we can just initialize it here since it's idempotent.
             // Wait, we don't have window.firebaseApp. Let's just re-initialize using the config.
             const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
@@ -727,7 +730,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const fbApp = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
             const db = getFirestore(fbApp);
 
-            await addDoc(collection(db, "stylist_applications"), applicationData);
+            applicationData.dateInscription = serverTimestamp();
+            await addDoc(collection(db, "stylistes"), applicationData);
             
             alert('Application submitted successfully! We will contact you soon.');
             freelancerForm.reset();
@@ -1293,7 +1297,7 @@ if (bookingForm) {
             service: service,
             dateRendezVous: `${date}T${time}`,
             price: 50, // default
-            status: "en attente",
+            status: "pending",
             dateDemande: fs.Timestamp.now(),
             address: address,
             specialRequests: notes
@@ -1331,7 +1335,7 @@ async function loadApprovedStylists() {
     approvedStylistsLoaded = true;
 
     try {
-        const q = fs.query(fs.collection(db, "stylistes"), fs.where("statut", "==", "approuvé"));
+        const q = fs.query(fs.collection(db, "stylistes"), fs.where("status", "==", "approved"));
         const querySnapshot = await fs.getDocs(q);
 
         const containers = [
@@ -1443,8 +1447,8 @@ async function loadAppointments() {
         querySnapshot.forEach(doc => {
             const data = doc.data();
             
-            // Only show "en attente" or "approuvé" (or assume others are completed/cancelled)
-            if (data.status !== 'en attente' && data.status !== 'approuvé') {
+            // Only show "pending" or "approved" (or assume others are completed/cancelled)
+            if (data.status !== 'pending' && data.status !== 'approved') {
                 // optionally filter them out or just display them with a default label
             }
             
@@ -1459,8 +1463,8 @@ async function loadAppointments() {
             const formattedTime = !isNaN(aptDate) ? aptDate.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' }) : '';
 
             let statusDisplay = isPast ? 'Completed' : 'Pending';
-            if (!isPast && data.status === 'approuvé') statusDisplay = 'Approved';
-            if (!isPast && data.status === 'en attente') statusDisplay = 'Pending';
+            if (!isPast && data.status === 'approved') statusDisplay = 'Approved';
+            if (!isPast && data.status === 'pending') statusDisplay = 'Pending';
 
             const aptCard = `
             <div class="relative pt-6 ${isPast ? 'past-apt' : 'upcoming-apt'} apt-card" ${isPast ? 'style="display:none;"' : ''}>
