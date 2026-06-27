@@ -705,7 +705,7 @@ document.addEventListener('DOMContentLoaded', () => {
             yearsOfExperience: document.getElementById('stylist-exp').value,
             portfolio: document.getElementById('stylist-portfolio').value,
             bio: document.getElementById('stylist-bio').value,
-            status: "approved",
+            status: "pending",
             tarif: "50",
             photo: "",
             submittedAt: new Date().toISOString()
@@ -1446,10 +1446,9 @@ async function loadAppointments() {
 
         querySnapshot.forEach(doc => {
             const data = doc.data();
-            
-            // Only show "pending" or "approved" (or assume others are completed/cancelled)
-            if (data.status !== 'pending' && data.status !== 'approved') {
-                // optionally filter them out or just display them with a default label
+            // Only show "approved"
+            if (data.status !== 'approved') {
+                return;
             }
             
             const dateStr = data.dateRendezVous; // e.g. "2026-06-24T16:01"
