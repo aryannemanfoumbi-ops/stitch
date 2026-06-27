@@ -237,89 +237,21 @@ class="bg-primary text-white py-3 rounded-xl font-semibold shadow-md w-full">✨
 <h2 class="font-headline font-extrabold text-4xl tracking-tight text-on-surface mb-2">Chats</h2>
 <p class="text-on-surface-variant font-medium">Your beauty consultations and bookings</p>
 </div>
-<!-- Service Area Block -->
-<div class="mb-8 bg-surface-container-low rounded-xl p-4 flex items-center gap-3 border border-outline-variant/20">
-<span class="material-symbols-outlined text-primary notranslate" translate="no" translate="no">location_on</span>
-<div class="flex-1">
-<p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Service Area</p>
-<input id="service-area-input" type="text" class="w-full bg-transparent border-none p-0 text-sm font-medium focus:ring-0 text-on-surface outline-none" placeholder="Set your working address...">
+
+<div id="chats-list-container" class="space-y-4">
+    <!-- Chats will be loaded here dynamically -->
 </div>
-</div>
-<div class="relative mb-8">
-<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant notranslate" translate="no" translate="no">search</span>
-<input class="w-full bg-surface-container-low border-none rounded-xl py-4 pl-12 pr-4 focus:ring-2 focus:ring-primary-container text-on-surface placeholder-on-surface-variant/60 font-medium active:scale-[0.98] transition-transform" placeholder="Search stylist or service..." type="text"/>
-</div>
-<div class="space-y-4">
-<div class="group relative bg-surface-container-lowest p-5 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-[#1a1c1a]/5 flex items-center gap-4 active:scale-[0.98] transition-transform">
-<div class="relative">
-<div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
-<img alt="Stylist photo" class="w-full h-full object-cover" data-alt="professional portrait of a high-end hair stylist in a minimalist modern salon setting, warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvizgqRu6352ffQPwGnIXBo06Kjk7hjWTgbrcaYCUdehBiO9eUPZOqsYTXc6Xg1mHav4wFwTJPAVOh9Ps8N3Qqtp9IY8s0-8uFzFEOp7UM4HsgAGcVr6IT7_roMnF5AcAzZFBF2sGGf55XzBmTG8nLcZKXDu9JS-joj8YrHF5bK3tqK-E0bPjBhZX_XOa-irhwCyiYx5fS9-tjLES95vKOmaeug3beMdWTR5rA1n8YCmuGXG6tM9daNH2k_BdatZ-jpsb6Gj3QPGvw"/>
-</div>
-<div class="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 border-2 border-surface-container-lowest rounded-full"></div>
-</div>
-<div class="flex-grow min-w-0">
-<div class="flex justify-between items-baseline mb-1">
-<h3 class="font-headline font-bold text-on-surface truncate">Elena Vance</h3>
-<span class="text-[10px] font-bold uppercase tracking-wider text-primary">10:42 AM</span>
-</div>
-<div class="flex justify-between items-center">
-<p class="text-on-surface font-semibold text-sm truncate pr-4">Perfect! I'll see you tomorrow at 2:00 PM for the session.</p>
-<span class="flex-shrink-0 bg-gradient-to-br from-[#8d4d3b] to-[#f4a28c] text-white text-[10px] font-bold h-5 w-5 rounded-full flex items-center justify-center shadow-md">2</span>
-</div>
-</div>
-</div>
-<div class="group relative bg-surface-container-low p-5 rounded-xl transition-all duration-300 hover:bg-surface-container-lowest hover:shadow-lg hover:shadow-[#1a1c1a]/5 flex items-center gap-4 active:scale-[0.98] transition-transform">
-<div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 grayscale opacity-80">
-<img alt="Stylist photo" class="w-full h-full object-cover" data-alt="editorial close-up of a professional makeup artist with artistic lighting and soft shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZkfEWZIw6ddnMYfcCHwjrkW0gJrxGOD-DWyOlv8qj6DMFtBH55gZkJ4b9jDI3NtE1xeya7sO-_H5YxbNtTrs0LjKnPpqf7zj_HoXdM3SQFGKBOpzpFvhR-drbcwrjnhxA_GyrRQpQozU6MwqNrl2ICZL0jmgYYupr7FmOe7qW0Hk4bFXkuGyMomK6okdU8QWZ0lukkIEwBeoYqgCddLjcoQuzDb1V8taCeMbEeSv8fXhDHDy8tLPuyaJiO935wLZT5s2mECKmiy2W"/>
-</div>
-<div class="flex-grow min-w-0">
-<div class="flex justify-between items-baseline mb-1">
-<h3 class="font-headline font-bold text-on-surface truncate">Marcus Chen</h3>
-<span class="text-[10px] font-semibold uppercase tracking-wider text-stone-400">Yesterday</span>
-</div>
-<div class="flex justify-between items-center">
-<p class="text-on-surface-variant text-sm truncate">The bridal trial photos look amazing. Shall we finalize the palette?</p>
-</div>
-</div>
-</div>
-<div class="group relative bg-surface-container-low p-5 rounded-xl transition-all duration-300 hover:bg-surface-container-lowest hover:shadow-lg hover:shadow-[#1a1c1a]/5 flex items-center gap-4 active:scale-[0.98] transition-transform">
-<div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
-<img alt="Stylist photo" class="w-full h-full object-cover" data-alt="portrait of a confident skincare specialist in a bright clean clinic with soft peach tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvPm9KleCauDM8K35N1xsdJKGdPow1h_Cg_zxegprNGDGwAip8y0FiwgmGLPcJaC6rtL6nGGEv5CK6zpfV7Yg7v8hRkaG90Zkb7THQeFyoGvEeJzljJs81If1e0ytzMRSrCkOGhFRGNynUiw9L9drkJiRVfjPQUQ-LNZrDy9fCuD-sFcaVSO99Tq3FfXDf1Hhq9Q4Z5vb_EuvHB5MQQsMBwEMe5TGSBCIZ206BiVJGYKpzd6SkCngVGBGotERKdiKE8H3ttXME4Gjj"/>
-</div>
-<div class="flex-grow min-w-0">
-<div class="flex justify-between items-baseline mb-1">
-<h3 class="font-headline font-bold text-on-surface truncate">Sophie Laurent</h3>
-<span class="text-[10px] font-semibold uppercase tracking-wider text-stone-400">Tuesday</span>
-</div>
-<div class="flex justify-between items-center">
-<p class="text-on-surface-variant text-sm truncate">How is your skin reacting to the new serum we used during the facial?</p>
-</div>
-</div>
-</div>
-<div class="group relative bg-surface-container-low p-5 rounded-xl transition-all duration-300 hover:bg-surface-container-lowest hover:shadow-lg hover:shadow-[#1a1c1a]/5 flex items-center gap-4 active:scale-[0.98] transition-transform">
-<div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
-<img alt="Stylist photo" class="w-full h-full object-cover" data-alt="professional male grooming specialist in a high-end luxury barber shop with warm mahogany tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPKPDeXp2wgaJqATLfVbzwzBw36sVewtjpk3M9_tyZ1L6n4sMmHKfHeRuSOTYHACxbuHRG8VoccXUb0trtowe_9QEkh0uSapVDJsCHH5kaK3DKTgg0PTMjGGdos4B7gpTFTaSJtB94q7jDTc-AvVdwrU2yMZdM3lVrPclJXUwtlcNdAc4S81JwO6-rbut40oedQxmX_rZfNpOcmmyj4rjNpb9CpNhb5pLJyiORCFR7qRDkFDBDzwRZanyWhWpPrp396ZfKi_Xt6H1P"/>
-</div>
-<div class="flex-grow min-w-0">
-<div class="flex justify-between items-baseline mb-1">
-<h3 class="font-headline font-bold text-on-surface truncate">Julian Rossi</h3>
-<span class="text-[10px] font-semibold uppercase tracking-wider text-stone-400">Oct 12</span>
-</div>
-<div class="flex justify-between items-center">
-<p class="text-on-surface-variant text-sm truncate">I've added the notes to your profile for next time. Safe travels!</p>
-</div>
-</div>
-</div>
-</div>
-<div class="mt-12 p-8 rounded-xl bg-gradient-to-br from-primary-fixed to-primary-container/20 flex flex-col items-center text-center">
-<div class="w-16 h-16 bg-white/40 rounded-full flex items-center justify-center mb-4 backdrop-blur-sm">
-<span class="material-symbols-outlined text-primary text-3xl notranslate" translate="no" translate="no">add_comment</span>
-</div>
-<h4 class="font-headline font-bold text-on-primary-fixed-variant text-lg mb-2">New Consultation</h4>
-<p class="text-on-primary-fixed-variant/80 text-sm mb-6 max-w-[240px]">Need professional advice? Start a new chat with our verified beauty experts.</p>
-<button class="bg-gradient-to-br from-[#8d4d3b] to-[#f4a28c] text-white font-bold py-3 px-8 rounded-full shadow-lg active:scale-95 transition-transform active:scale-95 transition-all duration-200">
-                Find a Specialist
-            </button>
+
+<!-- Empty state -->
+<div id="chats-empty-state" class="mt-12 p-8 rounded-xl bg-gradient-to-br from-primary-fixed to-primary-container/20 flex flex-col items-center text-center">
+    <div class="w-16 h-16 bg-white/40 rounded-full flex items-center justify-center mb-4 backdrop-blur-sm">
+        <span class="material-symbols-outlined text-primary text-3xl notranslate" translate="no" translate="no">add_comment</span>
+    </div>
+    <h4 class="font-headline font-bold text-on-primary-fixed-variant text-lg mb-2">No conversations yet</h4>
+    <p class="text-on-primary-fixed-variant/80 text-sm mb-6 max-w-[240px]">Start by finding a stylist and sending your first message.</p>
+    <button onclick="navigate('discover_styles_stylists')" class="bg-gradient-to-br from-[#8d4d3b] to-[#f4a28c] text-white font-bold py-3 px-8 rounded-full shadow-lg active:scale-95 transition-transform transition-all duration-200">
+        Find a Specialist
+    </button>
 </div>
 </main>
 
@@ -352,23 +284,11 @@ class="bg-primary text-white py-3 rounded-xl font-semibold shadow-md w-full">✨
                         <button class="filter-pill whitespace-nowrap px-6 py-2.5 rounded-full font-bold text-xs bg-surface-container-high text-stone-500 hover:bg-stone-200 hover:text-stone-700 active:scale-95 transition-all outline-none" data-filter="nails">Nails</button>
                     </div>
                 </div>
-<!-- Search & Filter Bar -->
-<div class="mb-10">
-<div class="flex items-center gap-3">
-<div class="flex-1 bg-surface-container-low rounded-xl px-4 py-3 flex items-center gap-3 active:scale-[0.98] transition-transform">
-<span class="material-symbols-outlined text-outline notranslate" translate="no" translate="no">search</span>
-<input class="bg-transparent border-none focus:ring-0 text-body w-full placeholder:text-outline" placeholder="Search styles, stylists..." type="text"/>
-</div>
-<button class="bg-surface-container-low p-3 rounded-xl text-primary hover:bg-primary-fixed transition-colors active:scale-95 transition-all duration-200 active:scale-[0.98] transition-transform">
-<span class="material-symbols-outlined notranslate" translate="no" translate="no">tune</span>
-</button>
-</div>
-</div>
+
 <!-- Trending Styles Section -->
 <section class="mb-12">
 <div class="flex justify-between items-end mb-6">
 <h2 class="font-headline font-bold text-2xl text-on-surface tracking-tight">Trending Styles</h2>
-<button class="text-primary font-semibold text-sm hover:underline active:scale-95 transition-all duration-200">View All</button>
 </div>
 <div class="flex overflow-x-auto no-scrollbar gap-6 -mx-6 px-6">
 <!-- Style Card 1 -->
@@ -681,23 +601,12 @@ class="bg-primary text-white py-3 rounded-xl font-semibold shadow-md w-full">✨
 </div>
 </header>
 <main class="pt-24 pb-32 px-6">
-<!-- Search & Filter -->
-<section class="mb-8">
-<div class="flex gap-3">
-<div class="flex-grow relative">
-<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline-variant notranslate" translate="no" translate="no">search</span>
-<input class="w-full bg-surface-container-low border-none rounded-xl py-4 pl-12 pr-4 text-sm focus:ring-2 focus:ring-primary-container placeholder:text-stone-400 active:scale-[0.98] transition-transform" placeholder="Search services or stylists..." type="text"/>
-</div>
-<button class="aspect-square w-[52px] bg-primary text-on-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20 active:scale-95 transition-all duration-200">
-<span class="material-symbols-outlined notranslate" translate="no" translate="no">tune</span>
-</button>
-</div>
-</section>
+
 <!-- Categories Section -->
 <section class="mb-10">
 <div class="flex justify-between items-end mb-4">
 <h2 class="font-headline font-bold text-xl text-on-background">Categories</h2>
-<span class="text-xs font-semibold text-primary underline">View All</span>
+
 </div>
 <div class="flex gap-4 overflow-x-auto hide-scrollbar -mx-6 px-6">
 <!-- African Braids -->
@@ -976,23 +885,12 @@ class="bg-primary text-white py-3 rounded-xl font-semibold shadow-md w-full">✨
 </div>
 </header>
 <main class="pt-24 pb-32 px-6">
-<!-- Search & Filter -->
-<section class="mb-8">
-<div class="flex gap-3">
-<div class="flex-grow relative">
-<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline-variant notranslate" translate="no" translate="no">search</span>
-<input class="w-full bg-surface-container-low border-none rounded-xl py-4 pl-12 pr-4 text-sm focus:ring-2 focus:ring-primary-container placeholder:text-stone-400 active:scale-[0.98] transition-transform" placeholder="Search services or stylists..." type="text"/>
-</div>
-<button class="aspect-square w-[52px] bg-primary text-on-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20 active:scale-95 transition-all duration-200">
-<span class="material-symbols-outlined notranslate" translate="no" translate="no">tune</span>
-</button>
-</div>
-</section>
+
 <!-- Categories Section -->
 <section class="mb-10">
 <div class="flex justify-between items-end mb-4">
 <h2 class="font-headline font-bold text-xl text-on-background">Categories</h2>
-<span class="text-xs font-semibold text-primary underline">View All</span>
+
 </div>
 <div class="flex gap-4 overflow-x-auto hide-scrollbar -mx-6 px-6">
 <!-- African Braids -->
@@ -1101,48 +999,36 @@ class="bg-primary text-white py-3 rounded-xl font-semibold shadow-md w-full">✨
     </div>
 </header>
 <main class="pt-24 pb-32 px-6">
-<!-- Search & Filter -->
-<section class="mb-8">
-<div class="flex gap-3">
-<div class="flex-grow relative">
-<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline-variant notranslate" translate="no" translate="no">search</span>
-<input class="w-full bg-surface-container-low border-none rounded-xl py-4 pl-12 pr-4 text-sm focus:ring-2 focus:ring-primary-container placeholder:text-stone-400 active:scale-[0.98] transition-transform" placeholder="Search services or stylists..." type="text"/>
-</div>
-<button class="aspect-square w-[52px] bg-primary text-on-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20 active:scale-95 transition-all duration-200">
-<span class="material-symbols-outlined notranslate" translate="no" translate="no">tune</span>
-</button>
-</div>
-</section>
+
 <!-- Categories Section -->
 <section class="mb-10">
 <div class="flex justify-between items-end mb-4">
 <h2 class="font-headline font-bold text-xl text-on-background">Categories</h2>
-<span class="text-xs font-semibold text-primary underline">View All</span>
 </div>
 <div class="flex gap-4 overflow-x-auto hide-scrollbar -mx-6 px-6">
 <!-- African Braids -->
-<div class="flex flex-col items-center gap-2 shrink-0">
+<div class="flex flex-col items-center gap-2 shrink-0 cursor-pointer active:scale-95 transition-transform" onclick="goToDiscoverCategory('african-braids')">
 <div class="w-20 h-20 rounded-2xl bg-surface-container-lowest shadow-sm flex items-center justify-center">
 <img class="w-14 h-14 rounded-xl object-cover" data-alt="stylized photography of intricate african hair braids with golden accessories" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCV9xN3tWVO8P_p48GcD010COttW3aSQGxDiOJSb2OcLYbili7WmaABzwryY6ud82PQdJP0-3374CU-3_MDk_BcXn8ejl2R0y7_u0kvcL9xnO6ECn7scf_q5XLMLJHxRhvebG0PV2j6P8iHfWL34vfaZh9Nrayn2_nH0jc7TmomqqOG1zLpkC4qoWFLCU85VsrA2AffzWs7Izr6Qk7zjQjQFgH1DqpjYB7Ks0gN5IPuXyJKuPdxHRy6foi-3igkgXSYoIY2bfI4Q-UO"/>
 </div>
 <span class="text-[11px] font-bold text-stone-600">African Braids</span>
 </div>
 <!-- Haircut -->
-<div class="flex flex-col items-center gap-2 shrink-0">
+<div class="flex flex-col items-center gap-2 shrink-0 cursor-pointer active:scale-95 transition-transform" onclick="goToDiscoverCategory('haircut')">
 <div class="w-20 h-20 rounded-2xl bg-surface-container-lowest shadow-sm flex items-center justify-center">
 <img class="w-14 h-14 rounded-xl object-cover" data-alt="professional hair cutting shears and a comb resting on a clean marble surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdN3XWvnCDP237b2QB67t30Y8lHMqtFjKMl5mbufe-VRZ0rGIVynDyM547kFUxKzFz3Dta98CoVxD_UDJplfhyVJ6evBfgTfvTreGI493_U6LbADvw0pmK1Ap17tZnQ6hl_KWqxuYQMnr9kf9AHSZvYlBbRvZAxCJhFBsyWqKNr1d4ythTpzK8l5BTyUTUxgUHo4aDGllvPTUD0V8s4gI4RCtafjZkIdQ3wq0ugOP4YobgnHunEz9A7e6n24RNczdnQo-RR3EUBgXt"/>
 </div>
 <span class="text-[11px] font-bold text-stone-600">Haircut</span>
 </div>
 <!-- Makeup -->
-<div class="flex flex-col items-center gap-2 shrink-0">
+<div class="flex flex-col items-center gap-2 shrink-0 cursor-pointer active:scale-95 transition-transform" onclick="goToDiscoverCategory('makeup')">
 <div class="w-20 h-20 rounded-2xl bg-surface-container-lowest shadow-sm flex items-center justify-center">
 <img class="w-14 h-14 rounded-xl object-cover" data-alt="luxury makeup brushes and rose gold eyeshadow palette in soft focus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAILPwIceo9-cPvV1yMT5l95IFdhFVWNWlnO4lzR1XuuBkm1U1nnm6vqnI4PG59KMIyul9r5hM72Nc-5UT_1H9Ku4d6UbIwHF7sjmfWj0H0ys3ou8gKiJoGqssyK9wASUym8G-tvVb0NljiWhiREC3FM6FU8_tFxDKeKjOatDeE1MKPM7hPu6XtA6nuZPexiajNAtnZNr8Ol5MgHvZ-l3N6OEQsdggLcPM3_4xSg_zLVenkAgie32_cTcftm_INVTLlReK4HSnY5iy1"/>
 </div>
 <span class="text-[11px] font-bold text-stone-600">Makeup</span>
 </div>
 <!-- Nails -->
-<div class="flex flex-col items-center gap-2 shrink-0">
+<div class="flex flex-col items-center gap-2 shrink-0 cursor-pointer active:scale-95 transition-transform" onclick="goToDiscoverCategory('nails')">
 <div class="w-20 h-20 rounded-2xl bg-surface-container-lowest shadow-sm flex items-center justify-center">
 <img class="w-14 h-14 rounded-xl object-cover" data-alt="close up of perfectly manicured nails with soft pink polish and gold foil accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6-UkhuTCnMLxAJXi4YtwSn-Gp1qIOJiGJX3HrZ8aWfWSwAMGZ_TKkQUWstCxFKZ6Y-GUUnYHqQxv3scY4u4noGEK9AqV9CjudZ8ByeZJWIs52_6UzGSBVouTC3eR3A1EWeIIObjQu19BlHjnJc9qHzb2dK456nuat0AUYDZK2_cjTPyZUJ5G5O4YLFZjOD5PvdrbL6jSFy9dOK0QUnvCyr1rfYZBkQsZ0Af4KVz2mFverEoq6Ga0qfNlG8eeOZYi3rX-QmL_X7eXt"/>
 </div>
@@ -1465,7 +1351,7 @@ class="bg-primary text-white py-3 rounded-xl font-semibold shadow-md w-full">✨
 <h2 class="font-headline text-xl font-bold text-on-surface">My Work</h2>
 <p class="text-on-surface-variant text-xs">Recent Transformations</p>
 </div>
-<button class="text-primary text-sm font-semibold active:scale-95 transition-all duration-200">View All</button>
+
 </div>
 <div class="flex overflow-x-auto gap-4 px-6 hide-scrollbar">
 <!-- Gallery Item 1 -->
@@ -1608,7 +1494,7 @@ class="bg-primary text-white py-3 rounded-xl font-semibold shadow-md w-full">✨
 <div class="bg-surface-container-lowest rounded-lg p-6 space-y-6 shadow-sm shadow-outline-variant/5">
 <div>
 <label class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant mb-3 block">Linked Accounts</label>
-<button class="w-full flex items-center justify-center gap-3 py-3 px-4 border border-outline-variant/20 rounded-xl hover:bg-surface-container-low transition-colors active:scale-95 transition-all duration-200">
+<button id="btn-google-signin" class="w-full flex items-center justify-center gap-3 py-3 px-4 border border-outline-variant/20 rounded-xl hover:bg-surface-container-low transition-colors active:scale-95 transition-all duration-200">
 <svg class="w-5 h-5" viewbox="0 0 24 24">
 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
 <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
@@ -1778,17 +1664,7 @@ Remove Card
             <span class="material-symbols-outlined text-outline-variant group-hover:translate-x-1 transition-transform notranslate" translate="no" translate="no">chevron_right</span>
         </a>
 
-        <!-- PRIVACY SETTINGS -->
-        <a class="flex items-center justify-between p-5 hover:bg-surface-container-low transition-colors group border-b border-outline-variant/5 active:scale-95 transition-all duration-200 cursor-pointer" 
-           href="#">
-            <div class="flex items-center gap-4">
-                <div class="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center text-primary">
-                    <span class="material-symbols-outlined notranslate" translate="no" translate="no">shield_person</span>
-                </div>
-                <span class="font-body font-medium text-on-surface">Privacy Settings</span>
-            </div>
-            <span class="material-symbols-outlined text-outline-variant group-hover:translate-x-1 transition-transform notranslate" translate="no" translate="no">chevron_right</span>
-        </a>
+
 
       <!-- LOG OUT -->
 <button id="btn-logout" class="w-full flex items-center justify-between p-5 hover:bg-error/5 transition-colors group active:scale-95 transition-all duration-200">

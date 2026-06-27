@@ -237,6 +237,17 @@ function renderDiscoverGallery(filterType = 'all') {
 // 1. CORE NAVIGATION — Single canonical navigate() function
 //    All other definitions have been removed from index.html.
 // ----------------------------------------------------------
+window.goToDiscoverCategory = function(category) {
+    navigate('discover_styles_stylists');
+    setTimeout(() => {
+        const pills = document.querySelectorAll('#discover-pill-filter-secondary .filter-pill');
+        const targetPill = Array.from(pills).find(p => p.getAttribute('data-filter') === category);
+        if (targetPill) {
+            targetPill.click();
+        }
+    }, 100);
+};
+
 window.navigate = function navigate(screenId) {
     const screens = document.querySelectorAll('.app-screen');
     screens.forEach(screen => {
@@ -1574,3 +1585,15 @@ window.deleteCard = function(cardElement, silent = false) {
         sessionStorage.setItem('glamathome_cards', JSON.stringify(savedCards));
     }
 };
+
+// ----- Google Auth -----
+document.getElementById('btn-google-signin')?.addEventListener('click', async () => {
+    try {
+        const provider = new firebase.auth.GoogleAuthProvider();
+        await firebase.auth().signInWithPopup(provider);
+        console.log("Google sign-in successful!");
+        navigate('glamathome_home_screen'); // optionally refresh the screen or show a success message
+    } catch (error) {
+        console.error("Google sign-in error:", error);
+    }
+});
