@@ -705,24 +705,33 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.innerText = 'Submitting...';
         submitBtn.disabled = true;
 
-        const specs = Array.from(document.querySelectorAll('.spec-cb:checked')).map(cb => cb.value);
-
-        const applicationData = {
-            nom: document.getElementById('stylist-name').value,
-            email: document.getElementById('stylist-email').value,
-            telephone: document.getElementById('stylist-phone').value,
-            ville: document.getElementById('stylist-city').value,
-            specialite: specs.join(", "),
-            yearsOfExperience: document.getElementById('stylist-exp').value,
-            portfolio: document.getElementById('stylist-portfolio').value,
-            bio: document.getElementById('stylist-bio').value,
-            status: "approved",
-            tarif: "50",
-            photo: "",
-            submittedAt: new Date().toISOString()
-        };
-
         try {
+            const { getAuth } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js");
+            const auth = getAuth();
+            if (!auth.currentUser) {
+                alert("You must be signed in to become a stylist.");
+                submitBtn.innerText = 'Apply Now';
+                submitBtn.disabled = false;
+                return;
+            }
+
+            const specs = Array.from(document.querySelectorAll('.spec-cb:checked')).map(cb => cb.value);
+
+            const applicationData = {
+                uid: auth.currentUser.uid,
+                nom: document.getElementById('stylist-name').value,
+                email: document.getElementById('stylist-email').value,
+                telephone: document.getElementById('stylist-phone').value,
+                ville: document.getElementById('stylist-city').value,
+                specialite: specs.join(", "),
+                yearsOfExperience: document.getElementById('stylist-exp').value,
+                portfolio: document.getElementById('stylist-portfolio').value,
+                bio: document.getElementById('stylist-bio').value,
+                status: "approved",
+                tarif: "50",
+                photo: "",
+                submittedAt: new Date().toISOString()
+            };
             // Import Firestore dynamically from the Firebase SDK (matching login.html version 10.12.2)
             const { getFirestore, collection, addDoc, serverTimestamp } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
             const app = window.firebaseApp; // We need to expose the initialized app in index.html, or we can just initialize it here since it's idempotent.
