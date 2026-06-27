@@ -218,6 +218,24 @@ class="bg-primary text-white py-3 rounded-xl font-semibold shadow-md w-full">✨
 
 </div>
 
+<!-- Screen: chat_window -->
+<div id="screen-chat_window" class="screen chat-screen" style="display: none;">
+  <div id="chat-header">
+    <button id="chat-back-btn">← Back</button>
+    <span id="chat-stylist-name"></span>
+  </div>
+  <div id="chat-messages"></div>
+  <div id="chat-input-area">
+    <input
+        id="chatInput"
+        type="text"
+        placeholder="Type a message…"
+        autocomplete="off"
+    />
+    <button id="sendBtn">➤</button>
+  </div>
+</div>
+
 <!-- Screen: chats -->
 <div id="screen-chats" class="app-screen w-full min-h-[100dvh]">
 
@@ -1975,5 +1993,6 @@ Remove Card
 </script>
 
 <script src="app.js"></script>
+<script type="module" src="ChatWindow.js"></script>
 </body>
 </html>

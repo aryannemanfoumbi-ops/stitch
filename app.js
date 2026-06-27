@@ -262,6 +262,10 @@ window.navigate = function navigate(screenId) {
         window.scrollTo({ top: 0, behavior: 'smooth' });
         localStorage.setItem('currentScreen', screenId);
 
+        if (screenId === 'chat_window' && typeof window.initChatWindow === 'function') {
+            window.initChatWindow();
+        }
+
         // Close side panels on navigate
         closeSidebar();
         closeNotifications();
@@ -1413,7 +1417,7 @@ async function loadApprovedStylists() {
                             <span class="text-primary font-bold text-sm">$${tarif}/hr</span>
                             <div class="flex gap-2">
                                 <button onclick="navigate('stylist_profile_portfolio')" class="border border-primary text-primary px-3 py-1.5 rounded-full text-[11px] font-bold hover:bg-primary/10 transition-colors active:scale-95">View Details</button>
-                                <button onclick="console.log({ id: '${doc.id}', uid: '${data.uid || ''}', nom: '${nom.replace(/'/g, "\\'")}', specialite: '${specialite.replace(/'/g, "\\'")}' })" class="bg-surface-container-high text-primary px-3 py-1.5 rounded-full text-[11px] font-bold shadow-sm hover:opacity-90 active:scale-95 transition-all">Message</button>
+                                <button onclick="openChatWithStylist({ id: '${doc.id}', uid: '${data.uid || ''}', nom: '${nom.replace(/'/g, "\\'")}', specialite: '${specialite.replace(/'/g, "\\'")}' })" class="bg-surface-container-high text-primary px-3 py-1.5 rounded-full text-[11px] font-bold shadow-sm hover:opacity-90 active:scale-95 transition-all">Message</button>
                                 <button onclick="openBookingModal('${nom.replace(/'/g, "\\'")}')" class="bg-primary text-white px-3 py-1.5 rounded-full text-[11px] font-bold shadow-md hover:opacity-90 active:scale-95 transition-all">Book Now</button>
                             </div>
                         </div>
