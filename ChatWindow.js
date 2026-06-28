@@ -112,7 +112,20 @@ window.initChatWindow = function() {
 
     if (backBtn) {
         backBtn.onclick = () => {
-            if (typeof navigate === 'function') navigate('screen-home');
+            if (typeof navigate !== 'function') return;
+            const lastScreen = localStorage.getItem('lastScreen');
+            const safe = [
+                'glamathome_home_screen',
+                'discover_styles_stylists',
+                'saved_styles_stylists',
+                'my_appointments'
+            ];
+            
+            if (lastScreen && safe.includes(lastScreen)) {
+                navigate(lastScreen);
+            } else {
+                navigate('glamathome_home_screen');
+            }
         };
     }
 

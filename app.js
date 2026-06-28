@@ -249,33 +249,57 @@ window.goToDiscoverCategory = function(category) {
 };
 
 window.navigate = function navigate(screenId) {
-    const screens = document.querySelectorAll('.app-screen');
+    if (!screenId) return;
+
+    let target = document.getElementById('screen-' + screenId);
+    
+    if (!target) {
+        console.error('Screen not found: screen-' + screenId);
+        screenId = 'glamathome_home_screen';
+        target = document.getElementById('screen-' + screenId);
+    }
+
+    const screens = document.querySelectorAll('.app-screen, .screen');
     screens.forEach(screen => {
-        screen.style.display = 'none';
         screen.classList.remove('active');
+        screen.style.display = ''; // Clear inline styles if any
     });
 
-    const target = document.getElementById('screen-' + screenId);
-    if (target) {
-        target.style.display = 'block';
-        target.classList.add('active');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        localStorage.setItem('currentScreen', screenId);
+    target.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'instant' });
 
-        if (screenId === 'chat_window' && typeof window.initChatWindow === 'function') {
-            window.initChatWindow();
+    const safeToPersist = [
+        'glamathome_home_screen',
+        'discover_styles_stylists',
+        'saved_styles_stylists',
+        'my_appointments',
+        'chat_window'
+    ];
+
+    if (safeToPersist.includes(screenId)) {
+        localStorage.setItem('lastScreen', screenId);
+    }
+
+    if (screenId === 'chat_window' && typeof window.initChatWindow === 'function') {
+        window.initChatWindow();
+    } else {
+        // Clear chat state if leaving
+        window.currentConversationId = null;
+        if (typeof window.unsubscribeMessages === 'function') {
+            window.unsubscribeMessages();
+            window.unsubscribeMessages = null;
         }
+    }
 
-        // Close side panels on navigate
-        closeSidebar();
-        closeNotifications();
+    // Close side panels on navigate
+    if (typeof closeSidebar === 'function') closeSidebar();
+    if (typeof closeNotifications === 'function') closeNotifications();
 
-        // Update bottom nav active state
-        updateBottomNav(screenId);
+    // Update bottom nav active state
+    if (typeof updateBottomNav === 'function') updateBottomNav(screenId);
 
-        if (screenId === 'saved_styles_stylists') {
-            renderFavorites('all');
-        }
+    if (screenId === 'saved_styles_stylists' && typeof renderFavorites === 'function') {
+        renderFavorites('all');
     }
 };
 
@@ -926,9 +950,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ----- Restore last screen or default -----
-    const startScreen = localStorage.getItem('currentScreen') || 'glamathome_home_screen';
-    if (document.getElementById('screen-' + startScreen)) {
-        navigate(startScreen);
+    const last = localStorage.getItem('lastScreen');
+    const safe = [
+        'glamathome_home_screen',
+        'discover_styles_stylists',
+        'saved_styles_stylists',
+        'my_appointments'
+    ];
+
+    if (last && safe.includes(last)) {
+        navigate(last);
     } else {
         navigate('glamathome_home_screen');
     }
