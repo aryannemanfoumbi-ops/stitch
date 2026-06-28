@@ -175,3 +175,75 @@ window.initChatWindow = function() {
         console.error(err.code, err.message);
     });
 };
+
+window.unsubscribeInbox = null;
+
+window.loadInbox = function() {
+    const auth = getAuth();
+    if (!auth.currentUser) return;
+    
+    const container = document.getElementById('chats-list-container');
+    const emptyState = document.getElementById('chats-empty-state');
+    if (!container) return;
+
+    if (window.unsubscribeInbox) {
+        window.unsubscribeInbox();
+        window.unsubscribeInbox = null;
+    }
+
+    const app = window.firebaseApp || getApps()[0];
+    const db = getFirestore(app);
+    const convRef = collection(db, 'conversations');
+    
+    // 1 & 3: Query using array-contains and sort by updatedAt desc
+    const q = query(convRef, where('participants', 'array-contains', auth.currentUser.uid), orderBy('updatedAt', 'desc'));
+
+    window.unsubscribeInbox = onSnapshot(q, async (snapshot) => {
+        if (snapshot.empty) {
+            container.innerHTML = '';
+            if (emptyState) emptyState.style.display = 'flex';
+            return;
+        }
+
+        if (emptyState) emptyState.style.display = 'none';
+        container.innerHTML = '';
+
+        // 2. Display every conversation involving that user
+        for (const docSnap of snapshot.docs) {
+            const data = docSnap.data();
+            const otherUid = data.participants.find(uid => uid !== auth.currentUser.uid);
+            
+            let otherName = 'User';
+            if (otherUid) {
+                try {
+                    const userDoc = await getDoc(doc(db, 'users', otherUid));
+                    if (userDoc.exists() && userDoc.data().nom) {
+                        otherName = userDoc.data().nom;
+                    }
+                } catch (e) {
+                    console.error("Failed to fetch other user name", e);
+                }
+            }
+
+            const div = document.createElement('div');
+            div.className = 'p-4 bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/30 cursor-pointer hover:bg-surface-container-low transition-colors';
+            div.innerHTML = `
+                <div class="flex justify-between items-center mb-1">
+                    <h3 class="font-bold text-on-surface">${otherName}</h3>
+                </div>
+                <p class="text-sm text-on-surface-variant truncate">${data.lastMessage || 'Start the conversation'}</p>
+            `;
+            
+            // 4. When a conversation is selected: reuse initChatWindow, sendMessage etc.
+            div.onclick = () => {
+                window.currentConversationId = docSnap.id;
+                const headerName = document.getElementById('chat-stylist-name');
+                if (headerName) headerName.textContent = otherName;
+                if (typeof window.navigate === 'function') navigate('chat_window');
+            };
+            container.appendChild(div);
+        }
+    }, (err) => {
+        console.error("Inbox listener error:", err.code, err.message);
+    });
+};

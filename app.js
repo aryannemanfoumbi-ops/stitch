@@ -282,6 +282,8 @@ window.navigate = function navigate(screenId) {
 
     if (screenId === 'chat_window' && typeof window.initChatWindow === 'function') {
         window.initChatWindow();
+    } else if (screenId === 'chats' && typeof window.loadInbox === 'function') {
+        window.loadInbox();
     } else {
         // Clear chat state if leaving
         window.currentConversationId = null;

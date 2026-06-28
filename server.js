@@ -112,8 +112,9 @@ app.post("/api/try-hairstyle", async (req, res) => {
 
         console.log(`${color.cyan}⚡ Connecting to Hugging Face Instruct-Pix2Pix Space...${color.reset}`);
         
-        const client = await Client.connect("esteraryanne/glamathome-pix2pix", {
-            hf_token: process.env.HUGGINGFACE_TOKEN
+        // Use the official public space for Instruct-Pix2Pix
+        const client = await Client.connect("timbrooks/instruct-pix2pix", {
+            hf_token: process.env.HUGGINGFACE_TOKEN || undefined
         });
 
         console.log(`${color.cyan}⚡ Call HF predict with prompt: "${prompt}"...${color.reset}`);
@@ -129,10 +130,14 @@ app.post("/api/try-hairstyle", async (req, res) => {
             1.2               // image_cfg_scale
         ]);
 
+        console.log(`${color.green}⚡ Generate success. Checking results...${color.reset}`);
+
+        // Extract output image from the correct output position (index 3 for edited image)
         const outputImage = result.data?.[3];
         const outputImageUrl = typeof outputImage === "string" ? outputImage : outputImage?.url;
 
         if (!outputImageUrl) {
+            console.error(`${color.red}❌ Failed to extract image URL from response: ${JSON.stringify(result.data)}${color.reset}`);
             throw new Error("Failed to generate image URL from Hugging Face Space");
         }
 
@@ -141,6 +146,7 @@ app.post("/api/try-hairstyle", async (req, res) => {
 
     } catch (err) {
         console.error(`${color.red}❌ Hairstyle Generation Error: ${err.message}${color.reset}`);
+        console.error(err);
         res.status(500).json({ error: err.message || "Hairstyle try-on failed." });
     }
 });
