@@ -1,42 +1,63 @@
 import {
   getFirestore, collection, query, where,
-  getDocs, addDoc, orderBy, onSnapshot, serverTimestamp
+  getDocs, addDoc, orderBy, onSnapshot, serverTimestamp, getDoc, doc
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import { getApps } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 async function getOrCreateConversation(clientId, stylistId) {
-    try {
-        const app = window.firebaseApp || getApps()[0];
-        const db = getFirestore(app);
-        const convRef = collection(db, 'conversations');
-        const q = query(convRef, where('participants', 'array-contains', clientId));
-        const snapshot = await getDocs(q);
-        
-        let existingDocId = null;
-        snapshot.forEach(doc => {
-            const data = doc.data();
-            if (data.participants && data.participants.includes(stylistId)) {
-                existingDocId = doc.id;
-            }
-        });
+    const app = window.firebaseApp || getApps()[0];
+    const db = getFirestore(app);
+    
+    const userAId = clientId;
+    const userBId = stylistId;
+    
+    // 1 & 2. Read user documents to get roles
+    const user1Doc = await getDoc(doc(db, 'users', userAId));
+    const user2Doc = await getDoc(doc(db, 'users', userBId));
 
-        if (existingDocId) {
-            return existingDocId;
-        }
+    // 3. Read the field: role and normalize
+    const role1 = user1Doc.exists() ? user1Doc.data().role?.toLowerCase() : null;
+    const role2 = user2Doc.exists() ? user2Doc.data().role?.toLowerCase() : null;
 
-        const newDoc = await addDoc(convRef, {
-            participants: [clientId, stylistId],
-            clientId: clientId,
-            stylistId: stylistId,
-            createdAt: serverTimestamp()
-        });
-
-        return newDoc.id;
-    } catch (err) {
-        console.error(err.code, err.message);
-        throw err;
+    // 4. Validate roles BEFORE creating any conversation
+    if (!role1 || !role2 || role1 === role2) {
+        throw new Error("Conversation allowed only between Client and Stylist");
     }
+
+    // Determine automatically which user is the Client and which is the Stylist
+    const clientUid = role1 === 'client' ? userAId : userBId;
+    const stylistUid = role1 === 'stylist' ? userAId : userBId;
+
+    const convRef = collection(db, 'conversations');
+    
+    // 5. Search an existing conversation using participants
+    const q = query(convRef, where('participants', 'array-contains', userAId));
+    const snapshot = await getDocs(q);
+    
+    let existingDocId = null;
+    snapshot.forEach(docSnap => {
+        const data = docSnap.data();
+        if (data.participants && data.participants.includes(userBId)) {
+            existingDocId = docSnap.id;
+        }
+    });
+
+    if (existingDocId) {
+        return existingDocId;
+    }
+
+    // 6. If not found, create exactly ONE conversation
+    const newDoc = await addDoc(convRef, {
+        participants: [clientUid, stylistUid],
+        clientId: clientUid,
+        stylistId: stylistUid,
+        createdAt: serverTimestamp(),
+        updatedAt: serverTimestamp(),
+        lastMessage: ""
+    });
+
+    return newDoc.id;
 }
 
 window.openChatWithStylist = async function(stylist) {

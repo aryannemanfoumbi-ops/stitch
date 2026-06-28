@@ -1647,9 +1647,25 @@ window.deleteCard = function(cardElement, silent = false) {
             }
         });
 
-        onAuthStateChanged(auth, (user) => {
+        onAuthStateChanged(auth, async (user) => {
             if (user) {
                 console.log("User is signed in:", user.uid);
+                
+                try {
+                    const { getFirestore, doc, setDoc, serverTimestamp } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
+                    const db = getFirestore();
+                    const userData = {
+                        role: "client",
+                        createdAt: serverTimestamp()
+                    };
+                    if (user.displayName) userData.nom = user.displayName;
+                    if (user.email) userData.email = user.email;
+                    
+                    await setDoc(doc(db, 'users', user.uid), userData, { merge: true });
+                } catch (err) {
+                    console.error("Failed to sync user to Firestore:", err);
+                }
+
                 // Update Profile Screen UI
                 const nameElements = document.querySelectorAll('.user-first-name');
                 nameElements.forEach(el => {
