@@ -23,9 +23,17 @@ app.use(express.static(__dirname));
 // ----------------------------------------------------------
 // Twilio SMS Verification
 // ----------------------------------------------------------
+const TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID;
+const TWILIO_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN;
+const TWILIO_VERIFY_SERVICE_SID = process.env.TWILIO_VERIFY_SERVICE_SID;
+
+if (!TWILIO_ACCOUNT_SID) console.warn("Missing TWILIO_ACCOUNT_SID");
+if (!TWILIO_AUTH_TOKEN) console.warn("Missing TWILIO_AUTH_TOKEN");
+if (!TWILIO_VERIFY_SERVICE_SID) console.warn("Missing TWILIO_VERIFY_SERVICE_SID");
+
 const twilioClient = twilio(
-    process.env.TWILIO_ACCOUNT_SID,
-    process.env.TWILIO_AUTH_TOKEN
+    TWILIO_ACCOUNT_SID,
+    TWILIO_AUTH_TOKEN
 );
 const TWILIO_FROM = process.env.TWILIO_PHONE_NUMBER;
 
